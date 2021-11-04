@@ -1,0 +1,5 @@
+.elem {
+    -fx-background-image: url("../profilepic.jpg");
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
