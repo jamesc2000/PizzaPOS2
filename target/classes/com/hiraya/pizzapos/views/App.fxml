@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<SplitPane dividerPositions="0.2" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.2" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1">
    <items>
       <VBox prefWidth="150.0">
          <children>
