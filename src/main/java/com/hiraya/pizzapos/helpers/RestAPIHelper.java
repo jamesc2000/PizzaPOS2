@@ -1,5 +1,7 @@
 package com.hiraya.pizzapos.helpers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hiraya.pizzapos.httpReqRes.*;
 import java.net.URI;
 import java.time.Duration;
 import java.io.IOException;
@@ -12,12 +14,12 @@ import java.net.http.HttpRequest.BodyPublishers;
 
 public class RestAPIHelper {
     private static final String API_KEY = "?key=AIzaSyAjHvrGH9RaL-kmgc7MyULmRFJMqmfcohU";
+    private static ObjectMapper mapper = new ObjectMapper();
     
-    public static LoginData.LoginResponse login(String t_email, String t_password) throws InterruptedException, IOException {
+    public static LoginResponse login(String t_email, String t_password) throws InterruptedException, IOException {
         HttpClient client = HttpClient.newHttpClient();
-        LoginData data = new LoginData();
 
-        LoginData.LoginBody credentials = data.new LoginBody();
+        LoginRequest credentials = new LoginRequest();
         credentials.email = t_email; // Take the email parameter and store it in the credentials object
         credentials.password = t_password; // Same as above but for password;
         
@@ -31,6 +33,19 @@ public class RestAPIHelper {
         HttpResponse res = client.send(req, BodyHandlers.ofString());
         System.out.println(res.body());
         System.out.println("login() executed");
-        return LoginData.jsonResToObj(res.body().toString());
+        return jsonToLoginRes(res.body().toString());
+    }
+
+    // Just a function to tidy up the login function
+    private static LoginResponse jsonToLoginRes(String json) {
+        LoginResponse res = new LoginResponse();
+        
+        try {
+            res = mapper.readValue(json, LoginResponse.class);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
+        return res;
     }
 }

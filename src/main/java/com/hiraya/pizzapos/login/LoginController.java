@@ -1,28 +1,39 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package com.hiraya.pizzapos.login;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 
-/**
- * FXML Controller class
- *
- * @author ce
- */
 public class LoginController implements Initializable {
+    // Declare the model
+    LoginModel model = new LoginModel();
+    
+    // Declare the elements with ids here so we can control them
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private TextField emailField;  // See the FXML file in scene builder and then on the
+    @FXML                      // right side under Code, we can see that the ids for
+    private TextField passwordField; // these fields are "emailField" and "passwordField"
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         System.out.println("Initialize");
+    }
+
+    @FXML
+    public void login() {
+        System.out.println("Login clicked");
+
+        // When login is clicked, store the data to the model
+        model.setEmail(emailField.getText());
+        model.setPassword(passwordField.getText());
+
+        // Send the email and password to firebase, then firebase is
+        // responsible for verifying credentials, not us
+        model.sendToFirebase();
     }
     
 }

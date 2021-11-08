@@ -1,17 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.TextFlow?>
 
-<VBox id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.login.LoginController" stylesheets="@../styles/login.css">
-    <children>
-      <Label text="Primary View" />
-<!--      <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>
-      <Button fx:id="buttonKo" text="Test Button" onAction="#buttonKo"/>-->
-    </children>
-    <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-</VBox>
+<SplitPane dividerPositions="0.4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.hiraya.pizzapos.login.LoginController">
+  <items>
+    <AnchorPane>
+         <children>
+            <VBox alignment="CENTER_LEFT" layoutX="118.0" layoutY="14.0" prefHeight="398.0" prefWidth="236.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label text="&lt;Logo TODO: Replace with image&gt;" />
+                  <TextFlow textAlignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" text="LogIn" textAlignment="CENTER" />
+                     </children>
+                  </TextFlow>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                  <Label text="Email" />
+                  <TextField fx:id="emailField" />
+                  <Label text="Password" />
+                  <PasswordField fx:id="passwordField" />
+                  <HBox alignment="CENTER">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#login" text="Login" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="100.0" left="30.0" right="30.0" top="30.0" />
+         </padding></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <StackPane>
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/login-sample.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
