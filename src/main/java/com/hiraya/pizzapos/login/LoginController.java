@@ -1,5 +1,7 @@
 package com.hiraya.pizzapos.login;
 
+import com.hiraya.pizzapos.App;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -36,4 +38,8 @@ public class LoginController implements Initializable {
         model.sendToFirebase();
     }
     
+    @FXML
+    public void changeViewToRegister() throws IOException {
+        App.setRoot("register");
+    }
 }

@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.TextFlow?>
 
-<SplitPane dividerPositions="0.4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.hiraya.pizzapos.login.LoginController">
+<SplitPane dividerPositions="0.4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.login.LoginController">
   <items>
     <AnchorPane>
          <children>
@@ -36,7 +36,15 @@
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
                      <children>
-                        <Button mnemonicParsing="false" onAction="#login" text="Login" />
+                        <Button mnemonicParsing="false" onAction="#login" text="Login">
+                           <HBox.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </HBox.margin></Button>
+                        <Button mnemonicParsing="false" onAction="#changeViewToRegister" text="Register">
+                           <HBox.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </HBox.margin>
+                        </Button>
                      </children>
                   </HBox>
                </children>
