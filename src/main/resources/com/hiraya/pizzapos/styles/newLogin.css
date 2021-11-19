@@ -1,0 +1,11 @@
+.action-button {
+    -fx-background-color: #e535c7;
+}
+
+.action-button:hover {
+    -fx-background-color: #5754d7;
+}
+
+.txtField {
+    -fx-background-color: #4b4b4b
+}

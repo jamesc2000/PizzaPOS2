@@ -28,7 +28,7 @@ public class LoginController implements Initializable {
     @FXML
     public void login() {
         System.out.println("Login clicked");
-
+        
         // When login is clicked, store the data to the model
         model.setEmail(emailField.getText());
         model.setPassword(passwordField.getText());
