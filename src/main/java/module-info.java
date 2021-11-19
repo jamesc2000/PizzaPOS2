@@ -13,6 +13,7 @@ module com.hiraya.pizzapos {
     opens com.hiraya.pizzapos.takeOrders to javafx.fxml;
     opens com.hiraya.pizzapos.login to javafx.fxml;
     opens com.hiraya.pizzapos.register to javafx.fxml;
+    opens com.hiraya.pizzapos.newLogin to javafx.fxml;
     opens com.hiraya.pizzapos.helpers to com.fasterxml.jackson.databind;
     opens com.hiraya.pizzapos.httpReqRes to com.fasterxml.jackson.databind;
     exports com.hiraya.pizzapos;
