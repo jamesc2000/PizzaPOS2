@@ -56,7 +56,7 @@
          <children>
             <StackPane fx:id="imageContainer">
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-image: url(&quot;https://firebasestorage.googleapis.com/v0/b/gdsc-plm.appspot.com/o/coreTeam%2FCloud%20Engineering%20Lead.png?alt=media&amp;token=aa84ff18-b7e1-4f27-afa2-d6c7e0e470c7&quot;); -fx-background-position: center; -fx-background-repeat: stretch;" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-image: url(&quot;https://firebasestorage.googleapis.com/v0/b/gdsc-plm.appspot.com/o/sponsors%2FDCD%20logo%20inverted.png?alt=media&amp;token=0c337e09-2e6a-473a-b75a-24e28ffc97f5&quot;); -fx-background-position: center; -fx-background-repeat: stretch;" />
                </children>
             </StackPane>
          </children></AnchorPane>
