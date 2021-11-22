@@ -6,15 +6,13 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.TextFlow?>
 
-<SplitPane dividerPositions="0.4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.login.LoginController">
+<SplitPane fx:id="root" dividerPositions="0.4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.login.LoginController">
   <items>
     <AnchorPane>
          <children>
@@ -39,7 +37,8 @@
                         <Button mnemonicParsing="false" onAction="#login" text="Login">
                            <HBox.margin>
                               <Insets left="15.0" right="15.0" />
-                           </HBox.margin></Button>
+                           </HBox.margin>
+                        </Button>
                         <Button mnemonicParsing="false" onAction="#changeViewToRegister" text="Register">
                            <HBox.margin>
                               <Insets left="15.0" right="15.0" />
@@ -55,13 +54,9 @@
          </padding></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
-            <StackPane>
+            <StackPane fx:id="imageContainer">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/login-sample.png" />
-                     </image>
-                  </ImageView>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-image: url(&quot;https://firebasestorage.googleapis.com/v0/b/gdsc-plm.appspot.com/o/coreTeam%2FCloud%20Engineering%20Lead.png?alt=media&amp;token=aa84ff18-b7e1-4f27-afa2-d6c7e0e470c7&quot;); -fx-background-position: center; -fx-background-repeat: stretch;" />
                </children>
             </StackPane>
          </children></AnchorPane>

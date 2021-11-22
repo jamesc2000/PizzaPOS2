@@ -19,8 +19,10 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         stage.setTitle("PizzaPOS");
 //        stage.setMaximized(true);
+        stage.setFullScreen(true);
         
-        scene = new Scene(loadFXML("newLogin"), 1000, 600);
+        
+        scene = new Scene(loadFXML("login"), 1000, 600);
         stage.setScene(scene);
         stage.show();
     }
