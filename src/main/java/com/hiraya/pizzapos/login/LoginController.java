@@ -39,6 +39,11 @@ public class LoginController implements Initializable {
     }
     
     @FXML
+    public void switchToApp() throws IOException {
+        App.setRoot("App");
+    }
+    
+    @FXML
     public void changeViewToRegister() throws IOException {
         App.setRoot("register");
     }
