@@ -13,7 +13,7 @@ public class LoginController implements Initializable {
     LoginModel model = new LoginModel();
     
     // Declare the elements with ids here so we can control them
-
+    
     @FXML
     private TextField emailField;  // See the FXML file in scene builder and then on the
     @FXML                      // right side under Code, we can see that the ids for
@@ -36,6 +36,11 @@ public class LoginController implements Initializable {
         // Send the email and password to firebase, then firebase is
         // responsible for verifying credentials, not us
         model.sendToFirebase();
+    }
+    
+    @FXML
+    public void switchToApp() throws IOException {
+        App.setRoot("App");
     }
     
     @FXML
