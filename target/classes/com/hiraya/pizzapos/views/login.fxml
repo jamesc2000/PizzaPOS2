@@ -2,68 +2,97 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.login.LoginController">
-  <items>
-    <AnchorPane>
+<BorderPane minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.login.LoginController">
+   <center>
+      <Pane prefHeight="313.0" prefWidth="327.0" style="-fx-background-image: url(loginBg.png);" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER_LEFT" layoutX="118.0" layoutY="14.0" prefHeight="398.0" prefWidth="236.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ImageView fitHeight="600.0" fitWidth="1023.0" layoutX="-422.0">
+               <image>
+                  <Image url="@../images/loginBg.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </center>
+   <left>
+      <StackPane prefHeight="540.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" StackPane.alignment="CENTER">
                <children>
-                  <Label text="&lt;Logo TODO: Replace with image&gt;" />
-                  <TextFlow textAlignment="CENTER">
+                  <AnchorPane prefHeight="169.0" prefWidth="400.0">
                      <children>
-                        <Label alignment="CENTER" text="LogIn" textAlignment="CENTER" />
+                        <ImageView fitHeight="169.0" fitWidth="400.0">
+                           <image>
+                              <Image url="@../images/pizzaposlogo.png" />
+                           </image>
+                        </ImageView>
                      </children>
-                  </TextFlow>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                  <Label text="Email" />
-                  <TextField fx:id="emailField" />
-                  <Label text="Password" />
-                  <PasswordField fx:id="passwordField" />
-                  <HBox alignment="CENTER">
+                  </AnchorPane>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
                      <VBox.margin>
-                        <Insets bottom="10.0" top="10.0" />
+                        <Insets bottom="20.0" left="155.0" right="100.0" top="10.0" />
                      </VBox.margin>
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#login" text="Login">
-                           <HBox.margin>
-                              <Insets left="15.0" right="15.0" />
-                           </HBox.margin></Button>
-                        <Button mnemonicParsing="false" onAction="#changeViewToRegister" text="Register">
-                           <HBox.margin>
-                              <Insets left="15.0" right="15.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="37.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField alignment="CENTER" style="-fx-background-radius: 10;">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="35.0" right="50.0" top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" textAlignment="CENTER">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="37.0" />
+                     </VBox.margin>
+                  </Text>
+                  <PasswordField alignment="CENTER" style="-fx-background-radius: 10;">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="35.0" right="50.0" top="5.0" />
+                     </VBox.margin>
+                  </PasswordField>
+                  <Button fx:id="loginButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToApp" prefHeight="29.0" prefWidth="103.0" style="-fx-background-radius: 20; -fx-background-color: #eebb32;" text="Login" textAlignment="CENTER" textFill="#ca5736" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets left="145.0" top="30.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="signButton" mnemonicParsing="false" onAction="#changeViewToRegister" prefWidth="103.0" style="-fx-background-radius: 20; -fx-background-color: #ca5736;" text="Sign up" textFill="#eebb32" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets left="145.0" top="8.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
                </children>
             </VBox>
          </children>
-         <padding>
-            <Insets bottom="100.0" left="30.0" right="30.0" top="30.0" />
-         </padding></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-         <children>
-            <StackPane>
-               <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/login-sample.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </StackPane>
-         </children></AnchorPane>
-  </items>
-</SplitPane>
+      </StackPane>
+   </left>
+</BorderPane>
