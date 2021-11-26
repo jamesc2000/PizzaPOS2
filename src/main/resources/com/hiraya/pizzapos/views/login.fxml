@@ -56,7 +56,7 @@
                         <Insets left="37.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField alignment="CENTER" style="-fx-background-radius: 10;">
+                  <TextField fx:id="emailField" alignment="CENTER" style="-fx-background-radius: 10;">
                      <VBox.margin>
                         <Insets bottom="15.0" left="35.0" right="65.0" top="5.0" />
                      </VBox.margin>
@@ -69,12 +69,12 @@
                         <Insets left="37.0" />
                      </VBox.margin>
                   </Text>
-                  <PasswordField alignment="CENTER" style="-fx-background-radius: 10;">
+                  <PasswordField fx:id="passwordField" alignment="CENTER" style="-fx-background-radius: 10;">
                      <VBox.margin>
                         <Insets bottom="10.0" left="35.0" right="65.0" top="5.0" />
                      </VBox.margin>
                   </PasswordField>
-                  <Button fx:id="loginButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToApp" prefHeight="29.0" prefWidth="103.0" style="-fx-background-radius: 20; -fx-background-color: #eebb32;" text="Login" textAlignment="CENTER" textFill="#ca5736" VBox.vgrow="ALWAYS">
+                  <Button fx:id="loginButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#login" prefHeight="29.0" prefWidth="103.0" style="-fx-background-radius: 20; -fx-background-color: #eebb32;" text="Login" textAlignment="CENTER" textFill="#ca5736" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets left="145.0" top="30.0" />
                      </VBox.margin>
