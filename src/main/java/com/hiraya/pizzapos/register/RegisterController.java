@@ -12,7 +12,10 @@ public class RegisterController {
     private TextField passwordField;
     @FXML
     private TextField confirmPasswordField;
-
+    @FXML
+    private TextField lastName;
+    @FXML
+    private TextField firstName;
     @FXML
     public boolean checkConfirmIfSame() {
         if (passwordField.getText().equals(confirmPasswordField.getText())) {
@@ -31,7 +34,8 @@ public class RegisterController {
         // When login is clicked, store the data to the model
         model.setEmail(emailField.getText());
         model.setPassword(passwordField.getText());
-
+        model.setLastName(lastName.getText());
+        model.setFirstName(firstName.getText());
         // TODO: Use this pag kumpleto na yung fields sa ui, temp lang yung nasa taas
 //        model.setFields(email, password, firstName, lastName);
 
@@ -39,5 +43,5 @@ public class RegisterController {
         // responsible for creating the account on our app 
         model.sendToFirebase();
     }
-
+    
 }
