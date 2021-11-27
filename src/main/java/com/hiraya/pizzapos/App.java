@@ -38,6 +38,8 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        CurrentUser loggedInUser = new CurrentUser(); // At the very start of app, initialize a blank user
+        // This loggedInUser has the same lifetime as the app itself
         launch();
     }
 }
