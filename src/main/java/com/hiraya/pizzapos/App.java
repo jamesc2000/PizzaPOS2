@@ -14,6 +14,9 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    // This loggedInUser has the same lifetime as the app itself
+    // You can access this in other classes through App.user.<attribute/method>
+    public CurrentUser user = new CurrentUser();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -38,8 +41,6 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        CurrentUser loggedInUser = new CurrentUser(); // At the very start of app, initialize a blank user
-        // This loggedInUser has the same lifetime as the app itself
         launch();
     }
 }
