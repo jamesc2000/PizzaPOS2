@@ -30,13 +30,15 @@ public class LoginModel {
         return this.password;
     }
 
-    public void sendToFirebase() {
+    public LoginResponse sendToFirebase() {
         try {
             LoginResponse login = RestAPIHelper.login(this.email, this.password);
             System.out.println(login.email);
             System.out.println(login.idToken);
+            return login;
         } catch (InterruptedException | IOException e) {
             System.out.println(e);
         }
+        return null;
     }
 }

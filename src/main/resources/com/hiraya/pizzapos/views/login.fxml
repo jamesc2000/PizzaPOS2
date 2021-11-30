@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -81,6 +82,9 @@
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="signButton" mnemonicParsing="false" onAction="#changeViewToRegister" prefWidth="103.0" style="-fx-background-radius: 20; -fx-background-color: #ca5736;" text="Sign up" textFill="#eebb32" VBox.vgrow="ALWAYS">
                      <VBox.margin>
@@ -89,6 +93,9 @@
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </VBox>
