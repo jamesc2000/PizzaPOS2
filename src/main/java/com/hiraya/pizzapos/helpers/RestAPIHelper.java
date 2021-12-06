@@ -72,4 +72,27 @@ public class RestAPIHelper {
 
         return res;
     }
+    public static SendRefreshTokenResponse sendRToken(SendRefreshTokenRequest token) throws IOException, InterruptedException {
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://securetoken.googleapis.com/v1/token" + API_KEY))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .POST(BodyPublishers.ofString(token.toJson()))
+            .build();
+
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+
+        return jsonToSRTokenres(res.body().toString());
+    }
+    private static SendRefreshTokenResponse jsonToSRTokenres(String json) {
+        SendRefreshTokenResponse res = new SendRefreshTokenResponse();
+
+        try {
+            res = mapper.readValue(json, SendRefreshTokenResponse.class);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
+        return res;
+    }
 }
