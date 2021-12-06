@@ -11,7 +11,7 @@ package com.hiraya.pizzapos.httpReqRes;
  * @author Alteisen
  */
 public class SendRefreshTokenRequest extends BaseRequest{
-    private final String grant_type = refresh_token; //should always be refresh_token 
-    public String refresh_token = refreshToken;
+    public final String grant_type = "refresh_token"; //should always be refresh_token 
+    public String refresh_token;
     
 }

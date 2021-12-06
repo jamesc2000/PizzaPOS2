@@ -11,4 +11,5 @@ public class SendRefreshTokenResponse extends BaseResponse{
     public String id_token;
     public String user_id;
     public String project_id;
+    public String access_token;
 }

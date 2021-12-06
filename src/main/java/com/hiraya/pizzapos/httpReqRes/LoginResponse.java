@@ -10,7 +10,7 @@ public class LoginResponse extends BaseResponse {
     public String localId;
     public String displayName;
     public String idToken;
-    public boolean registered;
     public String refreshToken;
     public String expiresIn;
+    public boolean registered;
 }

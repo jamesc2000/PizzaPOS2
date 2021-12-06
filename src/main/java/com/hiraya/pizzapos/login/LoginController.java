@@ -1,7 +1,10 @@
 package com.hiraya.pizzapos.login;
 
 import com.hiraya.pizzapos.App;
+import com.hiraya.pizzapos.helpers.RestAPIHelper;
 import com.hiraya.pizzapos.httpReqRes.LoginResponse;
+import com.hiraya.pizzapos.httpReqRes.SendRefreshTokenRequest;
+import com.hiraya.pizzapos.httpReqRes.SendRefreshTokenResponse;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -28,9 +31,7 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    public void login() throws IOException {
-        System.out.println("Login clicked");
-        
+    public void login() throws IOException, InterruptedException {
         // When login is clicked, store the data to the model
         model.setEmail(emailField.getText());
         model.setPassword(passwordField.getText());
@@ -41,16 +42,22 @@ public class LoginController implements Initializable {
         if (Objects.isNull(response.error)) {
             // If no errors, proceed with handshake, exchange login refreshToken
             // for accessTokens and idTokens
-            
-            // Boss CJ insert mo dito code for the handshake hehe
+            SendRefreshTokenRequest request = new SendRefreshTokenRequest();
+
+            request.refresh_token = response.refreshToken;
+            SendRefreshTokenResponse finalAuthData = RestAPIHelper.sendRToken(request);
 
             // After the handshake is complete, put the tokens to the actual User
-            // Uncomment line below when handshake logic is complete
-            //App.user.setTokens(refreshToken, idToken, accessToken);
-            
-            System.out.println("Log in successful");
-            // Display toast notif here saying "Log in successful"
-            App.setRoot("takeOrders");
+            if (!Objects.isNull(finalAuthData.access_token) && !Objects.isNull(finalAuthData.refresh_token)) {
+                App.user.setTokens(
+                    finalAuthData.refresh_token,
+                    finalAuthData.id_token,
+                    finalAuthData.access_token
+                );
+                System.out.println("Log in successful");
+                // Display toast notif here saying "Log in successful"
+                App.setRoot("takeOrders");
+            }
         } else {
             // If there are errors, show a notification to the user containing the message
             // Common error codes for firebase auth API found here:
