@@ -1,5 +1,6 @@
-.root {
+:root {
    /*.root is inherited to all components*/
+   font-family: "Poppins";
 }
 
 .button {

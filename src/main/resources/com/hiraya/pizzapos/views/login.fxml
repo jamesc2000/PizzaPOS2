@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -102,4 +103,8 @@
          </children>
       </StackPane>
    </left>
+   <stylesheets>
+      <URL value="@../styles/login.css" />
+      <URL value="@../styles/App.css" />
+   </stylesheets>
 </BorderPane>

@@ -1,6 +1,7 @@
 package com.hiraya.pizzapos.login;
 
 import com.hiraya.pizzapos.App;
+import com.hiraya.pizzapos.Toaster;
 import com.hiraya.pizzapos.helpers.RestAPIHelper;
 import com.hiraya.pizzapos.httpReqRes.LoginResponse;
 import com.hiraya.pizzapos.httpReqRes.SendRefreshTokenRequest;
@@ -30,6 +31,10 @@ public class LoginController implements Initializable {
         System.out.println("Initialize");
     }
 
+    public void test() {
+        System.out.println("controller working");
+    }
+
     @FXML
     public void login() throws IOException, InterruptedException {
         // When login is clicked, store the data to the model
@@ -56,6 +61,7 @@ public class LoginController implements Initializable {
                 );
                 System.out.println("Log in successful");
                 // Display toast notif here saying "Log in successful"
+                Toaster.spawnToast(App.getPrimaryStage(), "Login successful", "Welcome to PizzaPOS", 2500, 500, 500);
                 App.setRoot("takeOrders");
             }
         } else {
@@ -65,7 +71,6 @@ public class LoginController implements Initializable {
             if (response.error.message.equals("EMAIL_NOT_FOUND")) {
                 System.out.println("Email not registered!");
                 // Display toast notif saying "Email not registered"
-                // TODO: Make a wrapper function to spawn toast notifications in UI
             } else if (response.error.message.equals("INVALID_PASSWORD")) {
                 System.out.println("Invalid password!");
                 // Same thing for notifs here
@@ -88,6 +93,6 @@ public class LoginController implements Initializable {
     
     @FXML
     public void changeViewToRegister() throws IOException {
-        App.setRoot("registerSample");
+        App.setRoot("register");
     }
 }

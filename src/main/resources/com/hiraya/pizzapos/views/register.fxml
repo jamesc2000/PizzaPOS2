@@ -1,33 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.register.RegisterController">
-  <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="512.0" style="-fx-background-color: #eebb32;" stylesheets="@../styles/App.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.register.RegisterController">
+   <children>
+      <Button layoutX="85.0" layoutY="265.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="144.0" style="-fx-background-radius: 30;" text="Upload Image">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="274.0" layoutY="265.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="144.0" style="-fx-background-radius: 30;" text="Remove Image">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TextField fx:id="lastName" alignment="CENTER" layoutX="60.0" layoutY="322.0" prefHeight="38.0" prefWidth="186.0" style="-fx-background-radius: 30;" />
+      <TextField fx:id="firstName" alignment="CENTER" layoutX="263.0" layoutY="322.0" prefHeight="38.0" prefWidth="186.0" style="-fx-background-radius: 30;" />
+      <TextField fx:id="emailField" alignment="CENTER" layoutX="57.0" layoutY="390.0" prefHeight="38.0" prefWidth="393.0" style="-fx-background-radius: 30;" />
+      <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="58.0" layoutY="455.0" prefHeight="38.0" prefWidth="394.0" style="-fx-background-radius: 30;" />
+      <PasswordField fx:id="passwordField1" alignment="CENTER" layoutX="59.0" layoutY="521.0" prefHeight="38.0" prefWidth="394.0" style="-fx-background-radius: 30;" />
+      <Button fx:id="registerButton" layoutX="185.0" layoutY="574.0" mnemonicParsing="false" onAction="#submit" prefHeight="38.0" prefWidth="154.0" style="-fx-background-radius: 30; -fx-background-color: #37211a;" text="Sign Up" textAlignment="CENTER" textFill="#eebb32">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Button>
+      <Text layoutX="70.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" wrappingWidth="70.6761474609375">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="276.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" wrappingWidth="70.6761474609375">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="70.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail" wrappingWidth="70.6761474609375">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="70.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Password" wrappingWidth="122.6761474609375">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="70.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password" wrappingWidth="122.6761474609375">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <AnchorPane layoutX="-13.0" prefHeight="67.0" prefWidth="526.0" style="-fx-background-color: #37211a;">
          <children>
-            <VBox>
-               <children>
-                  <Label text="Temp Registration page" />
-                  <Label text="Email" />
-                  <TextField fx:id="emailField" />
-                  <Label text="Password" />
-                  <PasswordField fx:id="passwordField" />
-                  <Label text="Confirm Password" />
-                  <PasswordField fx:id="confirmPasswordField" onKeyTyped="#checkConfirmIfSame" />
-                  <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#submit" text="Submit" />
-               </children>
-            </VBox>
-         </children></AnchorPane>
-  </content>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-</ScrollPane>
+            <Text fill="#eebb32" layoutX="100.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Your Account">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="91.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Get started with your POS account and start managing your business" wrappingWidth="393.5999999999999" />
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="172.0" fitWidth="197.0" layoutX="164.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/userProfilepic.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="277.0" layoutY="653.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button layoutX="429.0" layoutY="632.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Sign in" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
