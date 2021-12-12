@@ -1,6 +1,7 @@
 package com.hiraya.pizzapos.login;
 
 import com.hiraya.pizzapos.App;
+import com.hiraya.pizzapos.CONSTANTS;
 import com.hiraya.pizzapos.Toaster;
 import com.hiraya.pizzapos.helpers.RestAPIHelper;
 import com.hiraya.pizzapos.httpReqRes.LoginResponse;
@@ -61,7 +62,7 @@ public class LoginController implements Initializable {
                 );
                 System.out.println("Log in successful");
                 // Display toast notif here saying "Log in successful"
-                Toaster.spawnToast(App.getPrimaryStage(), "Login successful", "Welcome to PizzaPOS", 2500, 500, 500);
+                Toaster.spawnToast(App.getPrimaryStage(), "Login successful", "Welcome to PizzaPOS", CONSTANTS.toastDelay, CONSTANTS.fadeInDelay, CONSTANTS.fadeOutDelay);
                 App.setRoot("takeOrders");
             }
         } else {

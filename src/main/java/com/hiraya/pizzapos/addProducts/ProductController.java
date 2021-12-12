@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class ProductController {
-    private Product model = new Product();
+    private ProductModel model = new ProductModel();
 
     @FXML
     private TextField name;

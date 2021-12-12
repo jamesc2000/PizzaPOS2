@@ -9,14 +9,14 @@ import com.hiraya.pizzapos.helpers.RestAPIHelper;
 import com.hiraya.pizzapos.httpReqRes.AddProductFields;
 import com.hiraya.pizzapos.httpReqRes.FirestoreRequest;
 
-public class Product {
+public class ProductModel {
     private String name;
     private URL imageUrl;
     private String category;
     private String size;
     private double price;
 
-    Product() { }
+    ProductModel() { }
 
     public void setValues(
         String name,

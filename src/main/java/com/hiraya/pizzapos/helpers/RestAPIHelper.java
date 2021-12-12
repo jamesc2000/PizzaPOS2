@@ -58,7 +58,8 @@ public class RestAPIHelper {
             .POST(BodyPublishers.ofString(model.toJson()))
             .build();
 
-        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        HttpResponse<String> res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body());
 
         return jsonToFbAuthRes(res.body().toString());
     }
@@ -68,6 +69,33 @@ public class RestAPIHelper {
 
         try {
             res = mapper.readValue(json, FirebaseAuthRegisterResponse.class);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
+        return res;
+    }
+
+    // ==== REGISTER PART 2 (Update User Profile) ====
+    public static UserProfileResponse updateProfile(UserProfileRequest profile) throws IOException, InterruptedException {
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://identitytoolkit.googleapis.com/v1/accounts:update" + API_KEY))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .POST(BodyPublishers.ofString(profile.toJson()))
+            .build();
+
+        HttpResponse<String> res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body());
+
+        return jsonToProfileRes(res.body().toString());
+    }
+
+    private static UserProfileResponse jsonToProfileRes(String json) {
+        UserProfileResponse res = new UserProfileResponse();
+
+        try {
+            res = mapper.readValue(json, UserProfileResponse.class);
         } catch (IOException e) {
             System.out.println(e);
         }

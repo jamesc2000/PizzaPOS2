@@ -1,7 +1,7 @@
 package com.hiraya.pizzapos;
 
 import java.util.ArrayList;
-import com.hiraya.pizzapos.addProducts.Product;
+import com.hiraya.pizzapos.addProducts.ProductModel;
 
 public class CurrentUser {
     private boolean isLoggedIn = false;
@@ -44,5 +44,5 @@ public class CurrentUser {
 
     public String name;
     // TODO: Add Transactions, etc etc
-    public ArrayList<Product> products;
+    public ArrayList<ProductModel> products;
 }
