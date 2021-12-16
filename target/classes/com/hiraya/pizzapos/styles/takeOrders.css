@@ -3,3 +3,11 @@
     -fx-background-position: center;
     -fx-background-size: contain;
 }
+
+.takeorder:hover {
+    -fx-background-color: #eebb32;
+}
+
+.takeorder:pressed {
+    -fx-background-color: #ca5736;
+}
