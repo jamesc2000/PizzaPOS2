@@ -1,9 +1,6 @@
 package com.hiraya.pizzapos.takeOrders;
 
 import java.io.IOException;
-
-import com.hiraya.pizzapos.App;
-
 import javafx.fxml.FXML;
     
 public class TakeOrdersController {
@@ -12,8 +9,5 @@ public class TakeOrdersController {
     private void initialize() {
         System.out.println("Dashboard Initialized!");
     }
-
-    public void switchToTemporary() throws IOException {
-        App.setRoot("addProductsSample");
-    }
+    
 }
