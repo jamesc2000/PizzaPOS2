@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="720.0" prefWidth="1331.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.takeOrders.TakeOrdersController">
+<BorderPane prefHeight="720.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.takeOrders.TakeOrdersController">
    <right>
       <GridPane prefWidth="392.0" style="-fx-background-color: white;">
         <columnConstraints>
@@ -55,163 +55,146 @@
                   </Label>
                </children>
             </Pane>
-            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #916e4e; -fx-background-radius: 0px 0px 25px 25px;" GridPane.rowIndex="2">
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="borderless-scroll-pane" vbarPolicy="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" />
                </GridPane.margin>
-               <children>
-                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="320.0" spacing="10.0" style="-fx-background-color: #916e4e;">
+               <content>
+                  <VBox minHeight="340.0" prefWidth="367.0">
                      <children>
-                        <Label text="Chicken Supreme" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Small" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Spinner prefHeight="25.0" prefWidth="50.0" />
-                        <Label text="P300.00" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Button" />
+                        <HBox alignment="CENTER" prefHeight="34.0" prefWidth="320.0" spacing="10.0" style="-fx-background-color: #916e4e;">
+                           <children>
+                              <Label text="Chicken Supreme" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Small" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Spinner prefHeight="25.0" prefWidth="50.0" />
+                              <Label text="P300.00" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Button" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="34.0" prefWidth="320.0" spacing="10.0" style="-fx-background-color: #916e4e;">
+                           <children>
+                              <Label text="Chicken Supreme" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Small" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Spinner prefHeight="25.0" prefWidth="50.0" />
+                              <Label text="P300.00" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Button" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="34.0" prefWidth="320.0" spacing="10.0" style="-fx-background-color: #916e4e;">
+                           <children>
+                              <Label text="Chicken Supreme" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Small" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Spinner prefHeight="25.0" prefWidth="50.0" />
+                              <Label text="P300.00" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Button" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="34.0" prefWidth="320.0" spacing="10.0" style="-fx-background-color: #916e4e;">
+                           <children>
+                              <Label text="Chicken Supreme" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Small" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Spinner prefHeight="25.0" prefWidth="50.0" />
+                              <Label text="P300.00" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Button" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="34.0" prefWidth="320.0" spacing="10.0" style="-fx-background-color: #916e4e;">
+                           <children>
+                              <Label text="Chicken Supreme" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Small" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Spinner prefHeight="25.0" prefWidth="50.0" />
+                              <Label text="P300.00" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Button" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="34.0" prefWidth="320.0" spacing="10.0" style="-fx-background-color: #916e4e;">
+                           <children>
+                              <Label text="Chicken Supreme" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Small" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Spinner prefHeight="25.0" prefWidth="50.0" />
+                              <Label text="P300.00" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Button" />
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="320.0" spacing="10.0" style="-fx-background-color: #916e4e;">
-                     <children>
-                        <Label text="Chicken Supreme" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Small" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Spinner prefHeight="25.0" prefWidth="50.0" />
-                        <Label text="P300.00" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Button" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="320.0" spacing="10.0" style="-fx-background-color: #916e4e;">
-                     <children>
-                        <Label text="Chicken Supreme" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Small" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Spinner prefHeight="25.0" prefWidth="50.0" />
-                        <Label text="P300.00" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Button" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="320.0" spacing="10.0" style="-fx-background-color: #916e4e;">
-                     <children>
-                        <Label text="Chicken Supreme" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Small" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Spinner prefHeight="25.0" prefWidth="50.0" />
-                        <Label text="P300.00" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Button" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="320.0" spacing="10.0" style="-fx-background-color: #916e4e;">
-                     <children>
-                        <Label text="Chicken Supreme" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Small" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Spinner prefHeight="25.0" prefWidth="50.0" />
-                        <Label text="P300.00" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Button" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="320.0" spacing="10.0" style="-fx-background-color: #916e4e;">
-                     <children>
-                        <Label text="Chicken Supreme" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Small" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Spinner prefHeight="25.0" prefWidth="50.0" />
-                        <Label text="P300.00" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Button" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="320.0" spacing="10.0" style="-fx-background-color: #916e4e;">
-                     <children>
-                        <Label text="Chicken Supreme" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Small" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Spinner prefHeight="25.0" prefWidth="50.0" />
-                        <Label text="P300.00" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Button" />
-                     </children>
-                  </HBox>
-               </children>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </VBox>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
             <GridPane style="-fx-background-color: #eebb32; -fx-background-radius: 25px;" GridPane.rowIndex="3">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -307,86 +290,61 @@
    <center>
       <VBox prefHeight="720.0" prefWidth="750.0" BorderPane.alignment="CENTER">
          <children>
-            <FlowPane>
+            <HBox>
                <children>
-                  <GridPane prefHeight="155.0" prefWidth="750.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="195.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="195.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="195.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="195.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <graphic>
-                              <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/userProfilepic.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <GridPane.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </GridPane.margin>
-                           <padding>
-                              <Insets top="10.0" />
-                           </padding>
-                        </Button>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category" GridPane.columnIndex="1">
-                           <graphic>
-                              <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/userProfilepic.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets top="10.0" />
-                           </padding>
-                           <GridPane.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </GridPane.margin>
-                        </Button>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category" GridPane.columnIndex="2">
-                           <graphic>
-                              <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/userProfilepic.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets top="10.0" />
-                           </padding>
-                           <GridPane.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </GridPane.margin>
-                        </Button>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category" GridPane.columnIndex="3">
-                           <graphic>
-                              <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/userProfilepic.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets top="10.0" />
-                           </padding>
-                           <GridPane.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </GridPane.margin>
-                        </Button>
-                     </children>
-                  </GridPane>
+                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category">
+                     <graphic>
+                        <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/userProfilepic.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Button>
+                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category">
+                     <graphic>
+                        <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/userProfilepic.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Button>
+                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category">
+                     <graphic>
+                        <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/userProfilepic.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Button>
+                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category">
+                     <graphic>
+                        <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/userProfilepic.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Button>
                </children>
-            </FlowPane>
+            </HBox>
             <AnchorPane>
                <children>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" minWidth="525.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ScrollPane fitToHeight="true" fitToWidth="true" minWidth="525.0" prefWidth="525.0" styleClass="borderless-scroll-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <content>
                         <FlowPane hgap="10.0" prefHeight="686.0" prefWidth="760.0" style="-fx-background-color: #37211a; -fx-background-radius: 25px;" vgap="10.0">
                            <children>
@@ -792,7 +750,7 @@
    <left>
       <VBox prefHeight="200.0" prefWidth="110.0" style="-fx-background-color: #916e4e;" BorderPane.alignment="CENTER">
          <children>
-            <GridPane prefHeight="1366.0" prefWidth="150.0">
+            <GridPane prefWidth="150.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
               </columnConstraints>
