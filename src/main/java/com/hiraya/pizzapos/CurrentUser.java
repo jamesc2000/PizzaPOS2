@@ -8,9 +8,14 @@ public class CurrentUser {
     private String accessToken;
     private String idToken;
     private String refreshToken;
+    private String localId;
 
     public boolean isIsLoggedIn() {
         return isLoggedIn;
+    }
+
+    public String getLocalId() {
+        return localId;
     }
 
     public String getAccessToken() {
@@ -26,11 +31,12 @@ public class CurrentUser {
 
     // This method is a wrapper for setting the credentials and logging in
     // a user on our end
-    public void setTokens(String refreshToken, String idToken, String accessToken) {
+    public void setTokens(String refreshToken, String idToken, String accessToken, String localId) {
         this.accessToken = accessToken;
         this.idToken = idToken;
         this.refreshToken = refreshToken;
         this.isLoggedIn = true;
+        this.setLocalId(localId);
     }
 
     // This method is a wrapper for deleting the local credentials of the user
@@ -40,6 +46,7 @@ public class CurrentUser {
         this.refreshToken = null;
         this.idToken = null;
         this.isLoggedIn = false;
+        this.setLocalId(null);
     }
 
     public String name;
