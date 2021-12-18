@@ -36,7 +36,7 @@ public class CurrentUser {
         this.idToken = idToken;
         this.refreshToken = refreshToken;
         this.isLoggedIn = true;
-        this.setLocalId(localId);
+        this.localId = localId;
     }
 
     // This method is a wrapper for deleting the local credentials of the user
@@ -46,7 +46,7 @@ public class CurrentUser {
         this.refreshToken = null;
         this.idToken = null;
         this.isLoggedIn = false;
-        this.setLocalId(null);
+        this.localId = null;
     }
 
     public String name;
