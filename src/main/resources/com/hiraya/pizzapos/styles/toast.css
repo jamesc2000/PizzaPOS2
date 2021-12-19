@@ -22,11 +22,11 @@
 
 .titleText {
     -fx-font-weight: bold;
-    -fx-font-size: 16px;
+    -fx-font-size: 20px;
 }
 
 .bodyText {
-
+    -fx-font-weight: bold;
 }
 
 .closeBtn {
