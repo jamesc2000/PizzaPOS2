@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="720.0" prefWidth="1331.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <right>
       <GridPane prefWidth="392.0" style="-fx-background-color: white;">
         <columnConstraints>
@@ -306,96 +306,86 @@
    <center>
       <VBox prefHeight="720.0" prefWidth="750.0" BorderPane.alignment="CENTER">
          <children>
-            <GridPane prefHeight="720.0" prefWidth="785.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="155.0" minHeight="155.0" prefHeight="155.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="565.0" minHeight="565.0" prefHeight="565.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+            <FlowPane>
                <children>
-                  <FlowPane GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
+                  <GridPane prefHeight="155.0" prefWidth="750.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="195.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="195.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="195.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="195.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
                      <children>
-                        <GridPane prefHeight="155.0" prefWidth="750.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="195.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="195.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="195.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="195.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                 <graphic>
-                                    <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/userProfilepic.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                                 <GridPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </GridPane.margin>
-                                 <padding>
-                                    <Insets top="10.0" />
-                                 </padding>
-                              </Button>
-                              <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category" GridPane.columnIndex="1">
-                                 <graphic>
-                                    <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/userProfilepic.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                                 <padding>
-                                    <Insets top="10.0" />
-                                 </padding>
-                                 <GridPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </GridPane.margin>
-                              </Button>
-                              <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category" GridPane.columnIndex="2">
-                                 <graphic>
-                                    <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/userProfilepic.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                                 <padding>
-                                    <Insets top="10.0" />
-                                 </padding>
-                                 <GridPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </GridPane.margin>
-                              </Button>
-                              <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category" GridPane.columnIndex="3">
-                                 <graphic>
-                                    <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/userProfilepic.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                                 <padding>
-                                    <Insets top="10.0" />
-                                 </padding>
-                                 <GridPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </GridPane.margin>
-                              </Button>
-                           </children>
-                        </GridPane>
+                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/userProfilepic.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </Button>
+                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category" GridPane.columnIndex="1">
+                           <graphic>
+                              <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/userProfilepic.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category" GridPane.columnIndex="2">
+                           <graphic>
+                              <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/userProfilepic.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category" GridPane.columnIndex="3">
+                           <graphic>
+                              <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/userProfilepic.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Button>
                      </children>
-                  </FlowPane>
-                  <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                  </GridPane>
+               </children>
+            </FlowPane>
+            <AnchorPane>
+               <children>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" minWidth="525.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <content>
                         <FlowPane hgap="10.0" prefHeight="686.0" prefWidth="760.0" style="-fx-background-color: #37211a; -fx-background-radius: 25px;" vgap="10.0">
                            <children>
@@ -794,7 +784,7 @@
                      </content>
                   </ScrollPane>
                </children>
-            </GridPane>
+            </AnchorPane>
          </children>
       </VBox>
    </center>
