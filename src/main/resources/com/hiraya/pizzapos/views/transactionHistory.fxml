@@ -103,7 +103,7 @@
                <children>
                   <AnchorPane minHeight="600.0" minWidth="260.0">
                      <children>
-                        <VBox layoutX="2.0" style="-fx-background-color: #916e4e; -fx-background-radius: 10px;" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox layoutX="2.0" style="-fx-background-color: #916e4e; -fx-background-radius: 10px;" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane>
                                  <children>
@@ -158,7 +158,7 @@
                                           <Font name="System Bold" size="21.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="10.0" right="10.0" />
+                                          <Insets left="15.0" right="10.0" />
                                        </HBox.margin>
                                     </Label>
                                     <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" style="-fx-background-color: #37211a; -fx-background-radius: 10px;" text="Order No." textFill="#eebb32" HBox.hgrow="ALWAYS">
@@ -196,7 +196,7 @@
                                     </Label>
                                     <Label alignment="CENTER" contentDisplay="CENTER" layoutX="520.0" layoutY="10.0" style="-fx-background-color: #37211a; -fx-background-radius: 10px;" text="VAT" textFill="#eebb32" HBox.hgrow="ALWAYS">
                                        <padding>
-                                          <Insets bottom="15.0" left="45.0" right="45.0" top="15.0" />
+                                          <Insets bottom="15.0" left="50.0" right="50.0" top="15.0" />
                                        </padding>
                                        <font>
                                           <Font name="System Bold" size="21.0" />
@@ -206,16 +206,579 @@
                                        </HBox.margin>
                                     </Label>
                                  </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
                               </HBox>
                               <Pane minHeight="10.0" minWidth="915.0" style="-fx-background-color: #37211a; -fx-background-radius: 3px;">
                                  <VBox.margin>
-                                    <Insets bottom="10.0" left="10.0" right="15.0" top="10.0" />
+                                    <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                                  </VBox.margin>
                               </Pane>
                               <ScrollPane fitToHeight="true" hbarPolicy="NEVER" minWidth="900.0" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                                  <content>
                                     <VBox minWidth="900.0" style="-fx-background-color: #916e4e; -fx-background-radius: 10px;">
                                        <children>
+                                          <HBox layoutX="10.0" layoutY="356.0" minHeight="57.0" minWidth="900.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="15.0" right="10.0" />
+                                                   </HBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" right="20.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox layoutX="10.0" layoutY="10.0" minHeight="57.0" minWidth="900.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="15.0" right="10.0" />
+                                                   </HBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" right="20.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox layoutX="10.0" layoutY="68.0" minHeight="57.0" minWidth="900.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="15.0" right="10.0" />
+                                                   </HBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" right="20.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox layoutX="10.0" layoutY="125.0" minHeight="57.0" minWidth="900.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="15.0" right="10.0" />
+                                                   </HBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" right="20.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox layoutX="10.0" layoutY="183.0" minHeight="57.0" minWidth="900.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="15.0" right="10.0" />
+                                                   </HBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" right="20.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox layoutX="10.0" layoutY="240.0" minHeight="57.0" minWidth="900.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="15.0" right="10.0" />
+                                                   </HBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" right="20.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox layoutX="10.0" layoutY="298.0" minHeight="57.0" minWidth="900.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="15.0" right="10.0" />
+                                                   </HBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" right="20.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox layoutX="10.0" layoutY="356.0" minHeight="57.0" minWidth="900.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="15.0" right="10.0" />
+                                                   </HBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" right="20.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox layoutX="10.0" layoutY="413.0" minHeight="57.0" minWidth="900.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="15.0" right="10.0" />
+                                                   </HBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" right="20.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox layoutX="10.0" layoutY="471.0" minHeight="57.0" minWidth="900.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="15.0" right="10.0" />
+                                                   </HBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" right="20.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </HBox>
                                           <HBox layoutX="10.0" layoutY="528.0" minHeight="57.0" minWidth="900.0">
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
@@ -223,15 +786,15 @@
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                    <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
+                                                      <Insets left="15.0" right="10.0" />
                                                    </HBox.margin>
                                                    <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
                                                    </padding>
                                                 </Label>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
                                                    <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
                                                    </padding>
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
@@ -256,7 +819,7 @@
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                    <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
                                                    </padding>
                                                    <HBox.margin>
                                                       <Insets left="20.0" right="20.0" />
@@ -267,27 +830,27 @@
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                    <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
                                                    </padding>
                                                 </Label>
                                              </children>
                                           </HBox>
-                                          <HBox minHeight="57.0" minWidth="900.0">
+                                          <HBox layoutX="10.0" layoutY="586.0" minHeight="57.0" minWidth="900.0">
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                    <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
+                                                      <Insets left="15.0" right="10.0" />
                                                    </HBox.margin>
                                                    <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
                                                    </padding>
                                                 </Label>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
                                                    <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
                                                    </padding>
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
@@ -312,7 +875,7 @@
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                    <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
                                                    </padding>
                                                    <HBox.margin>
                                                       <Insets left="20.0" right="20.0" />
@@ -323,27 +886,27 @@
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                    <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
                                                    </padding>
                                                 </Label>
                                              </children>
                                           </HBox>
-                                          <HBox minHeight="57.0" minWidth="900.0">
+                                          <HBox layoutX="10.0" layoutY="644.0" minHeight="57.0" minWidth="900.0">
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                    <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
+                                                      <Insets left="15.0" right="10.0" />
                                                    </HBox.margin>
                                                    <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
                                                    </padding>
                                                 </Label>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
                                                    <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
                                                    </padding>
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
@@ -368,7 +931,7 @@
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                    <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
                                                    </padding>
                                                    <HBox.margin>
                                                       <Insets left="20.0" right="20.0" />
@@ -379,27 +942,27 @@
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                    <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
                                                    </padding>
                                                 </Label>
                                              </children>
                                           </HBox>
-                                          <HBox minHeight="57.0" minWidth="900.0">
+                                          <HBox layoutX="10.0" layoutY="701.0" minHeight="57.0" minWidth="900.0">
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                    <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
+                                                      <Insets left="15.0" right="10.0" />
                                                    </HBox.margin>
                                                    <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
                                                    </padding>
                                                 </Label>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
                                                    <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
                                                    </padding>
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
@@ -424,7 +987,7 @@
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                    <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
                                                    </padding>
                                                    <HBox.margin>
                                                       <Insets left="20.0" right="20.0" />
@@ -435,679 +998,7 @@
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                    <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox minHeight="57.0" minWidth="900.0">
-                                             <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" right="20.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox minHeight="57.0" minWidth="900.0">
-                                             <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" right="20.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox minHeight="57.0" minWidth="900.0">
-                                             <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" right="20.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox minHeight="57.0" minWidth="900.0">
-                                             <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" right="20.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox minHeight="57.0" minWidth="900.0">
-                                             <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" right="20.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox minHeight="57.0" minWidth="900.0">
-                                             <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" right="20.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox minHeight="57.0" minWidth="900.0">
-                                             <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" right="20.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox minHeight="57.0" minWidth="900.0">
-                                             <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" right="20.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox minHeight="57.0" minWidth="900.0">
-                                             <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" right="20.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox minHeight="57.0" minWidth="900.0">
-                                             <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" right="20.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox minHeight="57.0" minWidth="900.0">
-                                             <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" right="20.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox minHeight="57.0" minWidth="900.0">
-                                             <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="12/19/2021" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Order No. 001" textFill="WHITE">
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" text="P 10 250.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" right="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="10.0" text="P 11 480.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" right="20.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="10.0" text="P 1 230.00" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="System Bold" size="18.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                                                      <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
                                                    </padding>
                                                 </Label>
                                              </children>
