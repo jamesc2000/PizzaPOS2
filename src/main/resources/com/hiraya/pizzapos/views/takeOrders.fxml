@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="720.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.takeOrders.TakeOrdersController">
+<BorderPane stylesheets="@../styles/takeOrders.css" prefHeight="720.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.takeOrders.TakeOrdersController">
    <right>
       <GridPane prefWidth="392.0" style="-fx-background-color: white;">
         <columnConstraints>
@@ -397,9 +397,9 @@
    <center>
       <VBox prefHeight="720.0" prefWidth="750.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox>
+            <HBox fx:id="categoryContainer">
                <children>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category">
+                  <!-- <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category">
                      <graphic>
                         <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -446,361 +446,17 @@
                      <padding>
                         <Insets top="10.0" />
                      </padding>
-                  </Button>
+                  </Button> -->
                </children>
             </HBox>
             <AnchorPane>
                <children>
                   <ScrollPane fitToHeight="true" fitToWidth="true" minWidth="525.0" prefWidth="525.0" styleClass="borderless-scroll-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <content>
-                        <FlowPane hgap="10.0" prefHeight="686.0" prefWidth="760.0" style="-fx-background-color: #37211a; -fx-background-radius: 25px;" vgap="10.0">
+                        <FlowPane fx:id="menuContainer" hgap="10.0" prefHeight="686.0" prefWidth="760.0" style="-fx-background-color: #37211a; -fx-background-radius: 25px;" vgap="10.0">
                            <children>
-                              <GridPane prefHeight="220.0" prefWidth="240.0" style="-fx-background-radius: 25px; -fx-background-color: #916e4e;">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints maxHeight="140.0" minHeight="140.0" prefHeight="140.0" vgrow="SOMETIMES" />
-                                  <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <ImageView fitHeight="127.0" fitWidth="127.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                       <image>
-                                          <Image url="@../images/userProfilepic.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label text="Pepperoni" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets top="15.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <GridPane GridPane.rowIndex="2">
-                                      <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <children>
-                                          <Button mnemonicParsing="false" text="Small" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Button mnemonicParsing="false" text="Medium" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Button mnemonicParsing="false" text="Large" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                       </children>
-                                    </GridPane>
-                                 </children>
-                                 <FlowPane.margin>
-                                    <Insets top="5.0" />
-                                 </FlowPane.margin>
-                              </GridPane>
-                              <GridPane prefHeight="220.0" prefWidth="240.0" style="-fx-background-radius: 25px; -fx-background-color: #916e4e;">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints maxHeight="140.0" minHeight="140.0" prefHeight="140.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <children>
-                                    <ImageView fitHeight="127.0" fitWidth="127.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                       <image>
-                                          <Image url="@../images/userProfilepic.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label text="Hawaiian" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets top="15.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <GridPane GridPane.rowIndex="2">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <Button mnemonicParsing="false" text="Small" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Button mnemonicParsing="false" text="Medium" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Button mnemonicParsing="false" text="Large" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                       </children>
-                                    </GridPane>
-                                 </children>
-                                 <FlowPane.margin>
-                                    <Insets top="5.0" />
-                                 </FlowPane.margin>
-                              </GridPane>
-                              <GridPane prefHeight="220.0" prefWidth="240.0" style="-fx-background-radius: 25px; -fx-background-color: #916e4e;">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints maxHeight="140.0" minHeight="140.0" prefHeight="140.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <children>
-                                    <ImageView fitHeight="127.0" fitWidth="127.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                       <image>
-                                          <Image url="@../images/userProfilepic.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label text="Four Cheese" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets top="15.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <GridPane GridPane.rowIndex="2">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <Button mnemonicParsing="false" text="Small" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Button mnemonicParsing="false" text="Medium" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Button mnemonicParsing="false" text="Large" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                       </children>
-                                    </GridPane>
-                                 </children>
-                                 <FlowPane.margin>
-                                    <Insets top="5.0" />
-                                 </FlowPane.margin>
-                              </GridPane>
-                              <GridPane prefHeight="220.0" prefWidth="240.0" style="-fx-background-radius: 25px; -fx-background-color: #916e4e;">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints maxHeight="140.0" minHeight="140.0" prefHeight="140.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <children>
-                                    <ImageView fitHeight="127.0" fitWidth="127.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                       <image>
-                                          <Image url="@../images/userProfilepic.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label text="Garlic Shrimp" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets top="15.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <GridPane GridPane.rowIndex="2">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <Button mnemonicParsing="false" text="Small" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Button mnemonicParsing="false" text="Medium" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Button mnemonicParsing="false" text="Large" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                       </children>
-                                    </GridPane>
-                                 </children>
-                              </GridPane>
-                              <GridPane prefHeight="220.0" prefWidth="240.0" style="-fx-background-radius: 25px; -fx-background-color: #916e4e;">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints maxHeight="140.0" minHeight="140.0" prefHeight="140.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <children>
-                                    <ImageView fitHeight="127.0" fitWidth="127.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                       <image>
-                                          <Image url="@../images/userProfilepic.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label text="Creamy Spinach" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets top="15.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <GridPane GridPane.rowIndex="2">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <Button mnemonicParsing="false" text="Small" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Button mnemonicParsing="false" text="Medium" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Button mnemonicParsing="false" text="Large" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                       </children>
-                                    </GridPane>
-                                 </children>
-                              </GridPane>
-                              <GridPane prefHeight="220.0" prefWidth="240.0" style="-fx-background-radius: 25px; -fx-background-color: #916e4e;">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints maxHeight="140.0" minHeight="140.0" prefHeight="140.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <children>
-                                    <ImageView fitHeight="127.0" fitWidth="127.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                       <image>
-                                          <Image url="@../images/userProfilepic.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label text="Chicken Supreme" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets top="15.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <GridPane GridPane.rowIndex="2">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <Button mnemonicParsing="false" text="Small" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Button mnemonicParsing="false" text="Medium" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Button mnemonicParsing="false" text="Large" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                       </children>
-                                    </GridPane>
-                                 </children>
-                              </GridPane>
-                              <GridPane prefHeight="220.0" prefWidth="240.0" style="-fx-background-radius: 25px; -fx-background-color: #916e4e;">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints maxHeight="140.0" minHeight="140.0" prefHeight="140.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <children>
-                                    <ImageView fitHeight="127.0" fitWidth="127.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                       <image>
-                                          <Image url="@../images/userProfilepic.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label text="Bacon Overload" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets top="15.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <GridPane GridPane.rowIndex="2">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <Button mnemonicParsing="false" text="Small" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Button mnemonicParsing="false" text="Medium" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Button mnemonicParsing="false" text="Large" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                       </children>
-                                    </GridPane>
-                                 </children>
-                              </GridPane>
-                              <GridPane prefHeight="220.0" prefWidth="240.0" style="-fx-background-radius: 25px; -fx-background-color: #916e4e;">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints maxHeight="140.0" minHeight="140.0" prefHeight="140.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <children>
-                                    <ImageView fitHeight="127.0" fitWidth="127.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                       <image>
-                                          <Image url="@../images/userProfilepic.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label text="Ham &amp; Cheese" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets top="15.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <GridPane GridPane.rowIndex="2">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <Button mnemonicParsing="false" text="Small" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Button mnemonicParsing="false" text="Medium" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                          <Button mnemonicParsing="false" text="Large" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                       </children>
-                                    </GridPane>
-                                 </children>
-                              </GridPane>
-                              <GridPane prefHeight="220.0" prefWidth="240.0" style="-fx-background-radius: 25px; -fx-background-color: #916e4e;">
+                              <!-- <fx:include source="takeOrders.order.fxml" /> -->
+                              <!-- <GridPane prefHeight="220.0" prefWidth="240.0" style="-fx-background-radius: 25px; -fx-background-color: #916e4e;">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                  </columnConstraints>
@@ -841,7 +497,7 @@
                                        </children>
                                     </GridPane>
                                  </children>
-                              </GridPane>
+                              </GridPane> -->
                            </children>
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
