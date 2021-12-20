@@ -58,7 +58,8 @@ public class LoginController implements Initializable {
                 App.user.setTokens(
                     finalAuthData.refresh_token,
                     finalAuthData.id_token,
-                    finalAuthData.access_token
+                    finalAuthData.access_token,
+                    response.localId
                 );
                 System.out.println("Log in successful");
                 // Display toast notif here saying "Log in successful"
