@@ -53,5 +53,12 @@ public class RegisterController {
             Toaster.spawnToast(App.getPrimaryStage(), "Error in Creating Account", "", CONSTANTS.toastDelay, CONSTANTS.fadeInDelay, CONSTANTS.fadeOutDelay);
         }
     }
-    
+    @FXML
+    public void changeViewToLogin() throws IOException {
+        App.setRoot("login");
+    }
+    @FXML
+    public void changeViewToLogin() throws IOException {
+        App.setRoot("login");
+    }
 }
