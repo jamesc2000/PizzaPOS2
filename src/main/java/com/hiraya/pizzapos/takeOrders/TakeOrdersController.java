@@ -1,9 +1,6 @@
 package com.hiraya.pizzapos.takeOrders;
 
 import java.io.IOException;
-
-import com.hiraya.pizzapos.App;
-
 import javafx.fxml.FXML;
     
 public class TakeOrdersController {
