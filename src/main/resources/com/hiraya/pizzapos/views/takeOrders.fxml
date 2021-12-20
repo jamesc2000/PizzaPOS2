@@ -21,7 +21,7 @@
 
 <BorderPane prefHeight="720.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.takeOrders.TakeOrdersController">
    <right>
-      <GridPane prefWidth="392.0" style="-fx-background-color: white;">
+      <GridPane minWidth="392.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -32,8 +32,8 @@
           <RowConstraints maxHeight="260.0" minHeight="260.0" prefHeight="260.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 20px; -fx-background-color: #37211a;">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 10px; -fx-background-color: #37211a;">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
@@ -55,55 +55,13 @@
                   </Label>
                </children>
             </Pane>
-            <ScrollPane hbarPolicy="NEVER" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+            <ScrollPane hbarPolicy="NEVER" minWidth="200.0" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets left="5.0" right="5.0" />
                </GridPane.margin>
                <content>
                   <VBox minHeight="340.0" prefWidth="367.0" styleClass="summary-container-lower">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="34.0" prefWidth="320.0" spacing="10.0" style="-fx-background-color: #916e4e;">
-                           <children>
-                              <Label text="Chicken Supreme" textFill="WHITE">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Small" textFill="WHITE">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Spinner prefHeight="25.0" prefWidth="50.0" />
-                              <Label text="P300.00" textFill="WHITE">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Button" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="34.0" prefWidth="320.0" spacing="10.0" style="-fx-background-color: #916e4e;">
-                           <children>
-                              <Label text="Chicken Supreme" textFill="WHITE">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Small" textFill="WHITE">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Spinner prefHeight="25.0" prefWidth="50.0" />
-                              <Label text="P300.00" textFill="WHITE">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Button" />
-                           </children>
-                        </HBox>
                         <HBox alignment="CENTER" prefHeight="34.0" prefWidth="320.0" spacing="10.0" style="-fx-background-color: #916e4e;">
                            <children>
                               <Label text="Chicken Supreme" textFill="WHITE">
@@ -394,7 +352,7 @@
       </GridPane>
    </right>
    <center>
-      <VBox prefHeight="720.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+      <VBox BorderPane.alignment="CENTER">
          <children>
             <HBox>
                <children>
@@ -443,7 +401,7 @@
                <children>
                   <ScrollPane fitToHeight="true" fitToWidth="true" layoutY="70.0" minWidth="525.0" prefWidth="525.0" styleClass="borderless-scroll-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                      <content>
-                        <FlowPane hgap="10.0" prefHeight="686.0" prefWidth="760.0" style="-fx-background-color: #37211a; -fx-background-radius: 25px;" vgap="10.0">
+                        <FlowPane hgap="10.0" minWidth="525.0" style="-fx-background-color: #37211a; -fx-background-radius: 25px;" vgap="10.0">
                            <children>
                               <GridPane prefHeight="220.0" prefWidth="240.0" style="-fx-background-radius: 25px; -fx-background-color: #916e4e;">
                                 <columnConstraints>
