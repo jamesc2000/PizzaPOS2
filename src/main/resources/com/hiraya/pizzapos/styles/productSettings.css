@@ -1,0 +1,12 @@
+.first-button{
+    -fx-shape: "M 500 400 L 300 400 L 300 335 C 300 317 315 309 315 310 L 485 310 C 485 310 500 317 500 335 L 500 400  ";
+}
+
+.first-button :hover {
+    -fx-background-color: #916e4e;
+}
+
+.first-button :pressed {
+    -fx-background-color: #eebb32;
+}
+
