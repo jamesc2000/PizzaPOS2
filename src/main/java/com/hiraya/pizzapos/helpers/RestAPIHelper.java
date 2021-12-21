@@ -146,4 +146,20 @@ public class RestAPIHelper {
         System.out.println(res.body().toString());
         // return jsonToSRTokenres(res.body().toString());
     }
+    
+    /*public static void getProduct(GetProductRequest fields, String idToken) throws IOException, InterruptedException {
+        System.out.println("JSON Body Firestore: ");
+        System.out.println(body.toJson());
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://firestore.googleapis.com/v1beta1/projects/pizzapos-41338/databases/(default)/documents:runQuery"))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .header("Authorization", "Bearer " + idToken)
+            .POST(BodyPublishers.ofString(body.toJson()))
+            .build();
+
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body().toString());
+        // return jsonToSRTokenres(res.body().toString());
+    }*/
 }

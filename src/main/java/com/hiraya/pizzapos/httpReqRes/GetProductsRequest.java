@@ -9,8 +9,8 @@ public class GetProductsRequest extends BaseRequest {
     }
 
     public class From {
-        public String collectionId = App.user.getLocalId();
-        public Boolean allDescendants = true;
+        public final String collectionId = App.user.getLocalId();
+        public final Boolean allDescendants = true;
     }
     
     public class Where {
@@ -19,11 +19,18 @@ public class GetProductsRequest extends BaseRequest {
 
     public class FieldFilter {
         public Field field;
+        public String op;
+        public Value value;
+        
     }
 
     public class Field {
-        //fieldpath dito
+        public String fieldPath;
     }
-
+    
+    public class Value {
+        public String StringValue;
+    }
+  
     public StructuredQuery structuredQuery;
 }
