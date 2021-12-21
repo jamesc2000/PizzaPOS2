@@ -11,6 +11,7 @@ nb-configuration.xml
 
 # Compiled class file
 *.class
+*.lst
 
 # Log file
 *.log
@@ -35,3 +36,4 @@ hs_err_pid*
 target/classes/.netbeans_automatic_build
 target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
 target/test-classes/.netbeans_automatic_build
+.vscode/*

@@ -1,0 +1,38 @@
+.toastRoot {
+    -fx-background-radius: 5px;
+    -fx-background-color: rgba(255, 197, 1, 0.2);
+}
+
+.leftBar {
+    -fx-background-color: #FFC501;
+    -fx-background-radius: 20px;
+}
+
+.hContainer {
+
+}
+
+.img {
+
+}
+
+.textContainer {
+    -fx-font-family: "Poppins";
+}
+
+.titleText {
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+.bodyText {
+    -fx-font-weight: bold;
+}
+
+.closeBtn {
+    -fx-background-color: rgba(255, 255, 255, 0);
+}
+
+.closeBtn:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+}

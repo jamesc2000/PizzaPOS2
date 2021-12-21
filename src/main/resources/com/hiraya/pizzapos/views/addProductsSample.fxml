@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.addProducts.ProductController">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Name" />
+            <TextField fx:id="name" />
+            <Label text="Image URL" />
+            <TextField fx:id="imageUrl" />
+            <Label text="Category" />
+            <TextField fx:id="category" />
+            <Label text="Size" />
+            <TextField fx:id="size" />
+            <Label text="Price" />
+            <TextField fx:id="price" />
+            <Button mnemonicParsing="false" onAction="#submit" text="Submit" />
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

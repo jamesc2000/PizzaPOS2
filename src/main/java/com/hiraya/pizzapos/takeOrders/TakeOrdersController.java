@@ -10,4 +10,7 @@ public class TakeOrdersController {
         System.out.println("Dashboard Initialized!");
     }
 
+    public void switchToTemporary() throws IOException {
+        App.setRoot("addProductsSample");
+    }
 }

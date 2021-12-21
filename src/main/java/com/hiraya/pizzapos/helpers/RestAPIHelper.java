@@ -17,6 +17,7 @@ public class RestAPIHelper {
     private static final ObjectMapper mapper = new ObjectMapper();
     private static final HttpClient client = HttpClient.newHttpClient();
     
+    // ==== LOGIN ====
     public static LoginResponse login(String t_email, String t_password) throws InterruptedException, IOException {
         LoginRequest credentials = new LoginRequest();
         credentials.email = t_email; // Take the email parameter and store it in the credentials object
@@ -48,6 +49,7 @@ public class RestAPIHelper {
         return res;
     }
 
+    // ==== REGISTER ====
     public static FirebaseAuthRegisterResponse register(FirebaseAuthRegisterRequest model) throws IOException, InterruptedException {
         HttpRequest req = HttpRequest.newBuilder()
             .uri(URI.create("https://identitytoolkit.googleapis.com/v1/accounts:signUp" + API_KEY))
@@ -56,7 +58,8 @@ public class RestAPIHelper {
             .POST(BodyPublishers.ofString(model.toJson()))
             .build();
 
-        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        HttpResponse<String> res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body());
 
         return jsonToFbAuthRes(res.body().toString());
     }
@@ -71,5 +74,76 @@ public class RestAPIHelper {
         }
 
         return res;
+    }
+
+    // ==== REGISTER PART 2 (Update User Profile) ====
+    public static UserProfileResponse updateProfile(UserProfileRequest profile) throws IOException, InterruptedException {
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://identitytoolkit.googleapis.com/v1/accounts:update" + API_KEY))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .POST(BodyPublishers.ofString(profile.toJson()))
+            .build();
+
+        HttpResponse<String> res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body());
+
+        return jsonToProfileRes(res.body().toString());
+    }
+
+    private static UserProfileResponse jsonToProfileRes(String json) {
+        UserProfileResponse res = new UserProfileResponse();
+
+        try {
+            res = mapper.readValue(json, UserProfileResponse.class);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
+        return res;
+    }
+
+    // ==== REFRESH TOKEN ====
+    public static SendRefreshTokenResponse sendRToken(SendRefreshTokenRequest token) throws IOException, InterruptedException {
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://securetoken.googleapis.com/v1/token" + API_KEY))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .POST(BodyPublishers.ofString(token.toJson()))
+            .build();
+
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+
+        return jsonToSRTokenres(res.body().toString());
+    }
+    private static SendRefreshTokenResponse jsonToSRTokenres(String json) {
+        SendRefreshTokenResponse res = new SendRefreshTokenResponse();
+
+        try {
+            res = mapper.readValue(json, SendRefreshTokenResponse.class);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
+        return res;
+    }
+
+    // ==== FIRESTORE ====
+    // TODO: This should be FirestoreResponse
+    public static void createProduct(AddProductFields fields, String idToken) throws IOException, InterruptedException {
+        FirestoreRequest<AddProductFields> body = new FirestoreRequest<AddProductFields>(fields);
+        System.out.println("JSON Body Firestore: ");
+        System.out.println(body.toJson());
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://firestore.googleapis.com/v1/projects/pizzapos-41338/databases/(default)/documents/products/"))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .header("Authorization", "Bearer " + idToken)
+            .POST(BodyPublishers.ofString(body.toJson()))
+            .build();
+
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body().toString());
+        // return jsonToSRTokenres(res.body().toString());
     }
 }

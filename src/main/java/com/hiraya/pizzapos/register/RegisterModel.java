@@ -2,15 +2,21 @@
 package com.hiraya.pizzapos.register;
 
 import com.hiraya.pizzapos.helpers.RestAPIHelper;
+import com.hiraya.pizzapos.httpReqRes.BaseResponse;
 import com.hiraya.pizzapos.httpReqRes.FirebaseAuthRegisterRequest;
 import com.hiraya.pizzapos.httpReqRes.FirebaseAuthRegisterResponse;
+import com.hiraya.pizzapos.httpReqRes.UserProfileRequest;
+import com.hiraya.pizzapos.httpReqRes.UserProfileResponse;
+
 import java.io.IOException;
+import java.net.URL;
 
 public class RegisterModel {
     private String email;
     private String password;
     private String firstName;
     private String lastName;
+    private URL imageUrl;
     // Add more fields here if more is required by the view
 
     public String getEmail() {
@@ -57,18 +63,33 @@ public class RegisterModel {
         this.lastName = lastName;
     }
 
-    public void sendToFirebase() {
+    public UserProfileResponse sendToFirebase() {
         System.out.println("sendToFirebase executed");
+        UserProfileResponse profile = new UserProfileResponse();
         try {
             FirebaseAuthRegisterRequest req = new FirebaseAuthRegisterRequest();
             req.email = this.email;
             req.password = this.password;
-            FirebaseAuthRegisterResponse register;
-            register = RestAPIHelper.register(req);
-            System.out.println(register.email);
-            System.out.println(register.idToken);
+            FirebaseAuthRegisterResponse register = RestAPIHelper.register(req);
+
+            if (register.isSuccessful()) {
+                System.out.println(register.email);
+                System.out.println(register.idToken);
+                UserProfileRequest req2 = new UserProfileRequest(
+                    register.idToken,
+                    this.firstName,
+                    this.lastName,
+                    this.imageUrl
+                );
+                profile = RestAPIHelper.updateProfile(req2);
+                System.out.println("displayName: " + profile.displayName);
+            } else {
+                profile.error = register.error;
+            }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
+
+        return profile;
     }
 }

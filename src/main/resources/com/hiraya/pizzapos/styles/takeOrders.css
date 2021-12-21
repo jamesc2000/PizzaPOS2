@@ -3,3 +3,27 @@
     -fx-background-position: center;
     -fx-background-size: contain;
 }
+
+.takeorder:hover {
+    -fx-background-color: #eebb32;
+}
+
+.takeorder:pressed {
+    -fx-background-color: #ca5736;
+}
+
+.borderless-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-unit-increment: 3;
+    -fx-block-increment: 30;
+}
+
+.total-container {
+    -fx-background-color: #eebb32;
+    -fx-background-radius: 25px;
+}
+
+.summary-container-lower {
+    -fx-background-color: #916e4e;
+    -fx-background-radius: 0px 0px 0px 25px;
+}
