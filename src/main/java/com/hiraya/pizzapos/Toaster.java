@@ -27,7 +27,7 @@ public class Toaster {
         FXMLLoader toastTemplate = new FXMLLoader(App.class.getResource("views/toastTemplate.fxml"));
         ToastController controller = new ToastController();
         toastTemplate.setController(controller);
-        controller.test();
+        // controller.test();
         controller.setTexts(toastTitle, toastBody);
 
         Scene scene = new Scene(toastTemplate.load());
