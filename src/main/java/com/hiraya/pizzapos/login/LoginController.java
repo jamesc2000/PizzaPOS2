@@ -63,7 +63,7 @@ public class LoginController implements Initializable {
                 );
                 System.out.println("Log in successful");
                 // Display toast notif here saying "Log in successful"
-                Toaster.spawnToast(App.getPrimaryStage(), "Login successful", "Welcome to PizzaPOS", CONSTANTS.toastDelay, CONSTANTS.fadeInDelay, CONSTANTS.fadeOutDelay);
+                Toaster.spawnToast("Login successful", "Welcome to PizzaPOS", "success");
                 App.setRoot("takeOrders");
             }
         } else {

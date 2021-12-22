@@ -2,8 +2,6 @@ package com.hiraya.pizzapos;
 
 import java.io.IOException;
 
-import com.hiraya.pizzapos.login.LoginController;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -17,14 +15,24 @@ import javafx.util.Duration;
 
 public class Toaster {
     // Toast service/spawner
-    public static void spawnToast(Stage ownerStage, String toastTitle, String toastBody, int toastDelay, int fadeInDelay, int fadeOutDelay) throws IOException {
-        Font poppinsRegular = Font.loadFont("file:resources/com/hiraya/pizzapos/fonts/Poppins-Regular.ttf", 16);
+    public static void spawnToast(String toastTitle, String toastBody, String type) throws IOException {
+        final Font poppinsRegular = Font.loadFont("file:resources/com/hiraya/pizzapos/fonts/Poppins-Regular.ttf", 16);
+        final Stage ownerStage = App.getPrimaryStage();
+        final int toastDelay = CONSTANTS.toastDelay;
+        final int fadeInDelay = CONSTANTS.fadeInDelay;
+        final int fadeOutDelay = CONSTANTS.fadeOutDelay;
+
         Stage toastStage = new Stage();
         toastStage.initOwner(ownerStage);
         toastStage.setResizable(false);
         toastStage.initStyle(StageStyle.TRANSPARENT);
 
-        FXMLLoader toastTemplate = new FXMLLoader(App.class.getResource("views/toastTemplate.fxml"));
+        FXMLLoader toastTemplate;
+        if (type.equalsIgnoreCase("error")) {
+            toastTemplate = new FXMLLoader(App.class.getResource("views/toastTransactionFailed.fxml"));
+        } else {
+            toastTemplate = new FXMLLoader(App.class.getResource("views/toastTemplate.fxml"));
+        }
         ToastController controller = new ToastController();
         toastTemplate.setController(controller);
         // controller.test();
