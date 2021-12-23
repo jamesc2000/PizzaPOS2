@@ -62,7 +62,7 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button mnemonicParsing="false" onAction="#switchToTemporary" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <Button mnemonicParsing="false" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="110.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" styleClass="takeorder">
                            <image>

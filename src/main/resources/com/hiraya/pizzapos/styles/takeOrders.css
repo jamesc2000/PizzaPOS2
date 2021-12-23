@@ -25,5 +25,20 @@
 
 .summary-container-lower {
     -fx-background-color: #916e4e;
-    -fx-background-radius: 0px 0px 0px 25px;
+    -fx-background-radius: 0px 0px 25px 25px;
+}
+
+.summary-container-grid {
+    -fx-background-color: #916e4e;
+    -fx-font-size: 14px;
+}
+
+.summary-container-grid .label {
+    -fx-text-fill: white;
+}
+
+.orderRow {
+    -fx-background-color: #916e4e;
+    -fx-color: white;
+    -fx-font-size: 14px;
 }

@@ -18,6 +18,7 @@ import javafx.scene.layout.GridPane;
 
 public class MenuOrderController implements Initializable {
     private ProductModel data;
+    private TakeOrdersController parent;
 
     @FXML
     private Label name;
@@ -34,14 +35,16 @@ public class MenuOrderController implements Initializable {
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        System.out.println("Parent is " + this.parent.toString());
         System.out.println("2222");
         this.name.setText(this.data.getName());
         this.image.setImage(new Image(this.data.getImage().toExternalForm()));
         this.mapSizes();
     }
 
-    public MenuOrderController(ProductModel product) {
+    public MenuOrderController(ProductModel product, TakeOrdersController parent) {
         this.data = product;
+        this.parent = parent;
     }
 
     private void mapSizes() {
@@ -50,6 +53,11 @@ public class MenuOrderController implements Initializable {
             btn.setOnAction(e -> {
                 System.out.println(e);
                 System.out.println(e.getSource());
+                Order order = new Order();
+                order.name = this.data.getName();
+                order.size = btn.getText();
+                order.price = this.data.getPriceFromSize(order.size);
+                this.parent.addOrder(order);
             });
             sizesContainer.add(btn, i + 1, 0);
             GridPane.setConstraints(btn, i + 1, 0, 1, 1, HPos.CENTER, VPos.CENTER);

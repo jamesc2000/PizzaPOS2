@@ -35,6 +35,11 @@ public class ProductModel {
     public ArrayList<Double> getPricesArr() { return this.pricesArray; }
     public void pushPrice(double p) { this.pricesArray.add(Double.valueOf(p)); }
 
+    public Double getPriceFromSize(String size) {
+        final int idx = this.sizesArray.indexOf(size);
+        return this.pricesArray.get(idx);
+    }
+
     public void setValues(
         String name,
         String imageUrl,

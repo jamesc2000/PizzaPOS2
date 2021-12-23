@@ -4,8 +4,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 import com.hiraya.pizzapos.addProducts.ProductModel;
+import com.hiraya.pizzapos.transactionHistory.Transaction;
 
 public class TakeOrdersModel {
     private class Category {
@@ -37,11 +39,12 @@ public class TakeOrdersModel {
     private ArrayList<ProductModel> products = new ArrayList<ProductModel>();
     private ArrayList<Category> categories = new ArrayList<Category>();
     private ArrayList<Order> orders = new ArrayList<Order>();
+    public Transaction currTransaction = new Transaction();
 
-    private Double subtotal;
-    private Double discount;
-    private Double vat;
-    private Double total;
+    public void checkout() {
+
+        // Send 
+    }
 
     //Dummy Data
     public void useDummyData() {
@@ -66,6 +69,17 @@ public class TakeOrdersModel {
         return this.products;
     }
 
+    public ArrayList<Order> getOrders() {
+        return this.orders;
+    }
+
+    public void appendOrder(Order o) {
+        this.orders.add(o);
+    }
+
+    public void appendProduct(Collection<Order> o) {
+        this.orders.addAll(o);
+    }
     /**
      * Initialize products and categories given a firebase products response
      */
