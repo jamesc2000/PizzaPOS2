@@ -147,7 +147,8 @@ public class RestAPIHelper {
         // return jsonToSRTokenres(res.body().toString());
     }
     
-    /*public static void getProduct(GetProductRequest fields, String idToken) throws IOException, InterruptedException {
+    public static void getProduct(GetProductsRequest gpFields, String idToken) throws IOException, InterruptedException {
+        FirestoreRequest<GetProductsRequest> body = new FirestoreRequest<GetProductsRequest>(gpFields);
         System.out.println("JSON Body Firestore: ");
         System.out.println(body.toJson());
         HttpRequest req = HttpRequest.newBuilder()
@@ -161,5 +162,5 @@ public class RestAPIHelper {
         HttpResponse res = client.send(req, BodyHandlers.ofString());
         System.out.println(res.body().toString());
         // return jsonToSRTokenres(res.body().toString());
-    }*/
+    }
 }
