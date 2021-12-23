@@ -50,8 +50,12 @@ public class RegisterController {
         if (model.sendToFirebase().isSuccessful()) {
             App.setRoot("login");
         } else {
-            Toaster.spawnToast(App.getPrimaryStage(), "Error in Creating Account", "", CONSTANTS.toastDelay, CONSTANTS.fadeInDelay, CONSTANTS.fadeOutDelay);
+            Toaster.spawnToast("Error in Creating Account", "", "error");
         }
     }
-    
+
+    @FXML
+    public void changeViewToLogin() throws IOException {
+        App.setRoot("login");
+    }
 }

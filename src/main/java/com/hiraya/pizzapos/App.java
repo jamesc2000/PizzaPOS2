@@ -32,6 +32,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("login"), 1000, 600);
         App.primaryStage.setScene(scene);
         App.primaryStage.show();
+        Toaster.spawnToast("test", "body", "error");
     }
 
     public static void setRoot(String fxml) throws IOException {
@@ -50,7 +51,6 @@ public class App extends Application {
 
     public static void main(String[] args) {
         // Load fonts
-        System.out.println(App.class);
         Font.loadFont(App.class.getResourceAsStream("fonts/Poppins-Regular.ttf"), 16);
         // === 
         launch();
