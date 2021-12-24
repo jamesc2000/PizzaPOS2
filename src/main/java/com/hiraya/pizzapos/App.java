@@ -8,6 +8,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * JavaFX App
@@ -19,6 +21,9 @@ public class App extends Application {
 
     // This loggedInUser has the same lifetime as the app itself
     public static CurrentUser user = new CurrentUser();
+    // Global executor service, so we don't need to reserve new separate
+    // threads each controller. 
+    public static ExecutorService bgThreads = Executors.newFixedThreadPool(3);
 
     @Override
     public void start(Stage stage) throws IOException {

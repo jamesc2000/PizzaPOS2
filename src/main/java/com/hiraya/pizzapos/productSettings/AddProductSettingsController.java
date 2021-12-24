@@ -23,7 +23,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 public class AddProductSettingsController implements Initializable {
-    private ExecutorService executorService = Executors.newFixedThreadPool(1);
     private ProductModel model = new ProductModel();
     private URL imageUrl = App.class.getResource("images/addProduct.JPG");
 
@@ -93,7 +92,7 @@ public class AddProductSettingsController implements Initializable {
                 "10.0"
             );
 
-            Future<String> send = executorService.submit(() -> {
+            Future<String> send = App.bgThreads.submit(() -> {
                 try {
                     this.model.sendToFirestore();
                     Platform.runLater(() -> {

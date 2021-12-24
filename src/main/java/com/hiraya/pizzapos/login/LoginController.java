@@ -24,8 +24,6 @@ import javafx.scene.control.TextField;
 public class LoginController implements Initializable {
     // Declare the model
     LoginModel model = new LoginModel();
-    // ExecutorService for running multi threaded/async task, reserve 1 thread for background tasks
-    ExecutorService executor = Executors.newFixedThreadPool(1);
     
     // Declare the elements with ids here so we can control them
     
@@ -55,7 +53,7 @@ public class LoginController implements Initializable {
 
         // Send the email and password asynchronously to firebase, then firebase is
         // responsible for verifying credentials, not us
-        Future<String> task = executor.submit(() -> {
+        Future<String> task = App.bgThreads.submit(() -> {
             LoginResponse response = model.sendToFirebase();
             if (Objects.isNull(response.error)) {
                 // If no errors, proceed with handshake, exchange login refreshToken
