@@ -4,9 +4,9 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -21,9 +21,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="720.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.productSettings.ProductSettingsController">
+<BorderPane prefHeight="720.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.productSettings.AddProductSettingsController">
    <left>
-      <VBox prefHeight="200.0" prefWidth="110.0" style="-fx-background-color: #916e4e;" BorderPane.alignment="CENTER">
+      <VBox prefWidth="110.0" style="-fx-background-color: #916e4e;" BorderPane.alignment="CENTER">
          <children>
             <GridPane prefWidth="150.0">
               <columnConstraints>
@@ -62,7 +62,7 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button mnemonicParsing="false" onAction="#switchToTemporary" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <Button mnemonicParsing="false" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="110.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" styleClass="takeorder">
                            <image>
@@ -83,9 +83,9 @@
       <URL value="@../styles/App.css" />
    </stylesheets>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" stylesheets="@../styles/productSettings.css" BorderPane.alignment="CENTER">
+      <VBox stylesheets="@../styles/productSettings.css" BorderPane.alignment="CENTER">
          <children>
-            <Pane prefHeight="46.0" prefWidth="1145.0" style="-fx-background-color: #37211a; -fx-background-radius: 20px;">
+            <Pane prefHeight="46.0" style="-fx-background-color: #37211a; -fx-background-radius: 20px;">
                <VBox.margin>
                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                </VBox.margin>
@@ -97,9 +97,9 @@
                   </Label>
                </children>
             </Pane>
-            <HBox prefHeight="50.0" prefWidth="1185.0" stylesheets="@../styles/productSettings.css">
+            <HBox prefHeight="50.0" stylesheets="@../styles/productSettings.css">
                <children>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" stylesheets="@../styles/productSettings.css" text="Product Settings" textFill="#eebb32">
+                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#switchToProductSettings" prefHeight="50.0" prefWidth="200.0" stylesheets="@../styles/productSettings.css" text="Product Settings" textFill="#eebb32">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
@@ -140,7 +140,7 @@
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
             </HBox>
-            <Pane prefHeight="6.0" prefWidth="1185.0" style="-fx-background-color: #37211a; -fx-background-radius: 10;">
+            <Pane prefHeight="6.0" style="-fx-background-color: #37211a; -fx-background-radius: 10;">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -148,28 +148,28 @@
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
             </Pane>
-            <HBox prefHeight="46.0" prefWidth="1185.0">
+            <HBox prefHeight="46.0">
                <children>
-                  <Pane prefHeight="37.0" prefWidth="318.0" style="-fx-background-color: #37211a; -fx-background-radius: 5;">
+                  <Pane prefHeight="37.0" prefWidth="318.0" style="-fx-background-color: #37211a; -fx-background-radius: 5;" HBox.hgrow="NEVER">
                      <HBox.margin>
                         <Insets bottom="5.0" left="20.0" top="5.0" />
                      </HBox.margin>
                      <children>
-                        <Label layoutX="87.0" layoutY="6.0" text="Product Details" textFill="#eebb32">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="6.0" text="Product Details" textFill="#eebb32">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Region prefHeight="46.0" prefWidth="633.0">
+                  <Region prefHeight="46.0" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Region>
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="138.0" style="-fx-background-radius: 8;" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="SAVE" textFill="WHITE">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#submit" prefHeight="38.0" prefWidth="138.0" style="-fx-background-radius: 8;" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="SAVE" textFill="WHITE">
                      <HBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
+                        <Insets bottom="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                      <font>
                         <Font name="System Bold" size="16.0" />
@@ -182,13 +182,12 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Region prefHeight="46.0" prefWidth="40.0" />
                   <Button alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="156.0" style="-fx-background-radius: 8;" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="CANCEL" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                      <HBox.margin>
-                        <Insets bottom="5.0" right="20.0" top="5.0" />
+                        <Insets bottom="5.0" left="5.0" right="20.0" top="5.0" />
                      </HBox.margin>
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -205,57 +204,47 @@
                   <Insets bottom="15.0" left="20.0" right="20.0" top="5.0" />
                </VBox.margin>
                <children>
-                  <GridPane prefHeight="534.0" prefWidth="1146.0">
+                  <GridPane prefHeight="534.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="766.4000122070313" minWidth="10.0" prefWidth="759.2" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="519.3999633789062" minWidth="10.0" prefWidth="292.0" />
+                      <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="379.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <GridPane prefHeight="513.0" prefWidth="379.0" style="-fx-background-color: #37211a; -fx-background-radius: 20;" GridPane.columnIndex="1">
+                        <GridPane style="-fx-background-color: #37211a; -fx-background-radius: 20;" GridPane.columnIndex="1">
                           <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="50.0" />
+                              <ColumnConstraints percentWidth="50.0" />
                           </columnConstraints>
                           <rowConstraints>
-                            <RowConstraints maxHeight="444.6" minHeight="10.0" prefHeight="416.4" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="262.5999816894531" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="444.6" minHeight="10.0" vgrow="ALWAYS" />
+                            <RowConstraints maxHeight="262.5999816894531" minHeight="10.0" prefHeight="82.0" vgrow="NEVER" />
                           </rowConstraints>
                            <children>
-                              <GridPane GridPane.rowIndex="1">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <Button alignment="CENTER" mnemonicParsing="false" prefHeight="46.0" prefWidth="136.0" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="Upload Image" textFill="WHITE">
-                                       <GridPane.margin>
-                                          <Insets left="25.0" />
-                                       </GridPane.margin>
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Button>
-                                    <Button alignment="CENTER" mnemonicParsing="false" prefHeight="46.0" prefWidth="136.0" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="Remove Image" textFill="WHITE" GridPane.columnIndex="1">
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </GridPane>
-                              <ImageView fitHeight="380.0" fitWidth="429.0" pickOnBounds="true" preserveRatio="true">
+                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="46.0" prefWidth="136.0" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="Upload Image" textFill="WHITE" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="25.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="46.0" prefWidth="136.0" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="Remove Image" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="15.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <ImageView fitHeight="380.0" fitWidth="429.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2">
                                  <image>
                                     <Image url="@../images/addProduct.JPG" />
                                  </image>
                                  <GridPane.margin>
-                                    <Insets left="22.0" />
+                                    <Insets />
                                  </GridPane.margin>
                               </ImageView>
                            </children>
@@ -270,7 +259,7 @@
                           <rowConstraints>
                             <RowConstraints maxHeight="261.79999389648435" minHeight="10.0" prefHeight="163.2" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="261.79999389648435" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="408.8000183105469" minHeight="10.0" prefHeight="292.00000000000006" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="408.8000183105469" minHeight="10.0" vgrow="ALWAYS" />
                           </rowConstraints>
                            <children>
                               <GridPane prefHeight="129.0" prefWidth="767.0">
@@ -302,7 +291,7 @@
                                           <Insets left="45.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <TextField prefHeight="26.0" prefWidth="538.0" GridPane.columnIndex="1">
+                                    <TextField fx:id="nameField" prefHeight="26.0" prefWidth="538.0" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets left="20.0" right="60.0" />
                                        </GridPane.margin>
@@ -319,7 +308,7 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <ComboBox prefHeight="29.0" prefWidth="363.0" promptText="Choose from Existing">
+                                          <ComboBox fx:id="typeField" prefHeight="29.0" prefWidth="363.0" promptText="Choose from Existing">
                                              <GridPane.margin>
                                                 <Insets left="20.0" right="20.0" />
                                              </GridPane.margin>
@@ -341,28 +330,20 @@
                               </GridPane>
                               <GridPane prefHeight="293.0" prefWidth="786.0" GridPane.rowIndex="2">
                                 <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="296.0" minWidth="10.0" prefWidth="96.79998779296875" />
+                                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="296.0" minWidth="10.0" prefWidth="96.79998779296875" />
                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="423.20000000000005" minWidth="10.0" prefWidth="418.4000122070313" />
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="387.60003662109375" minWidth="10.0" prefWidth="232.79997558593743" />
                                 </columnConstraints>
                                 <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" percentHeight="33.33" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" percentHeight="33.33" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <RadioButton mnemonicParsing="false" prefHeight="42.0" prefWidth="18.0">
-                                       <GridPane.margin>
-                                          <Insets left="75.0" />
-                                       </GridPane.margin>
-                                    </RadioButton>
-                                    <RadioButton mnemonicParsing="false" prefHeight="42.0" prefWidth="18.0" GridPane.rowIndex="1">
-                                       <GridPane.margin>
-                                          <Insets left="75.0" />
-                                       </GridPane.margin>
-                                    </RadioButton>
-                                    <TextField promptText="No Variation" GridPane.columnIndex="1">
+                                    <CheckBox fx:id="cb1" mnemonicParsing="false" onAction="#onCheckboxChange" />
+                                    <CheckBox fx:id="cb2" mnemonicParsing="false" onAction="#onCheckboxChange" GridPane.rowIndex="1" />
+                                    <CheckBox fx:id="cb3" mnemonicParsing="false" onAction="#onCheckboxChange" GridPane.rowIndex="2" />
+                                    <TextField fx:id="var1" disable="true" promptText="Variation 1" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets left="30.0" right="30.0" />
                                        </GridPane.margin>
@@ -370,17 +351,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </TextField>
-                                    <RadioButton mnemonicParsing="false" prefHeight="42.0" prefWidth="18.0" GridPane.rowIndex="2">
-                                       <GridPane.margin>
-                                          <Insets left="75.0" />
-                                       </GridPane.margin>
-                                    </RadioButton>
-                                    <RadioButton mnemonicParsing="false" prefHeight="42.0" prefWidth="18.0" GridPane.rowIndex="3">
-                                       <GridPane.margin>
-                                          <Insets left="75.0" />
-                                       </GridPane.margin>
-                                    </RadioButton>
-                                    <TextField promptText="Variation 1" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <TextField fx:id="var2" disable="true" promptText="Variation 2" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets left="30.0" right="30.0" />
                                        </GridPane.margin>
@@ -388,7 +359,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </TextField>
-                                    <TextField promptText="Variation 2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <TextField fx:id="var3" disable="true" promptText="Variation 3" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets left="30.0" right="30.0" />
                                        </GridPane.margin>
@@ -396,15 +367,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </TextField>
-                                    <TextField promptText="Variation 3" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                       <GridPane.margin>
-                                          <Insets left="30.0" right="30.0" />
-                                       </GridPane.margin>
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <TextField promptText="000.00" GridPane.columnIndex="2">
+                                    <TextField fx:id="price1" disable="true" promptText="000.00" GridPane.columnIndex="2">
                                        <GridPane.margin>
                                           <Insets left="20.0" right="60.0" />
                                        </GridPane.margin>
@@ -412,7 +375,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </TextField>
-                                    <TextField promptText="000.00" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                    <TextField fx:id="price2" disable="true" promptText="000.00" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets left="20.0" right="60.0" />
                                        </GridPane.margin>
@@ -420,15 +383,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </TextField>
-                                    <TextField promptText="000.00" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                                       <GridPane.margin>
-                                          <Insets left="20.0" right="60.0" />
-                                       </GridPane.margin>
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <TextField promptText="000.00" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                    <TextField fx:id="price3" disable="true" promptText="000.00" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets left="20.0" right="60.0" />
                                        </GridPane.margin>
@@ -443,7 +398,7 @@
                               </GridPane>
                               <GridPane GridPane.rowIndex="1">
                                 <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
                                 <rowConstraints>
@@ -458,12 +413,12 @@
                                           <Insets left="45.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <Label prefHeight="27.0" prefWidth="126.0" text="Product Pricing" GridPane.columnIndex="1">
+                                    <Label prefHeight="27.0" prefWidth="126.0" text="Product Pricing" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                        <GridPane.margin>
-                                          <Insets left="160.0" />
+                                          <Insets right="80.0" />
                                        </GridPane.margin>
                                     </Label>
                                  </children>

@@ -41,7 +41,7 @@
                               <Image url="@../images/pizzaposlogo.png" />
                            </image>
                         </ImageView>
-                        <ProgressIndicator prefHeight="30.0" prefWidth="1000.0" style="-fx-progress-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <ProgressIndicator fx:id="loadingSpinner" prefHeight="30.0" prefWidth="1000.0" style="-fx-progress-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                      </children>
                   </AnchorPane>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER">

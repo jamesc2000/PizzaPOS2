@@ -83,7 +83,7 @@ public class ProductModel {
     }
 
     // TODO: This shouldnt be void, but will return something
-    public void sendToFirestore() {
+    public void sendToFirestore() throws IOException, InterruptedException {
         AddProductFields fields = new AddProductFields(
             this.name,
             this.imageUrl,
@@ -91,15 +91,10 @@ public class ProductModel {
             this.size,
             this.price
         );
-
-        try {
-            System.out.println("Product send func");
-            System.out.println(App.user.getIdToken());
-            RestAPIHelper.createProduct(fields, App.user.getIdToken());
-        } catch (IOException | InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        System.out.println(this.size);
+        System.out.println("Product send func");
+        System.out.println(App.user.getIdToken());
+        RestAPIHelper.createProduct(fields, App.user.getIdToken());
     }
 
     @Override

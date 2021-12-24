@@ -29,7 +29,7 @@ public class App extends Application {
 //       stage.setFullScreen(true);
         
         
-        scene = new Scene(loadFXML("takeOrders"), 1000, 600);
+        scene = new Scene(loadFXML("login"), 1000, 600);
         App.primaryStage.setScene(scene);
         App.primaryStage.show();
         Toaster.spawnToast("test", "body", "error");

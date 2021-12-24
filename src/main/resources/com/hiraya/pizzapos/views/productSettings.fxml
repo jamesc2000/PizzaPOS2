@@ -121,7 +121,7 @@
                         <String fx:value="buttoncurve" />
                      </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Add Product" textFill="#eebb32">
+                  <Button mnemonicParsing="false" onAction="#switchToAddProduct" prefHeight="50.0" prefWidth="200.0" text="Add Product" textFill="#eebb32">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>

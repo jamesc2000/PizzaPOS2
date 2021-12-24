@@ -1,5 +1,6 @@
 package com.hiraya.pizzapos.addProducts;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 
 import javafx.fxml.FXML;
@@ -29,7 +30,7 @@ public class ProductController {
                 price.getText()
             );
             this.model.sendToFirestore();
-        } catch (MalformedURLException e) {
+        } catch (IOException | InterruptedException e) {
             //TODO: handle exception
             e.printStackTrace();
         }

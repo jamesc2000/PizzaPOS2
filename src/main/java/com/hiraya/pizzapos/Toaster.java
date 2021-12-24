@@ -15,7 +15,7 @@ import javafx.util.Duration;
 
 public class Toaster {
     // Toast service/spawner
-    public static void spawnToast(String toastTitle, String toastBody, String type) throws IOException {
+    public static void spawnToast(String toastTitle, String toastBody, String type) {
         final Font poppinsRegular = Font.loadFont("file:resources/com/hiraya/pizzapos/fonts/Poppins-Regular.ttf", 16);
         final Stage ownerStage = App.getPrimaryStage();
         final int toastDelay = CONSTANTS.toastDelay;
@@ -38,10 +38,15 @@ public class Toaster {
         // controller.test();
         controller.setTexts(toastTitle, toastBody);
 
-        Scene scene = new Scene(toastTemplate.load());
-        scene.setFill(Color.TRANSPARENT);
-
-        toastStage.setScene(scene);
+        Scene scene;
+        try {
+            scene = new Scene(toastTemplate.load());
+            scene.setFill(Color.TRANSPARENT);
+            toastStage.setScene(scene);
+        } catch (IOException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
 
         toastStage.setY(ownerStage.getY() + 50);
         toastStage.setX(ownerStage.getX() + (ownerStage.getWidth() / 2) - (371 / 2));
