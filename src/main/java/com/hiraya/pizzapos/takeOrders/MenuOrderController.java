@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import com.hiraya.pizzapos.addProducts.ProductModel;
+import com.hiraya.pizzapos.productSettings.Product;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,7 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
 public class MenuOrderController implements Initializable {
-    private ProductModel data;
+    private Product data;
     private TakeOrdersController parent;
 
     @FXML
@@ -42,7 +42,7 @@ public class MenuOrderController implements Initializable {
         this.mapSizes();
     }
 
-    public MenuOrderController(ProductModel product, TakeOrdersController parent) {
+    public MenuOrderController(Product product, TakeOrdersController parent) {
         this.data = product;
         this.parent = parent;
     }

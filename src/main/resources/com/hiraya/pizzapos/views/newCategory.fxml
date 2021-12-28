@@ -9,10 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="323.0" prefHeight="578.0" prefWidth="450.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="323.0" prefHeight="578.0" prefWidth="450.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.productSettings.NewCategoryController">
    <children>
       <AnchorPane layoutX="28.0" layoutY="38.0" prefHeight="501.0" prefWidth="393.0" style="-fx-background-color: #eebb32; -fx-background-radius: 25;">
          <padding>
@@ -59,7 +60,7 @@
                         <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
                      </GridPane.margin>
                      <children>
-                        <TextField prefHeight="26.0" prefWidth="228.0">
+                        <TextField fx:id="name" prefHeight="26.0" prefWidth="228.0">
                            <GridPane.margin>
                               <Insets bottom="5.0" left="20.0" right="20.0" top="20.0" />
                            </GridPane.margin>
@@ -86,7 +87,7 @@
                         <Insets bottom="10.0" left="45.0" right="45.0" top="10.0" />
                      </GridPane.margin>
                      <children>
-                        <ImageView fitHeight="200.0" fitWidth="157.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPreview" fitHeight="200.0" fitWidth="157.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/addProduct.JPG" />
                            </image>
@@ -103,34 +104,35 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="94.0" styleClass="secondbutton" text="Remove Image" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font name="System Bold" size="11.0" />
-                                 </font>
+                              <TextField fx:id="image" promptText="Image URL" GridPane.columnSpan="2">
                                  <GridPane.margin>
-                                    <Insets left="5.0" />
+                                    <Insets left="20.0" right="20.0" />
                                  </GridPane.margin>
-                              </Button>
-                              <Button mnemonicParsing="false" styleClass="secondbutton" text="Upload Image">
-                                 <font>
-                                    <Font name="System Bold" size="11.0" />
-                                 </font>
-                                 <GridPane.margin>
-                                    <Insets left="15.0" />
-                                 </GridPane.margin>
-                              </Button>
+                              </TextField>
                            </children>
                         </GridPane>
                      </children>
                   </GridPane>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="310.0" text="Add Category" GridPane.rowIndex="3">
-                     <GridPane.margin>
-                        <Insets left="75.0" right="75.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
+                  <HBox GridPane.rowIndex="3">
+                     <children>
+                        <Button fx:id="close" mnemonicParsing="false" onAction="#close" prefHeight="26.0" prefWidth="310.0" text="Cancel">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#submit" prefHeight="26.0" prefWidth="310.0" text="Add Category">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
             </GridPane>
          </children>

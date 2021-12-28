@@ -313,7 +313,7 @@
                                                 <Insets left="20.0" right="20.0" />
                                              </GridPane.margin>
                                           </ComboBox>
-                                          <Button alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" text="New" GridPane.columnIndex="1">
+                                          <Button alignment="CENTER" mnemonicParsing="false" onAction="#addProductPopup" prefHeight="26.0" prefWidth="80.0" text="New" GridPane.columnIndex="1">
                                              <GridPane.margin>
                                                 <Insets left="10.0" />
                                              </GridPane.margin>

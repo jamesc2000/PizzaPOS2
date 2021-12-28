@@ -9,8 +9,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.hiraya.pizzapos.App;
-import com.hiraya.pizzapos.addProducts.ProductModel;
 import com.hiraya.pizzapos.helpers.LoadFXMLHelper;
+import com.hiraya.pizzapos.helpers.RestAPIHelper;
+import com.hiraya.pizzapos.productSettings.Product;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -42,6 +44,12 @@ public class TakeOrdersController {
     private void initialize() {
         this.model.useDummyData();
         System.out.println("Dashboard Initialized!" + this.toString());
+        try {
+            this.model.setCategories(RestAPIHelper.getCategories(App.user.getIdToken()));
+        } catch (IOException | InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         this.displayData();
         this.displayCategories();
         this.displayTransaction();
@@ -84,15 +92,20 @@ public class TakeOrdersController {
     }
 
     private void displayCategories() {
-        var categories = groupCategories();
+        var categories = this.model.getCategories();
         categories.forEach(category -> {
             // TODO: Graphic/img ng category
-            ImageView graphic = new ImageView(App.class.getResource("images/userProfilepic.png").toExternalForm());
+            ImageView graphic = new ImageView();
+            if (category.imageUrl != null) {
+                graphic.setImage(new Image(category.imageUrl.toExternalForm()));
+            } else {
+                graphic.setImage(new Image(App.class.getResource("images/addProduct.JPG").toExternalForm()));
+            }
             graphic.setFitHeight(91.0);
             graphic.setFitWidth(91.0);
             graphic.setPickOnBounds(true);
             graphic.setPreserveRatio(true);
-            Button catBtn = new Button(category, graphic);
+            Button catBtn = new Button(category.name, graphic);
             catBtn.setContentDisplay(ContentDisplay.TOP);
             catBtn.setPrefSize(195.0, 155.0);
             catBtn.setStyle("-fx-background-radius: 15px;");

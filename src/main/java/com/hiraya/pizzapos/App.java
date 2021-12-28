@@ -37,7 +37,6 @@ public class App extends Application {
         scene = new Scene(loadFXML("login"), 1000, 600);
         App.primaryStage.setScene(scene);
         App.primaryStage.show();
-        Toaster.spawnToast("test", "body", "error");
     }
 
     public static void setRoot(String fxml) throws IOException {

@@ -1,4 +1,4 @@
-package com.hiraya.pizzapos.addProducts;
+package com.hiraya.pizzapos.productSettings;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -10,7 +10,7 @@ import com.hiraya.pizzapos.helpers.RestAPIHelper;
 import com.hiraya.pizzapos.httpReqRes.AddProductFields;
 import com.hiraya.pizzapos.httpReqRes.FirestoreRequest;
 
-public class ProductModel {
+public class Product {
     private String name;
     private URL imageUrl;
     private String category;
@@ -20,7 +20,7 @@ public class ProductModel {
     private double price;
     private ArrayList<Double> pricesArray = new ArrayList<Double>(); // Same note as sizesArray
 
-    public ProductModel() { }
+    public Product() { }
 
     public String getName() { return this.name; }
     public URL getImage() { return this.imageUrl; }

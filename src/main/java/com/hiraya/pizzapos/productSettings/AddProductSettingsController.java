@@ -12,18 +12,23 @@ import java.util.concurrent.Future;
 
 import com.hiraya.pizzapos.App;
 import com.hiraya.pizzapos.Toaster;
-import com.hiraya.pizzapos.addProducts.ProductModel;
+import com.hiraya.pizzapos.helpers.RestAPIHelper;
 
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class AddProductSettingsController implements Initializable {
-    private ProductModel model = new ProductModel();
+    private Product model = new Product();
     private URL imageUrl = App.class.getResource("images/addProduct.JPG");
 
     @FXML
@@ -41,8 +46,7 @@ public class AddProductSettingsController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         // TODO Auto-generated method stub
         // System.out.println("add products");
-        typeField.getItems().add("Test Kategorya");
-        typeField.getItems().add("Test2 Kategorya");
+        this.updateCategoriesSelection();
     }
     
     public void switchToProductSettings() throws IOException {
@@ -112,5 +116,43 @@ public class AddProductSettingsController implements Initializable {
             Toaster.spawnToast("Invalid image URL.", this.imageUrl.toExternalForm() + " is not a valid URL.", "error");
             e.printStackTrace();
         }
+    }
+
+    public void addProductPopup() {
+        Stage popup = new Stage();
+        popup.initOwner(App.getPrimaryStage());
+        popup.setResizable(false);
+        popup.initStyle(StageStyle.TRANSPARENT);
+
+        FXMLLoader fxml = new FXMLLoader(App.class.getResource("views/newCategory.fxml"));
+        Scene scene;
+        try {
+            scene = new Scene(fxml.load());
+            scene.setFill(Color.TRANSPARENT);
+            popup.setScene(scene);
+        } catch (Exception e) {
+            //TODO: handle exception
+            e.printStackTrace();
+            Toaster.spawnToast("FXML Error", e.getMessage(), "error");
+        }
+        popup.setOnHiding((event) -> {
+            System.out.println("this ran");
+            this.updateCategoriesSelection();
+        });
+        popup.show();
+    }
+
+    public void updateCategoriesSelection() {
+        ArrayList<Category> categories = new ArrayList<Category>();
+        try {
+            categories = RestAPIHelper.getCategories(App.user.getIdToken());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            Toaster.spawnToast("Error fetching categories", e.getLocalizedMessage(), "error");
+        }
+        typeField.getItems().clear();
+        categories.forEach(category -> {
+            typeField.getItems().add(category.name);
+        });
     }
 }
