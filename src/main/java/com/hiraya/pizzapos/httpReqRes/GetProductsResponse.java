@@ -1,20 +1,16 @@
 package com.hiraya.pizzapos.httpReqRes;
 
-import com.hiraya.pizzapos.App;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+@JsonInclude(Include.NON_NULL)
 public class GetProductsResponse extends BaseResponse{
-    public String transaction;
-    public Document document;
-    
-    public class Document{
+    public class Document {
         public String name;
-        public Fields fields;
+        public AddProductFields fields = new AddProductFields();
+        public String createTime;
+        public String updateTime;
     }
-    
-    public class Fields{
-        public String StringValue;
-    }
-           
-    
-    
+    public Document document = new Document();
+    public String readTime;
 }

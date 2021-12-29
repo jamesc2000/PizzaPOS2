@@ -17,7 +17,7 @@ public class NewCategoryFields {
     public FieldValue name;
     public FieldValue imageUrl;
     public FieldValue ownedBy = new FieldValue(App.user.getLocalId());
-    
+    // TODO: Sizes and Prices should be array in DB as well
     public NewCategoryFields(String name, String imageUrl) {
         this.name = new FieldValue(name);
         this.imageUrl = new FieldValue(imageUrl);

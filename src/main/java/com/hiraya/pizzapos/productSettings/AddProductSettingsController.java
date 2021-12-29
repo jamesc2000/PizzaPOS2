@@ -68,6 +68,12 @@ public class AddProductSettingsController implements Initializable {
     }
 
     public void submit() throws IOException {
+        if (this.nameField.getText() == null) {
+            Toaster.spawnToast("Name is required", "", "error");
+        }
+        if (this.typeField.getValue() == null) {
+            Toaster.spawnToast("Category is required", "", "error");
+        }
         ArrayList<String> sizes = new ArrayList<String>(3);
         ArrayList<Double> prices = new ArrayList<Double>(3);
         TextField[] sizeFields = {var1, var2, var3};
@@ -90,10 +96,8 @@ public class AddProductSettingsController implements Initializable {
                 nameField.getText(),
                 this.imageUrl.toExternalForm(),
                 typeField.getValue().toString(), 
-                // sizes, // TODO: Edit addProductFields to have an array value for these
-                // prices
-                "smol",
-                "10.0"
+                sizes,
+                prices
             );
 
             Future<String> send = App.bgThreads.submit(() -> {
@@ -136,7 +140,6 @@ public class AddProductSettingsController implements Initializable {
             Toaster.spawnToast("FXML Error", e.getMessage(), "error");
         }
         popup.setOnHiding((event) -> {
-            System.out.println("this ran");
             this.updateCategoriesSelection();
         });
         popup.show();

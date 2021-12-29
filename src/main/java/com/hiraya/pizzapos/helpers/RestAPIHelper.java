@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hiraya.pizzapos.App;
 import com.hiraya.pizzapos.httpReqRes.*;
 import com.hiraya.pizzapos.productSettings.Category;
+import com.hiraya.pizzapos.productSettings.Product;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -153,8 +154,8 @@ public class RestAPIHelper {
         // return jsonToSRTokenres(res.body().toString());
     }
     
-    public static void getProduct(GetProductsRequest gpFields, String idToken) throws IOException, InterruptedException {
-        FirestoreRequest<GetProductsRequest> body = new FirestoreRequest<GetProductsRequest>(gpFields);
+    public static ArrayList<Product> getProducts(String idToken) throws IOException, InterruptedException {
+        GetProductsRequest body = new GetProductsRequest();
         System.out.println("JSON Body Firestore: ");
         System.out.println(body.toJson());
         HttpRequest req = HttpRequest.newBuilder()
@@ -167,7 +168,51 @@ public class RestAPIHelper {
 
         HttpResponse res = client.send(req, BodyHandlers.ofString());
         System.out.println(res.body().toString());
-        // return jsonToSRTokenres(res.body().toString());
+        return jsonToProducts(res.body().toString());
+    }
+
+    private static ArrayList<Product> jsonToProducts(String json) {
+        GetProductsResponse[] res = {};
+        ArrayList<Product> out = new ArrayList<Product>();
+
+        try {
+            res = mapper.readValue(json, GetProductsResponse[].class);
+            if (res[0].document.name == null) return out; // Return early if retrieved firebase responded empty
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        System.out.println(res[0].document);
+        for (int i = 0; i < res.length; ++i) {
+            Product temp = new Product();
+            // temp.name = res[i].document.fields.name.stringValue;
+            // try {
+            //     temp.imageUrl = new URL(res[i].document.fields.imageUrl.stringValue);
+            // } catch (MalformedURLException e) {
+            //     temp.imageUrl = App.class.getResource("images/addProduct.JPG");
+            // }
+            try {
+                temp.setValues(
+                    res[i].document.fields.name.stringValue, 
+                    res[i].document.fields.imageUrl.stringValue, 
+                    res[i].document.fields.category.stringValue, 
+                    // res[i].document.fields.sizes.arrayValue.values,
+                    // res[i].document.fields.sizes.arrayValue.values
+                    new ArrayList<String>(),
+                    new ArrayList<Double>()
+                );
+                res[i].document.fields.sizes.arrayValue.values.forEach(size -> {
+                    temp.pushSize(size.stringValue);
+                });
+                res[i].document.fields.prices.arrayValue.values.forEach(price -> {
+                    temp.pushPrice(price.doubleValue);
+                });
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            out.add(temp);
+        }
+        return out;
     }
 
     public static void createCategory(NewCategoryFields fields, String idToken) throws IOException, InterruptedException {
@@ -183,7 +228,7 @@ public class RestAPIHelper {
             .build();
 
         HttpResponse res = client.send(req, BodyHandlers.ofString());
-        System.out.println(res.body().toString());
+        // System.out.println(res.body().toString());
         // return jsonToSRTokenres(res.body().toString());
     }
 
@@ -200,7 +245,7 @@ public class RestAPIHelper {
             .build();
 
         HttpResponse res = client.send(req, BodyHandlers.ofString());
-        System.out.println(res.body().toString());
+        // System.out.println(res.body().toString());
         return jsonToCategory(res.body().toString());
     }
 
@@ -210,6 +255,7 @@ public class RestAPIHelper {
 
         try {
             res = mapper.readValue(json, GetCategoriesResponse[].class);
+            if (res[0].document == null) return out; // Return early if retrieved firebase responded empty
         } catch (IOException e) {
             System.out.println(e);
         }

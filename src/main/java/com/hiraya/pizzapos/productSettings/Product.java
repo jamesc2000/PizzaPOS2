@@ -88,8 +88,8 @@ public class Product {
             this.name,
             this.imageUrl,
             this.category,
-            this.size,
-            this.price
+            this.sizesArray,
+            this.pricesArray
         );
         System.out.println(this.size);
         System.out.println("Product send func");

@@ -44,6 +44,10 @@ public class TakeOrdersModel {
         return this.products;
     }
 
+    public void setProducts(ArrayList<Product> products) {
+        this.products = products;
+    }
+
     public ArrayList<Order> getOrders() {
         return this.orders;
     }
@@ -62,13 +66,5 @@ public class TakeOrdersModel {
 
     public void appendProduct(Collection<Order> o) {
         this.orders.addAll(o);
-    }
-    /**
-     * Initialize products and categories given a firebase products response
-     */
-    public void initProducts() {
-        // TODO: Add parameter for input of firebase products, for now this is using dummy data
-
-
     }
 }

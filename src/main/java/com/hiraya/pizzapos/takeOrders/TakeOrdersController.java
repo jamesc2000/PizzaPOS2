@@ -46,6 +46,7 @@ public class TakeOrdersController {
         System.out.println("Dashboard Initialized!" + this.toString());
         try {
             this.model.setCategories(RestAPIHelper.getCategories(App.user.getIdToken()));
+            this.model.setProducts(RestAPIHelper.getProducts(App.user.getIdToken()));
         } catch (IOException | InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -167,25 +168,4 @@ public class TakeOrdersController {
         this.discountField.setText("₱ " + formatter.format(this.model.currTransaction.getDiscountAmt()));
         this.totalField.setText("₱ " + formatter.format(this.model.currTransaction.getTotal()));
     }
-
-    // private ArrayList<ProductModel> groupSizes(ArrayList<ProductModel> products) {
-    //     // Sort the products by name, and then combine consecutive items
-    //     ArrayList<ProductModel> grouped = new ArrayList<ProductModel>();
-    //     products.sort(new Comparator<ProductModel>() {
-    //         @Override
-    //         public int compare(ProductModel lhs, ProductModel rhs) {
-    //             return lhs.getName().compareToIgnoreCase(rhs.getName());
-    //         }
-    //     });
-    //     System.out.println(products.toString());
-    //     for (int i = 0; i < products.size() - 1; ++i) {
-    //         if (products.get(i).getName().equalsIgnoreCase(products.get(i + 1).getName())) {
-    //             grouped.add()
-    //         } else {
-    //             grouped.add(products.get(i));
-    //         }
-    //     }
-    //     System.out.println(grouped.toString());
-    //     return grouped;
-    // }
 }
