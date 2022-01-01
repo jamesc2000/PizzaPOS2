@@ -1,8 +1,12 @@
 package com.hiraya.pizzapos.transactionHistory;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.hiraya.pizzapos.Toaster;
+import com.hiraya.pizzapos.helpers.RestAPIHelper;
+import com.hiraya.pizzapos.httpReqRes.NewTransactionFields;
 import com.hiraya.pizzapos.takeOrders.Order;
 
 public class Transaction {
@@ -29,28 +33,45 @@ public class Transaction {
         this.total = this.subtotal * (1 + this.VAT);
     }
 
-    public void setOrder(int idx, Order newOrder) {
-        this.orders.set(idx, newOrder);
+    public void recomputeOrders() {
+        this.subtotal = 0;
+        this.total = 0;
+        this.discountAmt = 0;
         this.orders.forEach(order -> {
             this.subtotal += order.price * order.quantity;
         });
         this.total = this.subtotal * (1 + this.VAT);
     }
 
+    public ArrayList<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrder(int idx, Order newOrder) {
+        this.orders.set(idx, newOrder);
+        // this.orders.forEach(order -> {
+        //     this.subtotal += order.price * order.quantity;
+        // });
+        // this.total = this.subtotal * (1 + this.VAT);
+        this.recomputeOrders();
+    }
+
     public void addOrder(Order order) {
-        this.subtotal += order.price * order.quantity;
-        this.total = this.subtotal * (1 + this.VAT);
+        // this.subtotal += order.price * order.quantity;
+        // this.total = this.subtotal * (1 + this.VAT);
         this.orders.add(order);
+        this.recomputeOrders();
     }
 
     public void removeOrder(Order order) {
-        Double price = order.price;
-        Integer qty = order.quantity;
+        // Double price = order.price;
+        // Integer qty = order.quantity;
         Boolean orderRemoved = this.orders.remove(order);
         if (orderRemoved) {
-            System.out.println("order removed in transaction");
-            this.subtotal -= price * qty;
-            this.total = this.subtotal * (1 + this.VAT);
+            // System.out.println("order removed in transaction");
+            // this.subtotal -= price * qty;
+            // this.total = this.subtotal * (1 + this.VAT);
+            this.recomputeOrders();
         }
     }
 
@@ -74,6 +95,26 @@ public class Transaction {
             temp.append((char)randomInt);
         }
         return temp.toString();
+    }
+
+    public String getTransactionRef() {
+        return transactionRef;
+    }
+
+    public double getAmountPaid() {
+        return amountPaid;
+    }
+
+    public void setAmountPaid(double amountPaid) {
+        this.amountPaid = amountPaid;
+    }
+
+    public double getAmountChange() {
+        return amountChange;
+    }
+
+    public void setAmountChange(double amountChange) {
+        this.amountChange = amountChange;
     }
 
     public double getTotal() {
@@ -102,5 +143,16 @@ public class Transaction {
 
     public double getVatAmt() {
         return this.VAT * this.subtotal;
+    }
+
+    public void checkout(String idToken) {
+        NewTransactionFields fields = new NewTransactionFields(this);
+        try {
+            RestAPIHelper.createTransaction(fields, idToken);
+        } catch (IOException | InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            Toaster.spawnToast("Error in confirming order", e.getLocalizedMessage(), "error");
+        }
     }
 }

@@ -9,10 +9,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.hiraya.pizzapos.App;
+import com.hiraya.pizzapos.Toaster;
 import com.hiraya.pizzapos.helpers.LoadFXMLHelper;
 import com.hiraya.pizzapos.helpers.RestAPIHelper;
 import com.hiraya.pizzapos.productSettings.Product;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -77,7 +79,7 @@ public class TakeOrdersController {
                     orderItem = LoadFXMLHelper.loadFXML("takeOrders.order");
                     // System.out.println(this.model.getProducts().get(i).getName());
                     this.productControllers.add(new MenuOrderController(this.model.getProducts().get(i), this));
-                    System.out.println("Controller: " + this.productControllers.get(i));
+                    // System.out.println("Controller: " + this.productControllers.get(i));
                     orderItem.setController(this.productControllers.get(i));
                     // System.out.println("11111");
                     this.menuContainer.getChildren().add(orderItem.load());
@@ -109,7 +111,7 @@ public class TakeOrdersController {
             catBtn.setStyle("-fx-background-radius: 15px;");
             catBtn.getStyleClass().add("takeorder");
             catBtn.setOnAction(e -> {
-                System.out.println(catBtn.getText());
+                // System.out.println(catBtn.getText());
                 this.displayData(catBtn.getText());
             });
 
@@ -117,6 +119,7 @@ public class TakeOrdersController {
         });
     }
 
+    @SuppressWarnings("unchecked")
     public void addOrder(Order order) {
         // Push a product to model.products, then redisplay order summary
         var currOrders = this.model.getOrders();
@@ -126,7 +129,7 @@ public class TakeOrdersController {
             if (currOrders.get(i).name.equals(order.name) && currOrders.get(i).size.equals(order.size)) {
                 currOrders.get(i).quantity++;
                 Spinner<Integer> spinner = (Spinner<Integer>)this.orderSummary.getChildren().get(i*5 + 2);
-                System.out.println("Found: " + spinner.toString());
+                // System.out.println("Found: " + spinner.toString());
                 spinner.increment();
                 this.model.currTransaction.setOrder(i, currOrders.get(i));
                 this.displayTransaction();
@@ -155,12 +158,25 @@ public class TakeOrdersController {
             }
             this.model.removeOrder(orderRef);
             this.model.currTransaction.removeOrder(orderRef);
+            this.model.currTransaction.recomputeOrders(); // Lazy fix for weird bug
+            this.displayTransaction();
+        });
+
+        ((Spinner<Integer>)row[2]).valueProperty().addListener((obs, oldVal, newVal) -> {
+            Order orderRef = order;
+            orderRef.quantity = newVal;
+            // System.out.println("Orders changed");
+            // this.model.getOrders().forEach(o -> {
+            //     System.out.println(o.name + " " + o.quantity);
+            // });
+            this.model.currTransaction.recomputeOrders(); // Lazy fix for weird bug
             this.displayTransaction();
         });
 
         this.model.appendOrder(order);
         this.model.currTransaction.addOrder(order);
         this.orderSummary.getChildren().addAll(row);
+        this.model.currTransaction.recomputeOrders(); // Lazy fix for weird bug
         this.displayTransaction();
     }
 
@@ -179,5 +195,19 @@ public class TakeOrdersController {
         this.vatField.setText("₱ " + formatter.format(this.model.currTransaction.getVatAmt()));
         this.discountField.setText("₱ " + formatter.format(this.model.currTransaction.getDiscountAmt()));
         this.totalField.setText("₱ " + formatter.format(this.model.currTransaction.getTotal()));
+
+        // System.out.println("Orders in transaction now:");
+        // this.model.currTransaction.getOrders().forEach(o -> {
+        //         System.out.println(o.name + " " + o.quantity);
+        // });
+    }
+
+    public void confirmOrder() {
+        App.bgThreads.submit(() -> {
+            this.model.currTransaction.checkout(App.user.getIdToken());
+            Platform.runLater(() -> {
+                Toaster.spawnToast("Success? Maybe", "TODO: Result handling for checkout", "success");
+            });
+        });
     }
 }

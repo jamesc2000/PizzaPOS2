@@ -272,4 +272,21 @@ public class RestAPIHelper {
         }
         return out;
     }
+
+    public static void createTransaction(NewTransactionFields fields, String idToken) throws IOException, InterruptedException {
+        FirestoreRequest<NewTransactionFields> body = new FirestoreRequest<NewTransactionFields>(fields);
+        System.out.println("JSON Body Firestore: ");
+        System.out.println(body.toJson());
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://firestore.googleapis.com/v1/projects/pizzapos-41338/databases/(default)/documents/transactions/"))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .header("Authorization", "Bearer " + idToken)
+            .POST(BodyPublishers.ofString(body.toJson()))
+            .build();
+
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body().toString());
+        // return jsonToSRTokenres(res.body().toString());
+    }
 }

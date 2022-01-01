@@ -166,7 +166,7 @@
                         <Insets right="35.0" />
                      </padding>
                   </Label>
-                  <Button mnemonicParsing="false" text="Confirm Order" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#confirmOrder" text="Confirm Order" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
