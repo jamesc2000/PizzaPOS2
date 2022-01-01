@@ -90,17 +90,21 @@ public class LoginController implements Initializable {
                 Platform.runLater(() -> {
                     if (response.error.message.equals("EMAIL_NOT_FOUND")) {
                         System.out.println("Email not registered!");
+                        Toaster.spawnToast("Email not registered!", "Please, try again!", "error");
                         // Display toast notif here saying "Email not registered"
                     } else if (response.error.message.equals("INVALID_PASSWORD")) {
                         System.out.println("Invalid password!");
+                        Toaster.spawnToast("Invalid Password!", "Please, try again!", "error");
                         // Same thing for notifs here
                     } else if (response.error.message.equals("USER_DISABLED")) {
                         System.out.println("User has been disabled by administrator.");
+                        Toaster.spawnToast("User has been disabled.", "Please, try again!", "error");
                         // Same thing for notifs here
                     } else {
                         // If the error message from API is unrecognized, just display it
                         // with the ugly format as is
                         System.out.println(response.error.message);
+                        Toaster.spawnToast("ERROR", response.error.message, "error");
                         // Display a notif still so user can be aware
                     }
                 });
