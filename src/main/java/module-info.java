@@ -14,6 +14,7 @@ module com.hiraya.pizzapos {
     opens com.hiraya.pizzapos.login to javafx.fxml;
     opens com.hiraya.pizzapos.register to javafx.fxml;
     opens com.hiraya.pizzapos.productSettings to javafx.fxml;
+    opens com.hiraya.pizzapos.transactionHistory to javafx.fxml;
     opens com.hiraya.pizzapos.helpers to com.fasterxml.jackson.databind;
     opens com.hiraya.pizzapos.httpReqRes to com.fasterxml.jackson.databind;
     exports com.hiraya.pizzapos.productSettings;
@@ -22,5 +23,6 @@ module com.hiraya.pizzapos {
     exports com.hiraya.pizzapos.login;
     exports com.hiraya.pizzapos.register;
     exports com.hiraya.pizzapos.takeOrders;
+    exports com.hiraya.pizzapos.transactionHistory;
     exports com.hiraya.pizzapos;
 }

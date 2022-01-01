@@ -72,8 +72,8 @@
                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="30.0" minHeight="0.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="30.0" minHeight="0.0" vgrow="NEVER" />
                     </rowConstraints>
                      <children>
                      <!-- Dynamic data here -->
@@ -166,7 +166,7 @@
                         <Insets right="35.0" />
                      </padding>
                   </Label>
-                  <Button mnemonicParsing="false" text="Confirm Order" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#confirmOrder" text="Confirm Order" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -184,7 +184,17 @@
          <children>
             <HBox fx:id="categoryContainer" maxHeight="122.0">
                <children>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category">
+                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#selectAllCategory" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="All">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/border-all-solid.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <!-- Dynamic data after all categories button -->
+                  <!-- <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category">
                      <graphic>
                         <ImageView fitHeight="91.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -222,7 +232,7 @@
                      <padding>
                         <Insets top="10.0" />
                      </padding>
-                  </Button>
+                  </Button> -->
                </children>
                <VBox.margin>
                   <Insets top="5.0" />
