@@ -1,10 +1,10 @@
-:root {
-   /*.root is inherited to all components*/
-   font-family: "Poppins";
+.root * {
+    /*.root is inherited to all components*/
+    -fx-font-family: "Poppins";
 }
 
-.button {
-    -fx-border-radius: 0px;
+.button :hover {
+    -fx-font-family: "Poppins";
 }
 
 .nav-button {

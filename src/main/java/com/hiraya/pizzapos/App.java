@@ -8,6 +8,9 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * JavaFX App
@@ -19,6 +22,9 @@ public class App extends Application {
 
     // This loggedInUser has the same lifetime as the app itself
     public static CurrentUser user = new CurrentUser();
+    // Global executor service, so we don't need to reserve new separate
+    // threads each controller. 
+    public static ExecutorService bgThreads = Executors.newFixedThreadPool(3);
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -34,12 +40,21 @@ public class App extends Application {
         App.primaryStage.show();
     }
 
+    @Override
+    public void stop() throws java.lang.Exception {
+        super.stop();
+        App.primaryStage.close();
+        // After app main thread closes, we also close the background threads
+        // so we free system resources (ram, cpu, etc)
+        App.bgThreads.awaitTermination(1, TimeUnit.SECONDS);  // Ask the bgThreads politely to finish their work in 1 second
+        App.bgThreads.shutdown(); // Shutdown the bgThreads by force (respectfully)
+    }
+
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-//        System.out.println(App.class.getResource("views/" + fxml + ".fxml"));
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("views/" + fxml + ".fxml"));
         return fxmlLoader.load();
     }
@@ -50,7 +65,6 @@ public class App extends Application {
 
     public static void main(String[] args) {
         // Load fonts
-        System.out.println(App.class);
         Font.loadFont(App.class.getResourceAsStream("fonts/Poppins-Regular.ttf"), 16);
         // === 
         launch();

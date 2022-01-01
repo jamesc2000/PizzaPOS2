@@ -11,3 +11,34 @@
 .takeorder:pressed {
     -fx-background-color: #ca5736;
 }
+
+.borderless-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-unit-increment: 3;
+    -fx-block-increment: 30;
+}
+
+.total-container {
+    -fx-background-color: #eebb32;
+    -fx-background-radius: 25px;
+}
+
+.summary-container-lower {
+    -fx-background-color: #916e4e;
+    -fx-background-radius: 0px 0px 25px 25px;
+}
+
+.summary-container-grid {
+    -fx-background-color: #916e4e;
+    -fx-font-size: 14px;
+}
+
+.summary-container-grid .label {
+    -fx-text-fill: white;
+}
+
+.orderRow {
+    -fx-background-color: #916e4e;
+    -fx-color: white;
+    -fx-font-size: 14px;
+}

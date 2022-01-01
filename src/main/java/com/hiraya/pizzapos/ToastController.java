@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.fxml.FXML;
 
 public class ToastController implements Initializable {
@@ -21,8 +22,9 @@ public class ToastController implements Initializable {
         this.tempTitle = title;
     }
 
-    public void test() {
-        System.out.println("controller working");
+    public void close() {
+        Stage toast = (Stage)this.titleText.getScene().getWindow();
+        toast.close();
     }
 
     @Override

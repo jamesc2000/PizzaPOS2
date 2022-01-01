@@ -11,8 +11,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 import javafx.fxml.Initializable;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 
 public class LoginController implements Initializable {
@@ -25,6 +31,8 @@ public class LoginController implements Initializable {
     private TextField emailField;  // See the FXML file in scene builder and then on the
     @FXML                      // right side under Code, we can see that the ids for
     private TextField passwordField; // these fields are "emailField" and "passwordField"
+    @FXML
+    private ProgressIndicator loadingSpinner;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -38,53 +46,74 @@ public class LoginController implements Initializable {
 
     @FXML
     public void login() throws IOException, InterruptedException {
+        loadingSpinner.setVisible(true);
         // When login is clicked, store the data to the model
         model.setEmail(emailField.getText());
         model.setPassword(passwordField.getText());
 
-        // Send the email and password to firebase, then firebase is
+        // Send the email and password asynchronously to firebase, then firebase is
         // responsible for verifying credentials, not us
-        LoginResponse response = model.sendToFirebase();
-        if (Objects.isNull(response.error)) {
-            // If no errors, proceed with handshake, exchange login refreshToken
-            // for accessTokens and idTokens
-            SendRefreshTokenRequest request = new SendRefreshTokenRequest();
+        Future<String> task = App.bgThreads.submit(() -> {
+            LoginResponse response = model.sendToFirebase();
+            if (Objects.isNull(response.error)) {
+                // If no errors, proceed with handshake, exchange login refreshToken
+                // for accessTokens and idTokens
+                SendRefreshTokenRequest request = new SendRefreshTokenRequest();
 
-            request.refresh_token = response.refreshToken;
-            SendRefreshTokenResponse finalAuthData = RestAPIHelper.sendRToken(request);
+                request.refresh_token = response.refreshToken;
+                SendRefreshTokenResponse finalAuthData = RestAPIHelper.sendRToken(request);
 
-            // After the handshake is complete, put the tokens to the actual User
-            if (!Objects.isNull(finalAuthData.access_token) && !Objects.isNull(finalAuthData.refresh_token)) {
-                App.user.setTokens(
-                    finalAuthData.refresh_token,
-                    finalAuthData.id_token,
-                    finalAuthData.access_token
-                );
-                System.out.println("Log in successful");
-                // Display toast notif here saying "Log in successful"
-                Toaster.spawnToast(App.getPrimaryStage(), "Login successful", "Welcome to PizzaPOS", CONSTANTS.toastDelay, CONSTANTS.fadeInDelay, CONSTANTS.fadeOutDelay);
-                App.setRoot("takeOrders");
-            }
-        } else {
-            // If there are errors, show a notification to the user containing the message
-            // Common error codes for firebase auth API found here:
-            // https://firebase.google.com/docs/reference/rest/auth/#section-sign-in-email-password
-            if (response.error.message.equals("EMAIL_NOT_FOUND")) {
-                System.out.println("Email not registered!");
-                // Display toast notif saying "Email not registered"
-            } else if (response.error.message.equals("INVALID_PASSWORD")) {
-                System.out.println("Invalid password!");
-                // Same thing for notifs here
-            } else if (response.error.message.equals("USER_DISABLED")) {
-                System.out.println("User has been disabled by administrator.");
-                // Same thing for notifs here
+                // After the handshake is complete, put the tokens to the actual User
+                if (!Objects.isNull(finalAuthData.access_token) && !Objects.isNull(finalAuthData.refresh_token)) {
+                    Platform.runLater(() -> {
+                        App.user.setTokens(
+                            finalAuthData.refresh_token,
+                            finalAuthData.id_token,
+                            finalAuthData.access_token,
+                            response.localId
+                        );
+                        System.out.println("Log in successful");
+                        // Display toast notif here saying "Log in successful"
+                        Toaster.spawnToast("Login successful", "Welcome to PizzaPOS", "success");
+                        try {
+                            App.setRoot("takeOrders");
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    });
+                }
             } else {
-                // If the error message from API is unrecognized, just display it
-                // with the ugly format as is
-                System.out.println(response.error.message);
-                // Display a notif still so user can be aware
+                // If there are errors, show a notification to the user containing the message
+                // Common error codes for firebase auth API found here:
+                // https://firebase.google.com/docs/reference/rest/auth/#section-sign-in-email-password
+                Platform.runLater(() -> {
+                    if (response.error.message.equals("EMAIL_NOT_FOUND")) {
+                        System.out.println("Email not registered!");
+                        Toaster.spawnToast("Email not registered!", "Please, try again!", "error");
+                        // Display toast notif here saying "Email not registered"
+                    } else if (response.error.message.equals("INVALID_PASSWORD")) {
+                        System.out.println("Invalid password!");
+                        Toaster.spawnToast("Invalid Password!", "Please, try again!", "error");
+                        // Same thing for notifs here
+                    } else if (response.error.message.equals("USER_DISABLED")) {
+                        System.out.println("User has been disabled by administrator.");
+                        Toaster.spawnToast("User has been disabled.", "Please, try again!", "error");
+                        // Same thing for notifs here
+                    } else {
+                        // If the error message from API is unrecognized, just display it
+                        // with the ugly format as is
+                        System.out.println(response.error.message);
+                        Toaster.spawnToast("ERROR", response.error.message, "error");
+                        // Display a notif still so user can be aware
+                    }
+                });
             }
-        }
+            Platform.runLater(() -> {
+                loadingSpinner.setVisible(false);
+            });
+            return "Done";
+        });
     }
     
     @FXML

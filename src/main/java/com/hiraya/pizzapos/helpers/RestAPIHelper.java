@@ -1,9 +1,16 @@
 package com.hiraya.pizzapos.helpers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hiraya.pizzapos.App;
 import com.hiraya.pizzapos.httpReqRes.*;
+import com.hiraya.pizzapos.productSettings.Category;
+import com.hiraya.pizzapos.productSettings.Product;
+
+import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.io.IOException;
 import java.net.http.HttpClient;
 import java.net.http.HttpResponse;
@@ -145,5 +152,124 @@ public class RestAPIHelper {
         HttpResponse res = client.send(req, BodyHandlers.ofString());
         System.out.println(res.body().toString());
         // return jsonToSRTokenres(res.body().toString());
+    }
+    
+    public static ArrayList<Product> getProducts(String idToken) throws IOException, InterruptedException {
+        GetProductsRequest body = new GetProductsRequest();
+        System.out.println("JSON Body Firestore: ");
+        System.out.println(body.toJson());
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://firestore.googleapis.com/v1beta1/projects/pizzapos-41338/databases/(default)/documents:runQuery"))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .header("Authorization", "Bearer " + idToken)
+            .POST(BodyPublishers.ofString(body.toJson()))
+            .build();
+
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body().toString());
+        return jsonToProducts(res.body().toString());
+    }
+
+    private static ArrayList<Product> jsonToProducts(String json) {
+        GetProductsResponse[] res = {};
+        ArrayList<Product> out = new ArrayList<Product>();
+
+        try {
+            res = mapper.readValue(json, GetProductsResponse[].class);
+            if (res[0].document.name == null) return out; // Return early if retrieved firebase responded empty
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        System.out.println(res[0].document);
+        for (int i = 0; i < res.length; ++i) {
+            Product temp = new Product();
+            // temp.name = res[i].document.fields.name.stringValue;
+            // try {
+            //     temp.imageUrl = new URL(res[i].document.fields.imageUrl.stringValue);
+            // } catch (MalformedURLException e) {
+            //     temp.imageUrl = App.class.getResource("images/addProduct.JPG");
+            // }
+            try {
+                temp.setValues(
+                    res[i].document.fields.name.stringValue, 
+                    res[i].document.fields.imageUrl.stringValue, 
+                    res[i].document.fields.category.stringValue, 
+                    // res[i].document.fields.sizes.arrayValue.values,
+                    // res[i].document.fields.sizes.arrayValue.values
+                    new ArrayList<String>(),
+                    new ArrayList<Double>()
+                );
+                res[i].document.fields.sizes.arrayValue.values.forEach(size -> {
+                    temp.pushSize(size.stringValue);
+                });
+                res[i].document.fields.prices.arrayValue.values.forEach(price -> {
+                    temp.pushPrice(price.doubleValue);
+                });
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            out.add(temp);
+        }
+        return out;
+    }
+
+    public static void createCategory(NewCategoryFields fields, String idToken) throws IOException, InterruptedException {
+        FirestoreRequest<NewCategoryFields> body = new FirestoreRequest<NewCategoryFields>(fields);
+        System.out.println("JSON Body Firestore: ");
+        System.out.println(body.toJson());
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://firestore.googleapis.com/v1/projects/pizzapos-41338/databases/(default)/documents/categories/"))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .header("Authorization", "Bearer " + idToken)
+            .POST(BodyPublishers.ofString(body.toJson()))
+            .build();
+
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        // System.out.println(res.body().toString());
+        // return jsonToSRTokenres(res.body().toString());
+    }
+
+    public static ArrayList<Category> getCategories(String idToken) throws IOException, InterruptedException {
+        GetCategoriesRequest body = new GetCategoriesRequest();
+        System.out.println("JSON Body Firestore: ");
+        System.out.println(body.toJson());
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://firestore.googleapis.com/v1beta1/projects/pizzapos-41338/databases/(default)/documents:runQuery"))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .header("Authorization", "Bearer " + idToken)
+            .POST(BodyPublishers.ofString(body.toJson()))
+            .build();
+
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        // System.out.println(res.body().toString());
+        return jsonToCategory(res.body().toString());
+    }
+
+    private static ArrayList<Category> jsonToCategory(String json) {
+        GetCategoriesResponse[] res = {};
+        ArrayList<Category> out = new ArrayList<Category>();
+
+        try {
+            res = mapper.readValue(json, GetCategoriesResponse[].class);
+            if (res[0].document == null) return out; // Return early if retrieved firebase responded empty
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        System.out.println(res[0].document);
+        for (int i = 0; i < res.length; ++i) {
+            Category temp = new Category();
+            temp.name = res[i].document.fields.name.stringValue;
+            try {
+                temp.imageUrl = new URL(res[i].document.fields.imageUrl.stringValue);
+            } catch (MalformedURLException e) {
+                temp.imageUrl = App.class.getResource("images/addProduct.JPG");
+            }
+            out.add(temp);
+        }
+        return out;
     }
 }

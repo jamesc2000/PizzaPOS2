@@ -1,6 +1,11 @@
-.toastRoot {
+.toastRootSuccess {
     -fx-background-radius: 5px;
     -fx-background-color: rgba(255, 197, 1, 0.2);
+}
+
+.toastRootFailed {
+    -fx-background-radius: 5px;
+    -fx-background-color: rgb(255, 23, 0, 0.2);
 }
 
 .leftBar {
@@ -22,11 +27,11 @@
 
 .titleText {
     -fx-font-weight: bold;
-    -fx-font-size: 16px;
+    -fx-font-size: 20px;
 }
 
 .bodyText {
-
+    -fx-font-weight: bold;
 }
 
 .closeBtn {

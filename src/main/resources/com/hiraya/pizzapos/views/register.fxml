@@ -85,12 +85,17 @@
             <Image url="@../images/userProfilepic.png" />
          </image>
       </ImageView>
-      <Text layoutX="277.0" layoutY="653.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?">
+      
+            <Button fx:id="alreadyhaveanaccountButton" layoutX="265.0" layoutY="632.0" mnemonicParsing="false" onAction="#changeViewToLogin" style="-fx-background-color: transparent;" text="Already have an acoount?" underline="true">
          <font>
             <Font size="14.0" />
          </font>
-      </Text>
-      <Button layoutX="429.0" layoutY="632.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Sign in" underline="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      
+      <Button fx:id="loginButton" layoutX="429.0" layoutY="632.0" mnemonicParsing="false" onAction="#changeViewToLogin" style="-fx-background-color: transparent;" text="Sign in" underline="true">
          <font>
             <Font size="14.0" />
          </font>

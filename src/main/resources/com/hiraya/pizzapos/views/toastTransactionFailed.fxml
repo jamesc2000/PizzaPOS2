@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="371.0" styleClass="toastRootSuccess" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="371.0" styleClass="toastRootFailed" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="80.0" prefWidth="14.0" styleClass="leftBar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane prefHeight="80.0" prefWidth="14.0" style="-fx-background-color: #ca5736; -fx-background-radius: 20px;" styleClass="toastRootFailed" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <HBox layoutX="14.0" layoutY="-10.0" prefHeight="80.0" prefWidth="350.0" spacing="20.0" styleClass="hContainer" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="56.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" styleClass="img">
                <image>
-                  <Image url="@../images/toast-success.png" />
+                  <Image url="@../images/toast-fail.png" />
                </image>
             </ImageView>
             <VBox prefHeight="60.0" prefWidth="252.0" spacing="5.0" styleClass="textContainer" HBox.hgrow="ALWAYS">
