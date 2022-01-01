@@ -43,6 +43,17 @@ public class Transaction {
         this.orders.add(order);
     }
 
+    public void removeOrder(Order order) {
+        Double price = order.price;
+        Integer qty = order.quantity;
+        Boolean orderRemoved = this.orders.remove(order);
+        if (orderRemoved) {
+            System.out.println("order removed in transaction");
+            this.subtotal -= price * qty;
+            this.total = this.subtotal * (1 + this.VAT);
+        }
+    }
+
     public void applyDiscount() {
         this.discountAmt = this.subtotal * this.discountPercent;
         this.total -= this.discountAmt;

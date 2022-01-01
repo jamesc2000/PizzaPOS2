@@ -51,7 +51,7 @@ public class TakeOrdersController {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        this.displayData();
+        this.displayData("All");
         this.displayCategories();
         this.displayTransaction();
         // this.addOrder(new Order());
@@ -61,35 +61,32 @@ public class TakeOrdersController {
         App.setRoot("productSettings");
     }
 
+    public void selectAllCategory() {
+        this.displayData("All");
+    }
+
     /**
-     * Displays products and categories in the model
+     * Displays products in the model
      */
-    private void displayData() {
+    private void displayData(String filter) {
+        this.menuContainer.getChildren().clear(); // Clear displayed data first so it doesnt double up when switching categories
         FXMLLoader orderItem;
         for (int i = 0; i < this.model.getProducts().size(); ++i) {
             try {
-                orderItem = LoadFXMLHelper.loadFXML("takeOrders.order");
-                // System.out.println(this.model.getProducts().get(i).getName());
-                this.productControllers.add(new MenuOrderController(this.model.getProducts().get(i), this));
-                System.out.println("Controller: " + this.productControllers.get(i));
-                orderItem.setController(this.productControllers.get(i));
-                // System.out.println("11111");
-                this.menuContainer.getChildren().add(orderItem.load());
+                if (filter.equals("All") || filter.equals(this.model.getProducts().get(i).getCategory())) {
+                    orderItem = LoadFXMLHelper.loadFXML("takeOrders.order");
+                    // System.out.println(this.model.getProducts().get(i).getName());
+                    this.productControllers.add(new MenuOrderController(this.model.getProducts().get(i), this));
+                    System.out.println("Controller: " + this.productControllers.get(i));
+                    orderItem.setController(this.productControllers.get(i));
+                    // System.out.println("11111");
+                    this.menuContainer.getChildren().add(orderItem.load());
+                }
             } catch (Exception e) {
                 //TODO: handle exception
                 e.printStackTrace();
             }
         }
-    }
-
-    private Set<String> groupCategories() {
-        var products = this.model.getProducts();
-        Set<String> categories = new HashSet<String>();
-        products.forEach(product -> {
-            categories.add(product.getCategory());
-        });
-        System.out.println(categories);
-        return categories;
     }
 
     private void displayCategories() {
@@ -111,6 +108,10 @@ public class TakeOrdersController {
             catBtn.setPrefSize(195.0, 155.0);
             catBtn.setStyle("-fx-background-radius: 15px;");
             catBtn.getStyleClass().add("takeorder");
+            catBtn.setOnAction(e -> {
+                System.out.println(catBtn.getText());
+                this.displayData(catBtn.getText());
+            });
 
             categoryContainer.getChildren().add(catBtn);
         });
@@ -134,9 +135,8 @@ public class TakeOrdersController {
             ++i;
         }
 
-        this.model.appendOrder(order);
         final int currRow = this.model.getOrders().size();
-        final Node[] row = {
+        Node[] row = {
             new Label(order.name),
             new Label(order.size),
             new Spinner<Integer>(1, 100, 1),
@@ -147,6 +147,18 @@ public class TakeOrdersController {
             GridPane.setColumnIndex(row[j], j);
             GridPane.setRowIndex(row[j], currRow);
         }
+
+        ((Button)row[4]).setOnAction(e -> {
+            Order orderRef = order;
+            for (int rowElems = 0; rowElems < row.length; ++rowElems) {
+                this.orderSummary.getChildren().remove(row[rowElems]);
+            }
+            this.model.removeOrder(orderRef);
+            this.model.currTransaction.removeOrder(orderRef);
+            this.displayTransaction();
+        });
+
+        this.model.appendOrder(order);
         this.model.currTransaction.addOrder(order);
         this.orderSummary.getChildren().addAll(row);
         this.displayTransaction();
