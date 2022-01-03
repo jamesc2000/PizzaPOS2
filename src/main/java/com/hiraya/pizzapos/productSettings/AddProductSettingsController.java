@@ -23,13 +23,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class AddProductSettingsController implements Initializable {
     private Product model = new Product();
-    private URL imageUrl = App.class.getResource("images/addProduct.JPG");
+    private final URL defaultImageUrl = App.class.getResource("images/addProduct.JPG");
+    private String imageUrl;
 
     @FXML
     CheckBox cb1, cb2, cb3;
@@ -38,7 +41,9 @@ public class AddProductSettingsController implements Initializable {
     @FXML
     TextField price1, price2, price3;
     @FXML
-    TextField nameField;
+    TextField nameField;;
+    @FXML
+    ImageView productImage;
     @FXML
     ComboBox<String> typeField;
 
@@ -47,10 +52,29 @@ public class AddProductSettingsController implements Initializable {
         // TODO Auto-generated method stub
         // System.out.println("add products");
         this.updateCategoriesSelection();
+        if (this.imageUrl == null) {
+            this.productImage.setImage(new Image(defaultImageUrl.toExternalForm()));
+        } else {
+            this.productImage.setImage(new Image(imageUrl));
+        }
     }
     
-    public void switchToProductSettings() throws IOException {
-        App.setRoot("productSettings");
+    public void switchToProductSettings() {
+        try {
+            App.setRoot("productSettings");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void switchToAccountSettings() {
+        try {
+            App.setRoot("accountSettings");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
     
     public void onCheckboxChange(Event e) {
@@ -74,6 +98,9 @@ public class AddProductSettingsController implements Initializable {
         if (this.typeField.getValue() == null) {
             Toaster.spawnToast("Category is required", "", "error");
         }
+        if (this.imageUrl == null) {
+            this.imageUrl = "";
+        }
         ArrayList<String> sizes = new ArrayList<String>(3);
         ArrayList<Double> prices = new ArrayList<Double>(3);
         TextField[] sizeFields = {var1, var2, var3};
@@ -91,35 +118,31 @@ public class AddProductSettingsController implements Initializable {
                 prices.add(Double.valueOf(priceFields[i].getText()));
             }
         }
-        try {
-            this.model.setValues(
-                nameField.getText(),
-                this.imageUrl.toExternalForm(),
-                typeField.getValue().toString(), 
-                sizes,
-                prices
-            );
+        this.model.setValues(
+            "temp",
+            nameField.getText(),
+            this.imageUrl,
+            typeField.getValue().toString(), 
+            sizes,
+            prices
+        );
 
-            Future<String> send = App.bgThreads.submit(() -> {
-                try {
-                    this.model.sendToFirestore();
-                    Platform.runLater(() -> {
-                        Toaster.spawnToast("Succes", "Created " + this.model.getName(), "success");
-                    });
-                } catch (Exception e) {
-                    //TODO: handle exception
-                    Platform.runLater(() -> {
-                        Toaster.spawnToast("Error in creating new product.", e.getCause().toString(), "Error");
-                    });
-                    e.printStackTrace();
-                }
-                return "Done";
-            });
-        } catch (MalformedURLException e) {
-            //TODO: handle exception
-            Toaster.spawnToast("Invalid image URL.", this.imageUrl.toExternalForm() + " is not a valid URL.", "error");
-            e.printStackTrace();
-        }
+        Future<String> send = App.bgThreads.submit(() -> {
+            try {
+                this.model.sendToFirestore();
+                Platform.runLater(() -> {
+                    Toaster.spawnToast("Success", "Created " + this.model.getName(), "success");
+                    this.switchToProductSettings();
+                });
+            } catch (Exception e) {
+                //TODO: handle exception
+                Platform.runLater(() -> {
+                    Toaster.spawnToast("Error in creating new product.", e.getMessage().toString(), "Error");
+                });
+                e.printStackTrace();
+            }
+            return "Done";
+        });
     }
 
     public void addProductPopup() {

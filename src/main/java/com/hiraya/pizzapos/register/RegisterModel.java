@@ -5,6 +5,7 @@ import com.hiraya.pizzapos.helpers.RestAPIHelper;
 import com.hiraya.pizzapos.httpReqRes.BaseResponse;
 import com.hiraya.pizzapos.httpReqRes.FirebaseAuthRegisterRequest;
 import com.hiraya.pizzapos.httpReqRes.FirebaseAuthRegisterResponse;
+import com.hiraya.pizzapos.httpReqRes.UserFields;
 import com.hiraya.pizzapos.httpReqRes.UserProfileRequest;
 import com.hiraya.pizzapos.httpReqRes.UserProfileResponse;
 
@@ -83,6 +84,9 @@ public class RegisterModel {
                 );
                 profile = RestAPIHelper.updateProfile(req2);
                 System.out.println("displayName: " + profile.displayName);
+
+                UserFields fields = new UserFields(profile.displayName, profile.email, "", profile.localId);
+                RestAPIHelper.createUser(fields, register.idToken, register.localId);
             } else {
                 profile.error = register.error;
             }

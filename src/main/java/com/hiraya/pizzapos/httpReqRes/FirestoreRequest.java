@@ -12,4 +12,6 @@ public class FirestoreRequest<Fields> extends BaseRequest {
     public FirestoreRequest(Fields fields) {
         this.fields = fields;
     }
+
+    public FirestoreRequest() {}
 }

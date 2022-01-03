@@ -94,7 +94,6 @@ public class TakeOrdersController {
     private void displayCategories() {
         var categories = this.model.getCategories();
         categories.forEach(category -> {
-            // TODO: Graphic/img ng category
             ImageView graphic = new ImageView();
             if (category.imageUrl != null) {
                 graphic.setImage(new Image(category.imageUrl.toExternalForm()));
