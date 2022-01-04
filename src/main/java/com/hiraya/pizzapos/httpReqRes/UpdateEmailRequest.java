@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 public class UpdateEmailRequest extends BaseRequest {
     public String idToken;
     public String email;
-    public final Boolean returnSecureToken = false;
+    public Boolean returnSecureToken = true;
 
     public UpdateEmailRequest() {}
 

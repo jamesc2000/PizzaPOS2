@@ -1,11 +1,11 @@
 .toastRootSuccess {
     -fx-background-radius: 5px;
-    -fx-background-color: rgba(255, 197, 1, 0.2);
+    -fx-background-color: rgba(255, 197, 1, 0.8);
 }
 
 .toastRootFailed {
     -fx-background-radius: 5px;
-    -fx-background-color: rgb(255, 23, 0, 0.2);
+    -fx-background-color: rgb(255, 23, 0, 0.6);
 }
 
 .leftBar {

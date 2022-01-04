@@ -6,6 +6,7 @@ import java.net.URL;
 import com.hiraya.pizzapos.App;
 import com.hiraya.pizzapos.Toaster;
 import com.hiraya.pizzapos.helpers.RestAPIHelper;
+import com.hiraya.pizzapos.httpReqRes.SendRefreshTokenRequest;
 import com.hiraya.pizzapos.httpReqRes.UpdateEmailRequest;
 import com.hiraya.pizzapos.httpReqRes.UserFields;
 import com.hiraya.pizzapos.httpReqRes.UserProfileRequest;
@@ -70,7 +71,14 @@ public class AccountSettingsModel {
         App.bgThreads.submit(() -> {
             try {
                 var res = RestAPIHelper.updateProfile(req);
-                RestAPIHelper.updateEmail(req2);
+                var emailRes = RestAPIHelper.updateEmail(req2);
+                // updateEmail resets user's tokens, good thing we
+                // requested new tokens via returnSecureToken = true on the
+                // update email request
+                SendRefreshTokenRequest renewReq = new SendRefreshTokenRequest();
+                renewReq.refresh_token = emailRes.refreshToken;
+                var renew = RestAPIHelper.sendRToken(renewReq);
+                App.user.setTokens(renew.refresh_token, renew.id_token, renew.access_token, App.user.getLocalId());
                 RestAPIHelper.updateUser(fields, App.user.getIdToken());
                 if (res.error == null) {
                     Platform.runLater(() -> {
@@ -80,6 +88,7 @@ public class AccountSettingsModel {
                 } else {
                     Platform.runLater(() -> {
                         System.out.println("Update failed");
+                        System.out.println(res.error.code.toString());
                         Toaster.spawnToast("Profile not updated", res.error.message, "error");
                     });
                 }

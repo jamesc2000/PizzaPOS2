@@ -75,14 +75,17 @@ public class AccountSettingsController implements Initializable {
                     FirebaseAuthRegisterResponse res = RestAPIHelper.changePassword(body);
                     if (res.error == null) {
                         Platform.runLater(() -> {
-                            Toaster.spawnToast("Password changed", "", "success");
-                            App.user.setTokens(
-                                res.refreshToken, 
-                                res.idToken, 
-                                null, 
-                                res.localId);
+                            Toaster.spawnToast("Password changed", "You will be logged off. Please re-login with your new password.", "success");
                         });
-                        //TODO: Just some testing if tokens are reset properly on pw change
+                        Thread.sleep(5*1000); // 5000 ms or 5 seconds
+                        Platform.runLater(() -> {
+                            try {
+                                this.logout();
+                            } catch (IOException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                        });
                     } else {
                         Platform.runLater(() -> {
                             Toaster.spawnToast("Error", res.error.message, "error");
