@@ -26,17 +26,20 @@ public class UserFields {
     public FieldValue name;
     public FieldValue email;
     public FieldValue contact;
+    public FieldValue imageUrl;
     public FieldValue ownedBy;
 
     public UserFields(
         String name,
         String email,
         String contact,
+        String imageUrl,
         String localId
     ) {
         this.name = new FieldValue(name);
         this.email = new FieldValue(email);
         this.contact = new FieldValue(contact);
+        this.imageUrl = new FieldValue(imageUrl);
         if (App.user.getLocalId() == null) {
             this.ownedBy = new FieldValue(localId);
         } else {

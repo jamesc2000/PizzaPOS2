@@ -11,6 +11,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import com.hiraya.pizzapos.App;
+import com.hiraya.pizzapos.ImageSelector;
+import com.hiraya.pizzapos.Router;
 import com.hiraya.pizzapos.Toaster;
 import com.hiraya.pizzapos.helpers.RestAPIHelper;
 
@@ -29,7 +31,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class AddProductSettingsController implements Initializable {
+public class AddProductSettingsController extends Router implements Initializable {
     private Product model = new Product();
     private final URL defaultImageUrl = App.class.getResource("images/addProduct.JPG");
     private String imageUrl;
@@ -46,35 +48,20 @@ public class AddProductSettingsController implements Initializable {
     ImageView productImage;
     @FXML
     ComboBox<String> typeField;
+    @FXML
+    ImageView profilePic;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         // TODO Auto-generated method stub
         // System.out.println("add products");
         this.updateCategoriesSelection();
-        if (this.imageUrl == null) {
-            this.productImage.setImage(new Image(defaultImageUrl.toExternalForm()));
-        } else {
-            this.productImage.setImage(new Image(imageUrl));
-        }
-    }
-    
-    public void switchToProductSettings() {
-        try {
-            App.setRoot("productSettings");
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        this.displayImage();
+        this.profilePic.setImage(new Image(App.user.profilePic));
     }
 
-    public void switchToAccountSettings() {
-        try {
-            App.setRoot("accountSettings");
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+    public AddProductSettingsController() {
+
     }
     
     public void onCheckboxChange(Event e) {
@@ -132,7 +119,7 @@ public class AddProductSettingsController implements Initializable {
                 this.model.sendToFirestore();
                 Platform.runLater(() -> {
                     Toaster.spawnToast("Success", "Created " + this.model.getName(), "success");
-                    this.switchToProductSettings();
+                    super.switchToProductSettings();
                 });
             } catch (Exception e) {
                 //TODO: handle exception
@@ -180,5 +167,40 @@ public class AddProductSettingsController implements Initializable {
         categories.forEach(category -> {
             typeField.getItems().add(category.name);
         });
+    }
+
+    public void displayImage() {
+        if (this.imageUrl == null) {
+            this.productImage.setImage(new Image(defaultImageUrl.toExternalForm()));
+        } else {
+            this.productImage.setImage(new Image(imageUrl));
+        }
+    }
+
+    public void setImagePopup() {
+        ImageSelector<AddProductSettingsController> sel = new ImageSelector<>(this);
+        Stage popup = new Stage();
+        popup.initOwner(App.getPrimaryStage());
+        popup.setResizable(false);
+        popup.initStyle(StageStyle.TRANSPARENT);
+
+        // System.out.println(App.class.getResource("views/uploadImage.fxml").toExternalForm());
+        FXMLLoader fxml = new FXMLLoader(App.class.getResource("views/uploadImage.fxml"));
+        fxml.setController(sel);
+        Scene scene;
+        try {
+            scene = new Scene(fxml.load());
+            scene.setFill(Color.TRANSPARENT);
+            popup.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toaster.spawnToast("FXML Error", e.getMessage(), "error");
+        }
+        popup.setOnHiding((event) -> {
+            System.out.println("Closed");
+            this.imageUrl = super.getImageFromPopup();
+            this.displayImage();
+        });
+        popup.show();
     }
 }

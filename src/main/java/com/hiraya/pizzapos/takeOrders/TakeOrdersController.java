@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.hiraya.pizzapos.App;
+import com.hiraya.pizzapos.Router;
 import com.hiraya.pizzapos.Toaster;
 import com.hiraya.pizzapos.helpers.LoadFXMLHelper;
 import com.hiraya.pizzapos.helpers.RestAPIHelper;
@@ -34,7 +35,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
     
-public class TakeOrdersController {
+public class TakeOrdersController extends Router {
     TakeOrdersModel model = new TakeOrdersModel();
 
     ArrayList<MenuOrderController> productControllers = new ArrayList<MenuOrderController>();
@@ -45,6 +46,8 @@ public class TakeOrdersController {
     private HBox categoryContainer;
     @FXML
     private GridPane orderSummary;
+    @FXML
+    private ImageView profilePic;
 
     @FXML
     private void initialize() {
@@ -61,10 +64,8 @@ public class TakeOrdersController {
         this.displayCategories();
         this.displayTransaction();
         // this.addOrder(new Order());
-    }
-
-    public void switchToTemporary() throws IOException {
-        App.setRoot("productSettings");
+        System.out.println(App.user.profilePic);
+        this.profilePic.setImage(new Image(App.user.profilePic));
     }
 
     public void selectAllCategory() {
@@ -247,14 +248,5 @@ public class TakeOrdersController {
 
     public void clearOrderSummaryView() {
         this.orderSummary.getChildren().clear();
-    }
-
-    public void switchToTransactionHistory() {
-        try {
-            App.setRoot("transactionHistory");
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
     }
 }

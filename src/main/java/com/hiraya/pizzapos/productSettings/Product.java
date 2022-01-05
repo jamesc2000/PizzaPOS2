@@ -30,6 +30,15 @@ public class Product {
             return this.imageUrl;
         }
     }
+    public void setImage(String link) {
+        try {
+            this.imageUrl = new URL(link);
+        } catch (MalformedURLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            this.imageUrl = null;
+        }
+    }
     public String getCategory() { return this.category; }
     public String getSize() { return this.size; }
 

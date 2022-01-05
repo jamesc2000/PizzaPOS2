@@ -35,7 +35,7 @@
                 <RowConstraints maxHeight="140.0" minHeight="140.0" prefHeight="140.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ImageView fitHeight="92.0" fitWidth="92.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <ImageView fx:id="profilePic" fitHeight="92.0" fitWidth="92.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <image>
                         <Image url="@../images/userProfilepic.png" />
                      </image>
@@ -59,7 +59,7 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button mnemonicParsing="false" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#switchToProductSettings" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="110.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" styleClass="takeorder">
                            <image>

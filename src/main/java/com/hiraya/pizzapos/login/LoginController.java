@@ -7,6 +7,8 @@ import com.hiraya.pizzapos.helpers.RestAPIHelper;
 import com.hiraya.pizzapos.httpReqRes.LoginResponse;
 import com.hiraya.pizzapos.httpReqRes.SendRefreshTokenRequest;
 import com.hiraya.pizzapos.httpReqRes.SendRefreshTokenResponse;
+import com.hiraya.pizzapos.httpReqRes.UserFields;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -72,6 +74,13 @@ public class LoginController implements Initializable {
                             finalAuthData.access_token,
                             response.localId
                         );
+                        try {
+                            var userData = RestAPIHelper.getUserData();
+                            App.user.profilePic = userData.imageUrl.stringValue;
+                        } catch (IOException | InterruptedException e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        }
                         System.out.println("Log in successful");
                         // Display toast notif here saying "Log in successful"
                         Toaster.spawnToast("Login successful", "Welcome to PizzaPOS", "success");
@@ -83,6 +92,7 @@ public class LoginController implements Initializable {
                         }
                     });
                 }
+                
             } else {
                 // If there are errors, show a notification to the user containing the message
                 // Common error codes for firebase auth API found here:

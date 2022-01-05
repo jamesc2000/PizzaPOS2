@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.hiraya.pizzapos.App;
+import com.hiraya.pizzapos.Router;
 import com.hiraya.pizzapos.helpers.LoadFXMLHelper;
 import com.hiraya.pizzapos.helpers.RestAPIHelper;
 
@@ -19,7 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 
-public class ProductSettingsController implements Initializable {
+public class ProductSettingsController extends Router implements Initializable {
     ProductSettingsModel model = new ProductSettingsModel();
     ArrayList<ProductRowController> productControllers = new ArrayList<ProductRowController>(); // Each row in the table has their own controller
 
@@ -29,6 +30,8 @@ public class ProductSettingsController implements Initializable {
     VBox table;
     @FXML
     FlowPane categoryContainer;
+    @FXML
+    ImageView profilePic;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -42,23 +45,7 @@ public class ProductSettingsController implements Initializable {
         }
         this.displayProducts("All");
         this.displayCategories();
-    }
-
-    public void switchToAddProduct() throws IOException {
-        App.setRoot("addProductsettings");
-    }
-
-    public void switchToAccountSettings() {
-        try {
-            App.setRoot("accountSettings");
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-
-    public void switchToTakeOrders() throws IOException {
-        App.setRoot("takeOrders");
+        this.profilePic.setImage(new Image(App.user.profilePic));
     }
 
     public void displayProducts() {

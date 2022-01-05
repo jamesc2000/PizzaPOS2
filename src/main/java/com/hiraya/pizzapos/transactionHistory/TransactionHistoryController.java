@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.hiraya.pizzapos.App;
+import com.hiraya.pizzapos.Router;
 import com.hiraya.pizzapos.Toaster;
 import com.hiraya.pizzapos.helpers.RestAPIHelper;
 
@@ -20,9 +21,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
-public class TransactionHistoryController implements Initializable {
+public class TransactionHistoryController extends Router implements Initializable {
     ArrayList<Transaction> transactions;
     final private DecimalFormat formatter = new DecimalFormat("₱ #0.00");
 
@@ -30,6 +33,8 @@ public class TransactionHistoryController implements Initializable {
     GridPane table;
     @FXML
     DatePicker picker;
+    @FXML
+    ImageView profilePic;
 
     LocalDate selectedDate;
 
@@ -50,6 +55,7 @@ public class TransactionHistoryController implements Initializable {
         });
 
         this.displayData();
+        this.profilePic.setImage(new Image(App.user.profilePic));
     }
 
     private void sortData() {
@@ -95,15 +101,6 @@ public class TransactionHistoryController implements Initializable {
                 this.table.getChildren().addAll(row);
                 rowCounter++;
             }
-        }
-    }
-
-    public void switchToTakeOrders() {
-        try {
-            App.setRoot("takeOrders");
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         }
     }
 }

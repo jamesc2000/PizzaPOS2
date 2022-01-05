@@ -62,14 +62,22 @@ public class AccountSettingsModel {
             App.user.getIdToken(),
             this.email
         );
+        String tempImg;
+        if (this.imageUrl == null) {
+            tempImg = "";
+        } else {
+            tempImg = this.imageUrl.toExternalForm();
+        }
         UserFields fields = new UserFields(
             this.displayName,
             this.email,
             this.contactNumber,
+            tempImg,
             App.user.getLocalId()
         );
         App.bgThreads.submit(() -> {
             try {
+                RestAPIHelper.updateUser(fields, App.user.getIdToken());
                 var res = RestAPIHelper.updateProfile(req);
                 var emailRes = RestAPIHelper.updateEmail(req2);
                 // updateEmail resets user's tokens, good thing we
@@ -79,11 +87,10 @@ public class AccountSettingsModel {
                 renewReq.refresh_token = emailRes.refreshToken;
                 var renew = RestAPIHelper.sendRToken(renewReq);
                 App.user.setTokens(renew.refresh_token, renew.id_token, renew.access_token, App.user.getLocalId());
-                RestAPIHelper.updateUser(fields, App.user.getIdToken());
                 if (res.error == null) {
                     Platform.runLater(() -> {
                         System.out.println("Update success");
-                        Toaster.spawnToast("Profile updated.", "", "success");
+                        Toaster.spawnToast("Profile updated.", "You will be logged out in 5s. Please relogin", "success");
                     });
                 } else {
                     Platform.runLater(() -> {

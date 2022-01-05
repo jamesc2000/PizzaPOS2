@@ -38,7 +38,7 @@
                 <RowConstraints maxHeight="140.0" minHeight="140.0" prefHeight="140.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ImageView fitHeight="92.0" fitWidth="92.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <ImageView fx:id="profilePic" fitHeight="92.0" fitWidth="92.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <image>
                         <Image url="@../images/userProfilepic.png" />
                      </image>
@@ -46,7 +46,7 @@
                         <Insets />
                      </GridPane.margin>
                   </ImageView>
-                  <Button id="takeorder" mnemonicParsing="false" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Button id="takeorder" mnemonicParsing="false" onAction="#switchToTransactionHistory" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="110.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" styleClass="takeorder">
                            <image>
@@ -105,7 +105,7 @@
             </AnchorPane>
             <HBox prefHeight="50.0" stylesheets="@../styles/productSettings.css">
                <children>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Product Settings" textFill="#eebb32">
+                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#switchToProductSettings" prefHeight="50.0" prefWidth="200.0" text="Product Settings" textFill="#eebb32">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
@@ -117,7 +117,7 @@
                         <String fx:value="buttoncurve" />
                      </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Add Product" textFill="#eebb32">
+                  <Button mnemonicParsing="false" onAction="#switchToAddProduct" prefHeight="50.0" prefWidth="200.0" text="Add Product" textFill="#eebb32">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
@@ -221,12 +221,12 @@
                               </Text>
                            </children>
                         </GridPane>
-                        <ImageView fitHeight="173.0" fitWidth="168.0" layoutX="131.0" layoutY="15.0">
+                        <ImageView fx:id="userImage" fitHeight="173.0" fitWidth="168.0" layoutX="131.0" layoutY="15.0">
                            <image>
                               <Image url="@../images/userProfilepic.png" />
                            </image>
                         </ImageView>
-                        <Button id="editButton" layoutX="98.0" layoutY="194.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="241.0" style="-fx-background-color: #eebb32; -fx-background-radius: 10;" styleClass="secondbutton" text="Upload New Profile Picture" textAlignment="CENTER">
+                        <Button id="editButton" layoutX="98.0" layoutY="194.0" mnemonicParsing="false" onAction="#profileImagePopup" prefHeight="36.0" prefWidth="241.0" style="-fx-background-color: #eebb32; -fx-background-radius: 10;" styleClass="secondbutton" text="Upload New Profile Picture" textAlignment="CENTER">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
