@@ -8,6 +8,11 @@
     -fx-background-color: rgb(255, 23, 0, 0.6);
 }
 
+.toastRootFailed * {
+    -fx-text-fill: white;
+    -fx-fill: white;
+}
+
 .leftBar {
     -fx-background-color: #FFC501;
     -fx-background-radius: 20px;

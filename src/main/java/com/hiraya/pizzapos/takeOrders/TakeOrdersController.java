@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
@@ -29,6 +30,9 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
     
 public class TakeOrdersController {
     TakeOrdersModel model = new TakeOrdersModel();
@@ -202,11 +206,55 @@ public class TakeOrdersController {
     }
 
     public void confirmOrder() {
-        App.bgThreads.submit(() -> {
-            this.model.currTransaction.checkout(App.user.getIdToken());
-            Platform.runLater(() -> {
-                Toaster.spawnToast("Success? Maybe", "TODO: Result handling for checkout", "success");
-            });
+        Stage popup = new Stage();
+        popup.initOwner(App.getPrimaryStage());
+        popup.setResizable(false);
+        popup.initStyle(StageStyle.TRANSPARENT);
+
+        FXMLLoader fxml = new FXMLLoader(App.class.getResource("views/paymentInfo.fxml"));
+        fxml.setController(new ConfirmOrderPopupController(this));
+        Scene scene;
+        try {
+            scene = new Scene(fxml.load());
+            scene.setFill(Color.TRANSPARENT);
+            popup.setScene(scene);
+        } catch (Exception e) {
+            //TODO: handle exception
+            e.printStackTrace();
+            Toaster.spawnToast("FXML Error", e.getMessage(), "error");
+        }
+        popup.setOnHiding((event) -> {
+            this.displayTransaction();
         });
+        popup.show();
+    }
+
+    public void setTransactionPayment(double paid, double change) {
+        this.model.currTransaction.setAmountPaid(paid);
+        this.model.currTransaction.setAmountChange(change);
+    }
+
+    public void toggleDiscount() {
+        Boolean isDiscounted = this.model.currTransaction.getDiscountAmt() > 0;
+
+        if (isDiscounted) {
+            this.model.currTransaction.removeDiscount();
+        } else {
+            this.model.currTransaction.applyDiscount();
+        }
+        this.displayTransaction();
+    }
+
+    public void clearOrderSummaryView() {
+        this.orderSummary.getChildren().clear();
+    }
+
+    public void switchToTransactionHistory() {
+        try {
+            App.setRoot("transactionHistory");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }

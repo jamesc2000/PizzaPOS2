@@ -1,15 +1,27 @@
 package com.hiraya.pizzapos.transactionHistory;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.FormatStyle;
+import java.time.temporal.TemporalField;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
 import com.hiraya.pizzapos.Toaster;
 import com.hiraya.pizzapos.helpers.RestAPIHelper;
 import com.hiraya.pizzapos.httpReqRes.NewTransactionFields;
+import com.hiraya.pizzapos.httpReqRes.GetTransactionsResponse.Document;
 import com.hiraya.pizzapos.takeOrders.Order;
 
 public class Transaction {
+    private Instant timestamp; // Used only in history, not in takeOrders
     private String transactionRef;
     private ArrayList<Order> orders = new ArrayList<Order>();
     private double total = 0;
@@ -19,6 +31,10 @@ public class Transaction {
     private double discountAmt = 0;
     final private double discountPercent = 0.2;
     final private double VAT = 0.12;
+
+    final private DateTimeFormatter df = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT)
+        .withLocale(Locale.US)
+        .withZone(ZoneId.systemDefault());
 
     public Transaction() {
         this.transactionRef = generateRef();
@@ -31,6 +47,21 @@ public class Transaction {
             this.subtotal += order.price * order.quantity;
         });
         this.total = this.subtotal * (1 + this.VAT);
+    }
+
+    public Transaction(Document doc) {
+        this.transactionRef = doc.fields.transactionRef.stringValue;
+        this.total = doc.fields.total.doubleValue;
+        this.subtotal = doc.fields.subtotal.doubleValue;
+        this.amountPaid = doc.fields.amountPaid.doubleValue;
+        this.amountChange = doc.fields.amountChange.doubleValue;
+        this.discountAmt = doc.fields.discountAmt.doubleValue;
+        try {
+            this.timestamp = Instant.parse(doc.createTime);
+        } catch (DateTimeParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public void recomputeOrders() {
@@ -73,6 +104,10 @@ public class Transaction {
             // this.total = this.subtotal * (1 + this.VAT);
             this.recomputeOrders();
         }
+    }
+
+    public void clearOrders() {
+        this.orders.clear();
     }
 
     public void applyDiscount() {
@@ -145,7 +180,11 @@ public class Transaction {
         return this.VAT * this.subtotal;
     }
 
-    public void checkout(String idToken) {
+    public void checkout(String idToken) throws Exception {
+        if (this.amountPaid < (Math.round(this.total * 100) / 100)) {
+            Toaster.spawnToast("Invalid amount.", "Amount paid must be greater than total", "error");
+            throw new Exception("Invalid amount");
+        }
         NewTransactionFields fields = new NewTransactionFields(this);
         try {
             RestAPIHelper.createTransaction(fields, idToken);
@@ -154,5 +193,18 @@ public class Transaction {
             e.printStackTrace();
             Toaster.spawnToast("Error in confirming order", e.getLocalizedMessage(), "error");
         }
+    }
+
+    public Instant getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Instant timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getTimestampFormatted() {
+        String out = df.format(this.timestamp);
+        return out;
     }
 }

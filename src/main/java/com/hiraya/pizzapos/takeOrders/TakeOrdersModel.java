@@ -66,10 +66,13 @@ public class TakeOrdersModel {
 
     public void removeOrder(Order o) {
         this.orders.remove(o);
-        System.out.println("Orders now: ");
         this.orders.forEach((e) -> {
             System.out.println(e.name);
         });
+    }
+
+    public void clearOrders() {
+        this.orders.clear();
     }
 
     public void appendProduct(Collection<Order> o) {

@@ -6,6 +6,7 @@ import com.hiraya.pizzapos.App;
 import com.hiraya.pizzapos.httpReqRes.*;
 import com.hiraya.pizzapos.productSettings.Category;
 import com.hiraya.pizzapos.productSettings.Product;
+import com.hiraya.pizzapos.transactionHistory.Transaction;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -242,7 +243,7 @@ public class RestAPIHelper {
     }
     
     public static ArrayList<Product> getProducts(String idToken) throws IOException, InterruptedException {
-        GetProductsRequest body = new GetProductsRequest();
+        RunQueryRequest body = new RunQueryRequest("products");
         System.out.println("JSON Body Firestore: ");
         System.out.println(body.toJson());
         HttpRequest req = HttpRequest.newBuilder()
@@ -324,7 +325,7 @@ public class RestAPIHelper {
     }
 
     public static ArrayList<Category> getCategories(String idToken) throws IOException, InterruptedException {
-        GetCategoriesRequest body = new GetCategoriesRequest();
+        RunQueryRequest body = new RunQueryRequest("categories");
         System.out.println("JSON Body Firestore: ");
         System.out.println(body.toJson());
         HttpRequest req = HttpRequest.newBuilder()
@@ -379,5 +380,40 @@ public class RestAPIHelper {
         HttpResponse res = client.send(req, BodyHandlers.ofString());
         System.out.println(res.body().toString());
         // return jsonToSRTokenres(res.body().toString());
+    }
+
+    public static ArrayList<Transaction> getTransactions(String idToken) throws IOException, InterruptedException {
+        RunQueryRequest body = new RunQueryRequest("transactions");
+        System.out.println("JSON Body Firestore: ");
+        System.out.println(body.toJson());
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://firestore.googleapis.com/v1beta1/projects/pizzapos-41338/databases/(default)/documents:runQuery"))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .header("Authorization", "Bearer " + idToken)
+            .POST(BodyPublishers.ofString(body.toJson()))
+            .build();
+
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body().toString());
+        return jsonToTransactions(res.body().toString());
+    }
+
+    private static ArrayList<Transaction> jsonToTransactions(String json) {
+        GetTransactionsResponse[] res = {};
+        ArrayList<Transaction> out = new ArrayList<>();
+
+        try {
+            res = mapper.readValue(json, GetTransactionsResponse[].class);
+            if (res[0].document.name == null) return out; // Return early if retrieved firebase responded empty
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        System.out.println(res[0].document);
+        for (int i = 0; i < res.length; ++i) {
+            Transaction temp = new Transaction(res[i].document);
+            out.add(temp);
+        }
+        return out;
     }
 }

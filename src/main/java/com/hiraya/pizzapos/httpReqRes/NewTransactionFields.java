@@ -71,4 +71,7 @@ public class NewTransactionFields {
         this.amountChange = new FieldValue(t.getAmountChange());
         this.discountAmt = new FieldValue(t.getDiscountAmt());
     }
+
+    public NewTransactionFields() {
+    }
 }

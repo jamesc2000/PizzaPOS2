@@ -2,7 +2,7 @@ package com.hiraya.pizzapos.httpReqRes;
 
 import com.hiraya.pizzapos.App;
 
-public class GetProductsRequest extends BaseRequest {
+public class RunQueryRequest extends BaseRequest {
     public class StructuredQuery {
         public From from = new From();
         public Where where = new Where();
@@ -34,8 +34,8 @@ public class GetProductsRequest extends BaseRequest {
   
     public StructuredQuery structuredQuery = new StructuredQuery();
 
-    public GetProductsRequest() {
-        this.structuredQuery.from.collectionId = "products";
+    public RunQueryRequest(String collectionId) {
+        this.structuredQuery.from.collectionId = collectionId;
         this.structuredQuery.where.fieldFilter.field.fieldPath = "ownedBy";
         this.structuredQuery.where.fieldFilter.op = "EQUAL";
         this.structuredQuery.where.fieldFilter.value.stringValue = App.user.getLocalId();
