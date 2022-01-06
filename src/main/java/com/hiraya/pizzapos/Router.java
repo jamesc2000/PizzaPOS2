@@ -2,6 +2,8 @@ package com.hiraya.pizzapos;
 
 import java.io.IOException;
 
+import com.hiraya.pizzapos.productSettings.Product;
+
 public class Router {
     String popupImage;
     public void switchToTransactionHistory() {

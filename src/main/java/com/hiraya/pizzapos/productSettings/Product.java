@@ -35,7 +35,7 @@ public class Product {
             this.imageUrl = new URL(link);
         } catch (MalformedURLException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            System.out.println("Invalid image URL, removing image");
             this.imageUrl = null;
         }
     }
@@ -124,6 +124,26 @@ public class Product {
         System.out.println("Product send func");
         System.out.println(App.user.getIdToken());
         RestAPIHelper.createProduct(fields, App.user.getIdToken());
+    }
+
+    public String getDocumentId() {
+        return this.documentId;
+    }
+
+    public void patchFirestore() {
+        AddProductFields fields = new AddProductFields(
+            this.name,
+            this.imageUrl,
+            this.category,
+            this.sizesArray,
+            this.pricesArray
+        );
+        try {
+            RestAPIHelper.updateProduct(fields, App.user.getIdToken(), this.documentId);
+        } catch (IOException | InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     @Override

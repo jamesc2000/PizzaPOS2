@@ -50,7 +50,9 @@ public class AccountSettingsController extends Router implements Initializable {
             });
         });
         this.displayImage();
-        this.profilePic.setImage(new Image(App.user.profilePic));
+        if (!App.user.profilePic.isEmpty()) {
+            this.profilePic.setImage(new Image(App.user.profilePic));
+        }
     }
 
     private void displayData() {
@@ -170,6 +172,12 @@ public class AccountSettingsController extends Router implements Initializable {
         } else {
             this.userImage.setImage(new Image(imageUrl));
         }
+    }
+
+    public void removeImage() {
+        this.model.setImageUrl("");
+        this.imageUrl = null;
+        this.displayImage();
     }
 
     public void logout() throws IOException {

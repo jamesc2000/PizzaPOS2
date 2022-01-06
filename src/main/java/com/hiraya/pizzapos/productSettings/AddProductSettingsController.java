@@ -22,6 +22,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -35,6 +36,8 @@ public class AddProductSettingsController extends Router implements Initializabl
     private Product model = new Product();
     private final URL defaultImageUrl = App.class.getResource("images/addProduct.JPG");
     private String imageUrl;
+
+    private Boolean isEdit = false; // edit flag
 
     @FXML
     CheckBox cb1, cb2, cb3;
@@ -50,6 +53,8 @@ public class AddProductSettingsController extends Router implements Initializabl
     ComboBox<String> typeField;
     @FXML
     ImageView profilePic;
+    @FXML
+    Button saveBtn, cancelBtn;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -57,13 +62,71 @@ public class AddProductSettingsController extends Router implements Initializabl
         // System.out.println("add products");
         this.updateCategoriesSelection();
         this.displayImage();
-        this.profilePic.setImage(new Image(App.user.profilePic));
+        if (!App.user.profilePic.isEmpty()) {
+            this.profilePic.setImage(new Image(App.user.profilePic));
+        }
     }
 
-    public AddProductSettingsController() {
+    public void setPreFilledData(Product pr) {
+        if (pr == null) return;// Guard clause
+        // System.out.println("Controller working " + pr.getName());
+        this.isEdit = true;
+        this.model = pr;
+        this.updateCategoriesSelection();
+        if (pr.getImage() != null) {
+            this.imageUrl = pr.getImage().toExternalForm();
+        }
+        this.displayImage();
+        this.nameField.setText(pr.getName());
+        this.typeField.setValue(pr.getCategory());
+        
+        CheckBox[] cbs = { cb1, cb2, cb3 };
+        TextField[] vars = { var1, var2, var3 };
+        TextField[] prices = { price1, price2, price3 };
+        for (int sizeIdx = 0; sizeIdx < pr.getSizesArr().size(); sizeIdx++) {
+            if (pr.getSizesArr().get(sizeIdx) != null) {
+                cbs[sizeIdx].setSelected(true);
+                vars[sizeIdx].setDisable(false);
+                prices[sizeIdx].setDisable(false);
+                vars[sizeIdx].setText(pr.getSizesArr().get(sizeIdx));
+            } else {
+                vars[sizeIdx].setDisable(true);
+                prices[sizeIdx].setDisable(true);
+                cbs[sizeIdx].setSelected(false);
+                vars[sizeIdx].clear();
+            }
 
+            if (pr.getPricesArr().get(sizeIdx) != null) {
+                prices[sizeIdx].setText(pr.getPricesArr().get(sizeIdx).toString());
+            } else {
+                prices[sizeIdx].clear();
+            }
+        }
+
+        // IMPORTANT, change the onAction of the save button from submit to edit
+        saveBtn.setOnAction((event) -> {
+            System.out.println(pr.getDocumentId());
+            System.out.println("Overridden saveBtn " + this.imageUrl);
+            this.model.setImage(this.imageUrl);
+            App.bgThreads.submit(() -> {
+                this.model.patchFirestore();
+                Platform.runLater(() -> {
+                    Toaster.spawnToast("Edited product", "Successfully edited " + this.model.getName(), "success");
+                    super.switchToProductSettings();
+                });
+            });
+        });
+        cancelBtn.setOnAction((event) -> {
+            super.switchToProductSettings();
+        });
     }
-    
+
+    public void removeImage() {
+        this.model.setImage("");
+        this.imageUrl = null;
+        this.displayImage();
+    }
+
     public void onCheckboxChange(Event e) {
         CheckBox checkbox = (CheckBox)e.getSource();
         if (checkbox.getId().equals(cb1.getId())) {

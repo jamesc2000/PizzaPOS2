@@ -1,5 +1,6 @@
 package com.hiraya.pizzapos.productSettings;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
@@ -10,6 +11,7 @@ import com.hiraya.pizzapos.helpers.RestAPIHelper;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -85,6 +87,6 @@ public class ProductRowController implements Initializable {
     }
 
     public void editProduct() {
-
+        this.parent.editProduct(this.model);
     }
 }

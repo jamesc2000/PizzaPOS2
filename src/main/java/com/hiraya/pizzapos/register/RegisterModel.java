@@ -24,6 +24,27 @@ public class RegisterModel {
         return email;
     }
 
+    public URL getImageUrl() {
+        return imageUrl;
+    }
+    
+    public String getSafeStringImage() {
+        if (this.imageUrl == null) {
+            return "";
+        } else {
+            return this.imageUrl.toExternalForm();
+        }
+    }
+
+    public void setImageUrl(String imageUrl) {
+        try {
+            this.imageUrl = new URL(imageUrl);
+        } catch (Exception e) {
+            //TODO: handle exception
+            this.imageUrl = null;
+        }
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -85,7 +106,7 @@ public class RegisterModel {
                 profile = RestAPIHelper.updateProfile(req2);
                 System.out.println("displayName: " + profile.displayName);
 
-                UserFields fields = new UserFields(profile.displayName, profile.email, "", "", profile.localId);
+                UserFields fields = new UserFields(profile.displayName, profile.email, "", this.getSafeStringImage(), profile.localId);
                 RestAPIHelper.createUser(fields, register.idToken, register.localId);
             } else {
                 profile.error = register.error;

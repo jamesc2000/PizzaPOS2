@@ -65,7 +65,9 @@ public class TakeOrdersController extends Router {
         this.displayTransaction();
         // this.addOrder(new Order());
         System.out.println(App.user.profilePic);
-        this.profilePic.setImage(new Image(App.user.profilePic));
+        if (!App.user.profilePic.isEmpty()) {
+            this.profilePic.setImage(new Image(App.user.profilePic));
+        }
     }
 
     public void selectAllCategory() {

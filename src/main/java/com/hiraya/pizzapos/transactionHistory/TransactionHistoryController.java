@@ -55,7 +55,9 @@ public class TransactionHistoryController extends Router implements Initializabl
         });
 
         this.displayData();
-        this.profilePic.setImage(new Image(App.user.profilePic));
+        if (!App.user.profilePic.isEmpty()) {
+            this.profilePic.setImage(new Image(App.user.profilePic));
+        }
     }
 
     private void sortData() {

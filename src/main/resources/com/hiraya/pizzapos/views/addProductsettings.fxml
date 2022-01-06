@@ -167,7 +167,7 @@
                         <Insets />
                      </HBox.margin>
                   </Region>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#submit" prefHeight="38.0" prefWidth="138.0" style="-fx-background-radius: 8;" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="SAVE" textFill="WHITE">
+                  <Button fx:id="saveBtn" alignment="CENTER" mnemonicParsing="false" onAction="#submit" prefHeight="38.0" prefWidth="138.0" style="-fx-background-radius: 8;" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="SAVE" textFill="WHITE">
                      <HBox.margin>
                         <Insets bottom="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
@@ -182,7 +182,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToAddProduct" prefHeight="38.0" prefWidth="156.0" style="-fx-background-radius: 8;" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="CANCEL" textFill="WHITE">
+                  <Button fx:id="cancelBtn" alignment="CENTER" mnemonicParsing="false" onAction="#switchToAddProduct" prefHeight="38.0" prefWidth="156.0" style="-fx-background-radius: 8;" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="CANCEL" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -231,7 +231,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
-                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="46.0" prefWidth="136.0" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="Remove Image" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#removeImage" prefHeight="46.0" prefWidth="136.0" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="Remove Image" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="15.0" />
                                  </GridPane.margin>
@@ -343,7 +343,7 @@
                                     <CheckBox fx:id="cb1" mnemonicParsing="false" onAction="#onCheckboxChange" />
                                     <CheckBox fx:id="cb2" mnemonicParsing="false" onAction="#onCheckboxChange" GridPane.rowIndex="1" />
                                     <CheckBox fx:id="cb3" mnemonicParsing="false" onAction="#onCheckboxChange" GridPane.rowIndex="2" />
-                                    <TextField fx:id="var1" disable="true" promptText="Variation 1" GridPane.columnIndex="1">
+                                    <TextField fx:id="var1" disable="true" promptText="Variation 1" style="-fx-font-size: 14px;" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets left="30.0" right="30.0" />
                                        </GridPane.margin>
@@ -351,7 +351,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </TextField>
-                                    <TextField fx:id="var2" disable="true" promptText="Variation 2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <TextField fx:id="var2" disable="true" promptText="Variation 2" style="-fx-font-size: 14px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets left="30.0" right="30.0" />
                                        </GridPane.margin>
@@ -359,7 +359,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </TextField>
-                                    <TextField fx:id="var3" disable="true" promptText="Variation 3" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <TextField fx:id="var3" disable="true" promptText="Variation 3" style="-fx-font-size: 14px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets left="30.0" right="30.0" />
                                        </GridPane.margin>
@@ -367,7 +367,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </TextField>
-                                    <TextField fx:id="price1" disable="true" promptText="000.00" GridPane.columnIndex="2">
+                                    <TextField fx:id="price1" disable="true" promptText="000.00" style="-fx-font-size: 14px;" GridPane.columnIndex="2">
                                        <GridPane.margin>
                                           <Insets left="20.0" right="60.0" />
                                        </GridPane.margin>
@@ -375,7 +375,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </TextField>
-                                    <TextField fx:id="price2" disable="true" promptText="000.00" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                    <TextField fx:id="price2" disable="true" promptText="000.00" style="-fx-font-size: 14px;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets left="20.0" right="60.0" />
                                        </GridPane.margin>
@@ -383,7 +383,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </TextField>
-                                    <TextField fx:id="price3" disable="true" promptText="000.00" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                    <TextField fx:id="price3" disable="true" promptText="000.00" style="-fx-font-size: 14px;" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets left="20.0" right="60.0" />
                                        </GridPane.margin>

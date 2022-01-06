@@ -259,6 +259,24 @@ public class RestAPIHelper {
         return jsonToProducts(res.body().toString());
     }
 
+    public static void updateProduct(AddProductFields fields, String idToken, String docId) throws IOException, InterruptedException {
+        FirestoreRequest<AddProductFields> body = new FirestoreRequest<>(fields);
+        body.name = docId;
+        System.out.println("JSON Body Firestore: ");
+        System.out.println(body.toJson());
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://firestore.googleapis.com/v1/projects/pizzapos-41338/databases/(default)/documents/products/" + docId))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .header("Authorization", "Bearer " + idToken)
+            .method("PATCH", BodyPublishers.ofString(body.toJson()))
+            .build();
+
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body().toString());
+        // return jsonToSRTokenres(res.body().toString());
+    }
+
     public static void deleteProduct(String docId, String idToken) throws Exception {
         HttpRequest req = HttpRequest.newBuilder()
             .uri(URI.create("https://firestore.googleapis.com/v1/projects/pizzapos-41338/databases/(default)/documents/products/" + docId))
@@ -337,7 +355,7 @@ public class RestAPIHelper {
             .build();
 
         HttpResponse res = client.send(req, BodyHandlers.ofString());
-        // System.out.println(res.body().toString());
+        System.out.println(res.body().toString());
         return jsonToCategory(res.body().toString());
     }
 
@@ -351,16 +369,18 @@ public class RestAPIHelper {
         } catch (IOException e) {
             System.out.println(e);
         }
-        System.out.println(res[0].document);
+        System.out.println("DOCUMENT" + res[0].document.fields.name.stringValue);
         for (int i = 0; i < res.length; ++i) {
             Category temp = new Category();
-            temp.name = res[i].document.fields.name.stringValue;
-            try {
-                temp.imageUrl = new URL(res[i].document.fields.imageUrl.stringValue);
-            } catch (MalformedURLException e) {
-                temp.imageUrl = App.class.getResource("images/addProduct.JPG");
+            if (!res[i].document.fields.name.stringValue.isEmpty()) {
+                temp.name = res[i].document.fields.name.stringValue;
+                try {
+                    temp.imageUrl = new URL(res[i].document.fields.imageUrl.stringValue);
+                } catch (MalformedURLException e) {
+                    temp.imageUrl = App.class.getResource("images/addProduct.JPG");
+                }
+                out.add(temp);
             }
-            out.add(temp);
         }
         return out;
     }

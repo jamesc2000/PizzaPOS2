@@ -13,12 +13,15 @@ import com.hiraya.pizzapos.helpers.RestAPIHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class ProductSettingsController extends Router implements Initializable {
     ProductSettingsModel model = new ProductSettingsModel();
@@ -45,7 +48,9 @@ public class ProductSettingsController extends Router implements Initializable {
         }
         this.displayProducts("All");
         this.displayCategories();
-        this.profilePic.setImage(new Image(App.user.profilePic));
+        if (!App.user.profilePic.isEmpty()) {
+            this.profilePic.setImage(new Image(App.user.profilePic));
+        }
     }
 
     public void displayProducts() {
@@ -93,4 +98,17 @@ public class ProductSettingsController extends Router implements Initializable {
         });
     }
     
+    public void editProduct(Product pr) {
+        var scene = this.table.getScene();
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("views/addProductsettings.fxml"));
+        try {
+            Node node = loader.load();
+            AddProductSettingsController controller = loader.getController();
+            controller.setPreFilledData(pr);
+            scene.setRoot((Parent) node);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 }

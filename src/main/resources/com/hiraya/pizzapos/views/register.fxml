@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="512.0" style="-fx-background-color: #eebb32;" stylesheets="@../styles/App.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.register.RegisterController">
    <children>
-      <Button layoutX="85.0" layoutY="265.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="144.0" style="-fx-background-radius: 30;" text="Upload Image">
+      <Button layoutX="85.0" layoutY="265.0" mnemonicParsing="false" onAction="#setImagePopup" prefHeight="26.0" prefWidth="144.0" style="-fx-background-radius: 30;" text="Upload Image">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -21,7 +21,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="274.0" layoutY="265.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="144.0" style="-fx-background-radius: 30;" text="Remove Image">
+      <Button layoutX="274.0" layoutY="265.0" mnemonicParsing="false" onAction="#removeImage" prefHeight="26.0" prefWidth="144.0" style="-fx-background-radius: 30;" text="Remove Image">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -80,7 +80,7 @@
             <Text fill="WHITE" layoutX="91.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Get started with your POS account and start managing your business" wrappingWidth="393.5999999999999" />
          </children>
       </AnchorPane>
-      <ImageView fitHeight="172.0" fitWidth="197.0" layoutX="164.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="userImage" fitHeight="172.0" fitWidth="197.0" layoutX="164.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/userProfilepic.png" />
          </image>
