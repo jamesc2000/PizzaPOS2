@@ -2,7 +2,6 @@ package com.hiraya.pizzapos.httpReqRes;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collection;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

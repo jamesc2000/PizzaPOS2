@@ -1,6 +1,5 @@
 package com.hiraya.pizzapos.productSettings;
 
-import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
@@ -11,7 +10,6 @@ import com.hiraya.pizzapos.helpers.RestAPIHelper;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,7 +30,6 @@ public class ProductRowController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // TODO Auto-generated method stub
         System.out.println("Controller injection success. Parent: " + this.parent);
         this.displayData();
     }
@@ -68,7 +65,6 @@ public class ProductRowController implements Initializable {
             try {
                 RestAPIHelper.deleteProduct(this.model.documentId, App.user.getIdToken());
             } catch (Exception e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
                 Platform.runLater(() -> {
                     e.printStackTrace();

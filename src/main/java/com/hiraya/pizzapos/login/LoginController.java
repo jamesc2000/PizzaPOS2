@@ -1,25 +1,21 @@
 package com.hiraya.pizzapos.login;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.Objects;
+import java.util.ResourceBundle;
+import java.util.concurrent.Future;
+
 import com.hiraya.pizzapos.App;
-import com.hiraya.pizzapos.CONSTANTS;
 import com.hiraya.pizzapos.Toaster;
 import com.hiraya.pizzapos.helpers.RestAPIHelper;
 import com.hiraya.pizzapos.httpReqRes.LoginResponse;
 import com.hiraya.pizzapos.httpReqRes.SendRefreshTokenRequest;
 import com.hiraya.pizzapos.httpReqRes.SendRefreshTokenResponse;
-import com.hiraya.pizzapos.httpReqRes.UserFields;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-
-import javafx.fxml.Initializable;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 
@@ -38,7 +34,6 @@ public class LoginController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         System.out.println("Initialize");
     }
 
@@ -78,7 +73,6 @@ public class LoginController implements Initializable {
                             var userData = RestAPIHelper.getUserData();
                             App.user.profilePic = userData.imageUrl.stringValue;
                         } catch (IOException | InterruptedException e1) {
-                            // TODO Auto-generated catch block
                             e1.printStackTrace();
                         }
                         System.out.println("Log in successful");
@@ -87,7 +81,6 @@ public class LoginController implements Initializable {
                         try {
                             App.setRoot("takeOrders");
                         } catch (IOException e) {
-                            // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
                     });

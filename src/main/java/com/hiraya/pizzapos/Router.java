@@ -2,8 +2,6 @@ package com.hiraya.pizzapos;
 
 import java.io.IOException;
 
-import com.hiraya.pizzapos.productSettings.Product;
-
 public class Router {
     String popupImage;
     public void switchToTransactionHistory() {
@@ -18,7 +16,6 @@ public class Router {
         try {
             App.setRoot("productSettings");
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -27,7 +24,6 @@ public class Router {
         try {
             App.setRoot("takeOrders");
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -36,7 +32,6 @@ public class Router {
         try {
             App.setRoot("accountSettings");
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -45,7 +40,6 @@ public class Router {
         try {
             App.setRoot("addProductsettings");
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

@@ -224,7 +224,6 @@ public class RestAPIHelper {
     }
 
     // ==== FIRESTORE ====
-    // TODO: This should be FirestoreResponse
     public static void createProduct(AddProductFields fields, String idToken) throws IOException, InterruptedException {
         FirestoreRequest<AddProductFields> body = new FirestoreRequest<AddProductFields>(fields);
         System.out.println("JSON Body Firestore: ");
@@ -337,7 +336,7 @@ public class RestAPIHelper {
             .POST(BodyPublishers.ofString(body.toJson()))
             .build();
 
-        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        // HttpResponse res = client.send(req, BodyHandlers.ofString());
         // System.out.println(res.body().toString());
         // return jsonToSRTokenres(res.body().toString());
     }

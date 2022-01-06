@@ -4,11 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 
 import com.hiraya.pizzapos.App;
-import com.hiraya.pizzapos.CONSTANTS;
 import com.hiraya.pizzapos.ImageSelector;
 import com.hiraya.pizzapos.Router;
 import com.hiraya.pizzapos.Toaster;
-import com.hiraya.pizzapos.productSettings.AddProductSettingsController;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

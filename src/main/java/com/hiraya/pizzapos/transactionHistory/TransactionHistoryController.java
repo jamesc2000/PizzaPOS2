@@ -5,10 +5,8 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -40,11 +38,9 @@ public class TransactionHistoryController extends Router implements Initializabl
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // TODO Auto-generated method stub
         try {
             transactions = RestAPIHelper.getTransactions(App.user.getIdToken());
         } catch (IOException | InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             Toaster.spawnToast("Error", e.getMessage(), "error");
         }

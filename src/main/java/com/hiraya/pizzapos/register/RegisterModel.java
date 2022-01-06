@@ -1,16 +1,15 @@
 
 package com.hiraya.pizzapos.register;
 
+import java.io.IOException;
+import java.net.URL;
+
 import com.hiraya.pizzapos.helpers.RestAPIHelper;
-import com.hiraya.pizzapos.httpReqRes.BaseResponse;
 import com.hiraya.pizzapos.httpReqRes.FirebaseAuthRegisterRequest;
 import com.hiraya.pizzapos.httpReqRes.FirebaseAuthRegisterResponse;
 import com.hiraya.pizzapos.httpReqRes.UserFields;
 import com.hiraya.pizzapos.httpReqRes.UserProfileRequest;
 import com.hiraya.pizzapos.httpReqRes.UserProfileResponse;
-
-import java.io.IOException;
-import java.net.URL;
 
 public class RegisterModel {
     private String email;

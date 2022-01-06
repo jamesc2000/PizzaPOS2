@@ -16,12 +16,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class ProductSettingsController extends Router implements Initializable {
     ProductSettingsModel model = new ProductSettingsModel();
@@ -43,7 +41,6 @@ public class ProductSettingsController extends Router implements Initializable {
             this.model.setCategories(RestAPIHelper.getCategories(App.user.getIdToken()));
             this.model.setProducts(RestAPIHelper.getProducts(App.user.getIdToken()));
         } catch (IOException | InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         this.displayProducts("All");
@@ -74,7 +71,6 @@ public class ProductSettingsController extends Router implements Initializable {
                     productFXML.setController(tempController);
                     this.table.getChildren().add(productFXML.load());
                 } catch (Exception e) {
-                    //TODO: handle exception
                     e.printStackTrace();
                 }
             }
@@ -107,7 +103,6 @@ public class ProductSettingsController extends Router implements Initializable {
             controller.setPreFilledData(pr);
             scene.setRoot((Parent) node);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

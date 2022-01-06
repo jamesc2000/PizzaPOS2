@@ -3,7 +3,6 @@ package com.hiraya.pizzapos.httpReqRes;
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.hiraya.pizzapos.App;
 import com.hiraya.pizzapos.takeOrders.Order;
 import com.hiraya.pizzapos.transactionHistory.Transaction;

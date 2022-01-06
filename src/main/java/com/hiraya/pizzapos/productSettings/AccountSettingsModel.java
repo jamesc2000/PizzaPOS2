@@ -100,7 +100,6 @@ public class AccountSettingsModel {
                     });
                 }
             } catch (IOException | InterruptedException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         });
@@ -113,7 +112,6 @@ public class AccountSettingsModel {
             this.email = rawData.email.stringValue;
             this.contactNumber = rawData.contact.stringValue;
         } catch (IOException | InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

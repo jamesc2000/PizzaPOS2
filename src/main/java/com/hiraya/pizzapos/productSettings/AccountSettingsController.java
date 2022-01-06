@@ -42,7 +42,6 @@ public class AccountSettingsController extends Router implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // TODO Auto-generated method stub
         App.bgThreads.submit(() -> {
             this.model.getFromFirebase();
             Platform.runLater(() -> {
@@ -72,14 +71,12 @@ public class AccountSettingsController extends Router implements Initializable {
             try {
                 Thread.sleep(5*1000);
             } catch (InterruptedException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             } // 5000 ms or 5 seconds
             Platform.runLater(() -> {
                 try {
                     this.logout();
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             });
@@ -99,7 +96,6 @@ public class AccountSettingsController extends Router implements Initializable {
                         return;
                     }
                 } catch (InterruptedException | IOException e1) {
-                    // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
                 
@@ -117,7 +113,6 @@ public class AccountSettingsController extends Router implements Initializable {
                             try {
                                 this.logout();
                             } catch (IOException e) {
-                                // TODO Auto-generated catch block
                                 e.printStackTrace();
                             }
                         });
@@ -127,7 +122,6 @@ public class AccountSettingsController extends Router implements Initializable {
                         });
                     }
                 } catch (Exception e) {
-                    //TODO: handle exception
                     e.printStackTrace();
                     Platform.runLater(() -> {
                         Toaster.spawnToast("Error", e.getMessage(), "error");

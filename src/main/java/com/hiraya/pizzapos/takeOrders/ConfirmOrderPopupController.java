@@ -8,13 +8,11 @@ import com.hiraya.pizzapos.App;
 import com.hiraya.pizzapos.Toaster;
 import com.hiraya.pizzapos.transactionHistory.Transaction;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ConfirmOrderPopupController implements Initializable {
@@ -89,7 +87,6 @@ public class ConfirmOrderPopupController implements Initializable {
             this.parent.clearOrderSummaryView();
             this.close();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

@@ -1,23 +1,19 @@
 package com.hiraya.pizzapos.transactionHistory;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.FormatStyle;
-import java.time.temporal.TemporalField;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 
 import com.hiraya.pizzapos.Toaster;
 import com.hiraya.pizzapos.helpers.RestAPIHelper;
-import com.hiraya.pizzapos.httpReqRes.NewTransactionFields;
 import com.hiraya.pizzapos.httpReqRes.GetTransactionsResponse.Document;
+import com.hiraya.pizzapos.httpReqRes.NewTransactionFields;
 import com.hiraya.pizzapos.takeOrders.Order;
 
 public class Transaction {
@@ -59,7 +55,6 @@ public class Transaction {
         try {
             this.timestamp = Instant.parse(doc.createTime);
         } catch (DateTimeParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -189,7 +184,6 @@ public class Transaction {
         try {
             RestAPIHelper.createTransaction(fields, idToken);
         } catch (IOException | InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             Toaster.spawnToast("Error in confirming order", e.getLocalizedMessage(), "error");
         }

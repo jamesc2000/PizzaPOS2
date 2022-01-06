@@ -1,7 +1,6 @@
 package com.hiraya.pizzapos.takeOrders;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.hiraya.pizzapos.productSettings.Product;

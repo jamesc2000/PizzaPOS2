@@ -1,13 +1,9 @@
 package com.hiraya.pizzapos.productSettings;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import com.hiraya.pizzapos.App;
@@ -58,8 +54,6 @@ public class AddProductSettingsController extends Router implements Initializabl
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // TODO Auto-generated method stub
-        // System.out.println("add products");
         this.updateCategoriesSelection();
         this.displayImage();
         if (!App.user.profilePic.isEmpty()) {
@@ -185,7 +179,6 @@ public class AddProductSettingsController extends Router implements Initializabl
                     super.switchToProductSettings();
                 });
             } catch (Exception e) {
-                //TODO: handle exception
                 Platform.runLater(() -> {
                     Toaster.spawnToast("Error in creating new product.", e.getMessage().toString(), "Error");
                 });
@@ -208,7 +201,6 @@ public class AddProductSettingsController extends Router implements Initializabl
             scene.setFill(Color.TRANSPARENT);
             popup.setScene(scene);
         } catch (Exception e) {
-            //TODO: handle exception
             e.printStackTrace();
             Toaster.spawnToast("FXML Error", e.getMessage(), "error");
         }

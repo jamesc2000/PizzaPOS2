@@ -3,22 +3,15 @@ package com.hiraya.pizzapos.takeOrders;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Formatter;
-import java.util.HashSet;
-import java.util.Set;
 
 import com.hiraya.pizzapos.App;
 import com.hiraya.pizzapos.Router;
 import com.hiraya.pizzapos.Toaster;
 import com.hiraya.pizzapos.helpers.LoadFXMLHelper;
 import com.hiraya.pizzapos.helpers.RestAPIHelper;
-import com.hiraya.pizzapos.productSettings.Product;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -30,7 +23,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -57,7 +49,6 @@ public class TakeOrdersController extends Router {
             this.model.setCategories(RestAPIHelper.getCategories(App.user.getIdToken()));
             this.model.setProducts(RestAPIHelper.getProducts(App.user.getIdToken()));
         } catch (IOException | InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         this.displayData("All");
@@ -92,7 +83,6 @@ public class TakeOrdersController extends Router {
                     this.menuContainer.getChildren().add(orderItem.load());
                 }
             } catch (Exception e) {
-                //TODO: handle exception
                 e.printStackTrace();
             }
         }
@@ -222,7 +212,6 @@ public class TakeOrdersController extends Router {
             scene.setFill(Color.TRANSPARENT);
             popup.setScene(scene);
         } catch (Exception e) {
-            //TODO: handle exception
             e.printStackTrace();
             Toaster.spawnToast("FXML Error", e.getMessage(), "error");
         }
