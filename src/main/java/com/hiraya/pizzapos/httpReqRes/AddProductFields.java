@@ -42,7 +42,11 @@ public class AddProductFields {
         ArrayList<Double> prices
     ) {
         this.name = new FieldValue(name);
-        this.imageUrl = new FieldValue(imageUrl.toString());
+        if (imageUrl == null) {
+            this.imageUrl = new FieldValue("");
+        } else {
+            this.imageUrl = new FieldValue(imageUrl.toString());
+        }
         this.category = new FieldValue(category);
         this.sizes.arrayValue = new ArrayValue();
         this.sizes.arrayValue.values = new ArrayList<FieldValue>();

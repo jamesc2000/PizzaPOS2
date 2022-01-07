@@ -82,27 +82,27 @@
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="expDateCard" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="expDateCard" style="-fx-background-radius: 5px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="cvc" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <TextField fx:id="cvc" style="-fx-background-radius: 5px;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="amntPaid" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <TextField fx:id="paid" style="-fx-background-radius: 5px;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <Label text="P 11 480.00" textFill="#37211a" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <Label fx:id="amountDue" text="P 11 480.00" textFill="#37211a" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label text="P 20.00" textFill="#37211a" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <Label fx:id="change" text="P 20.00" textFill="#37211a" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -112,7 +112,7 @@
             <Region minHeight="60.0" minWidth="200.0" VBox.vgrow="ALWAYS" />
             <HBox>
                <children>
-                  <Button mnemonicParsing="false" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="GO BACK" textFill="#37211a">
+                  <Button mnemonicParsing="false" onAction="#close" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="GO BACK" textFill="#37211a">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -120,7 +120,7 @@
                         <Insets left="30.0" right="30.0" />
                      </padding></Button>
                   <Region HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" text="PAY" textFill="#37211a">
+                  <Button mnemonicParsing="false" onAction="#pay" text="PAY" textFill="#37211a">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>

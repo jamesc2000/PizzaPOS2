@@ -12,4 +12,9 @@ public class UserProfileResponse extends BaseResponse {
     public String photoUrl;
     public String expiresIn;
     public boolean emailVerified;
+
+    // These two are not used when updating profile, but only
+    // when updating email
+    public String idToken;
+    public String refreshToken;
 }

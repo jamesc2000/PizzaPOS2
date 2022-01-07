@@ -9,14 +9,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.hiraya.pizzapos.App;
+import com.hiraya.pizzapos.Router;
+import com.hiraya.pizzapos.Toaster;
 import com.hiraya.pizzapos.helpers.LoadFXMLHelper;
 import com.hiraya.pizzapos.helpers.RestAPIHelper;
 import com.hiraya.pizzapos.productSettings.Product;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
@@ -27,8 +31,11 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
     
-public class TakeOrdersController {
+public class TakeOrdersController extends Router {
     TakeOrdersModel model = new TakeOrdersModel();
 
     ArrayList<MenuOrderController> productControllers = new ArrayList<MenuOrderController>();
@@ -39,6 +46,8 @@ public class TakeOrdersController {
     private HBox categoryContainer;
     @FXML
     private GridPane orderSummary;
+    @FXML
+    private ImageView profilePic;
 
     @FXML
     private void initialize() {
@@ -51,30 +60,35 @@ public class TakeOrdersController {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        this.displayData();
+        this.displayData("All");
         this.displayCategories();
         this.displayTransaction();
         // this.addOrder(new Order());
+        System.out.println(App.user.profilePic);
+        this.profilePic.setImage(new Image(App.user.profilePic));
     }
 
-    public void switchToTemporary() throws IOException {
-        App.setRoot("productSettings");
+    public void selectAllCategory() {
+        this.displayData("All");
     }
 
     /**
-     * Displays products and categories in the model
+     * Displays products in the model
      */
-    private void displayData() {
+    private void displayData(String filter) {
+        this.menuContainer.getChildren().clear(); // Clear displayed data first so it doesnt double up when switching categories
         FXMLLoader orderItem;
         for (int i = 0; i < this.model.getProducts().size(); ++i) {
             try {
-                orderItem = LoadFXMLHelper.loadFXML("takeOrders.order");
-                // System.out.println(this.model.getProducts().get(i).getName());
-                this.productControllers.add(new MenuOrderController(this.model.getProducts().get(i), this));
-                System.out.println("Controller: " + this.productControllers.get(i));
-                orderItem.setController(this.productControllers.get(i));
-                // System.out.println("11111");
-                this.menuContainer.getChildren().add(orderItem.load());
+                if (filter.equals("All") || filter.equals(this.model.getProducts().get(i).getCategory())) {
+                    orderItem = LoadFXMLHelper.loadFXML("takeOrders.order");
+                    // System.out.println(this.model.getProducts().get(i).getName());
+                    this.productControllers.add(new MenuOrderController(this.model.getProducts().get(i), this));
+                    // System.out.println("Controller: " + this.productControllers.get(i));
+                    orderItem.setController(this.productControllers.get(i));
+                    // System.out.println("11111");
+                    this.menuContainer.getChildren().add(orderItem.load());
+                }
             } catch (Exception e) {
                 //TODO: handle exception
                 e.printStackTrace();
@@ -82,20 +96,9 @@ public class TakeOrdersController {
         }
     }
 
-    private Set<String> groupCategories() {
-        var products = this.model.getProducts();
-        Set<String> categories = new HashSet<String>();
-        products.forEach(product -> {
-            categories.add(product.getCategory());
-        });
-        System.out.println(categories);
-        return categories;
-    }
-
     private void displayCategories() {
         var categories = this.model.getCategories();
         categories.forEach(category -> {
-            // TODO: Graphic/img ng category
             ImageView graphic = new ImageView();
             if (category.imageUrl != null) {
                 graphic.setImage(new Image(category.imageUrl.toExternalForm()));
@@ -111,11 +114,16 @@ public class TakeOrdersController {
             catBtn.setPrefSize(195.0, 155.0);
             catBtn.setStyle("-fx-background-radius: 15px;");
             catBtn.getStyleClass().add("takeorder");
+            catBtn.setOnAction(e -> {
+                // System.out.println(catBtn.getText());
+                this.displayData(catBtn.getText());
+            });
 
             categoryContainer.getChildren().add(catBtn);
         });
     }
 
+    @SuppressWarnings("unchecked")
     public void addOrder(Order order) {
         // Push a product to model.products, then redisplay order summary
         var currOrders = this.model.getOrders();
@@ -125,7 +133,7 @@ public class TakeOrdersController {
             if (currOrders.get(i).name.equals(order.name) && currOrders.get(i).size.equals(order.size)) {
                 currOrders.get(i).quantity++;
                 Spinner<Integer> spinner = (Spinner<Integer>)this.orderSummary.getChildren().get(i*5 + 2);
-                System.out.println("Found: " + spinner.toString());
+                // System.out.println("Found: " + spinner.toString());
                 spinner.increment();
                 this.model.currTransaction.setOrder(i, currOrders.get(i));
                 this.displayTransaction();
@@ -134,9 +142,8 @@ public class TakeOrdersController {
             ++i;
         }
 
-        this.model.appendOrder(order);
         final int currRow = this.model.getOrders().size();
-        final Node[] row = {
+        Node[] row = {
             new Label(order.name),
             new Label(order.size),
             new Spinner<Integer>(1, 100, 1),
@@ -147,8 +154,33 @@ public class TakeOrdersController {
             GridPane.setColumnIndex(row[j], j);
             GridPane.setRowIndex(row[j], currRow);
         }
+
+        ((Button)row[4]).setOnAction(e -> {
+            Order orderRef = order;
+            for (int rowElems = 0; rowElems < row.length; ++rowElems) {
+                this.orderSummary.getChildren().remove(row[rowElems]);
+            }
+            this.model.removeOrder(orderRef);
+            this.model.currTransaction.removeOrder(orderRef);
+            this.model.currTransaction.recomputeOrders(); // Lazy fix for weird bug
+            this.displayTransaction();
+        });
+
+        ((Spinner<Integer>)row[2]).valueProperty().addListener((obs, oldVal, newVal) -> {
+            Order orderRef = order;
+            orderRef.quantity = newVal;
+            // System.out.println("Orders changed");
+            // this.model.getOrders().forEach(o -> {
+            //     System.out.println(o.name + " " + o.quantity);
+            // });
+            this.model.currTransaction.recomputeOrders(); // Lazy fix for weird bug
+            this.displayTransaction();
+        });
+
+        this.model.appendOrder(order);
         this.model.currTransaction.addOrder(order);
         this.orderSummary.getChildren().addAll(row);
+        this.model.currTransaction.recomputeOrders(); // Lazy fix for weird bug
         this.displayTransaction();
     }
 
@@ -167,5 +199,54 @@ public class TakeOrdersController {
         this.vatField.setText("₱ " + formatter.format(this.model.currTransaction.getVatAmt()));
         this.discountField.setText("₱ " + formatter.format(this.model.currTransaction.getDiscountAmt()));
         this.totalField.setText("₱ " + formatter.format(this.model.currTransaction.getTotal()));
+
+        // System.out.println("Orders in transaction now:");
+        // this.model.currTransaction.getOrders().forEach(o -> {
+        //         System.out.println(o.name + " " + o.quantity);
+        // });
+    }
+
+    public void confirmOrder() {
+        Stage popup = new Stage();
+        popup.initOwner(App.getPrimaryStage());
+        popup.setResizable(false);
+        popup.initStyle(StageStyle.TRANSPARENT);
+
+        FXMLLoader fxml = new FXMLLoader(App.class.getResource("views/paymentInfo.fxml"));
+        fxml.setController(new ConfirmOrderPopupController(this));
+        Scene scene;
+        try {
+            scene = new Scene(fxml.load());
+            scene.setFill(Color.TRANSPARENT);
+            popup.setScene(scene);
+        } catch (Exception e) {
+            //TODO: handle exception
+            e.printStackTrace();
+            Toaster.spawnToast("FXML Error", e.getMessage(), "error");
+        }
+        popup.setOnHiding((event) -> {
+            this.displayTransaction();
+        });
+        popup.show();
+    }
+
+    public void setTransactionPayment(double paid, double change) {
+        this.model.currTransaction.setAmountPaid(paid);
+        this.model.currTransaction.setAmountChange(change);
+    }
+
+    public void toggleDiscount() {
+        Boolean isDiscounted = this.model.currTransaction.getDiscountAmt() > 0;
+
+        if (isDiscounted) {
+            this.model.currTransaction.removeDiscount();
+        } else {
+            this.model.currTransaction.applyDiscount();
+        }
+        this.displayTransaction();
+    }
+
+    public void clearOrderSummaryView() {
+        this.orderSummary.getChildren().clear();
     }
 }

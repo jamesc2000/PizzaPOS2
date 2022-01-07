@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import com.hiraya.pizzapos.App;
 import com.hiraya.pizzapos.helpers.RestAPIHelper;
 import com.hiraya.pizzapos.httpReqRes.AddProductFields;
-import com.hiraya.pizzapos.httpReqRes.FirestoreRequest;
 
 public class Product {
+    public String documentId;
     private String name;
     private URL imageUrl;
     private String category;
@@ -23,7 +23,22 @@ public class Product {
     public Product() { }
 
     public String getName() { return this.name; }
-    public URL getImage() { return this.imageUrl; }
+    public URL getImage() {
+        if (this.imageUrl == null) {
+            return App.class.getResource("images/addProduct.JPG");
+        } else {
+            return this.imageUrl;
+        }
+    }
+    public void setImage(String link) {
+        try {
+            this.imageUrl = new URL(link);
+        } catch (MalformedURLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            this.imageUrl = null;
+        }
+    }
     public String getCategory() { return this.category; }
     public String getSize() { return this.size; }
 
@@ -41,12 +56,15 @@ public class Product {
     }
 
     public void setValues(
+        String documentName,
         String name,
         String imageUrl,
         String category,
         String size,
         String price
     ) throws MalformedURLException {
+        String[] splittedDocName = documentName.split("/");
+        this.documentId = splittedDocName[splittedDocName.length - 1];
         this.name = name;
         this.imageUrl = new URL(imageUrl);
         this.category = category;
@@ -55,12 +73,15 @@ public class Product {
     }
 
     public void setValues(
+        String documentName,
         String name,
         String imageUrl,
         String category,
         String size,
         Double price
     ) throws MalformedURLException {
+        String[] splittedDocName = documentName.split("/");
+        this.documentId = splittedDocName[splittedDocName.length - 1];
         this.name = name;
         this.imageUrl = new URL(imageUrl);
         this.category = category;
@@ -69,14 +90,22 @@ public class Product {
     }
 
     public void setValues(
+        String documentName,
         String name,
         String imageUrl,
         String category,
         ArrayList<String> sizes,
         ArrayList<Double> prices
-    ) throws MalformedURLException {
+    ) {
+        String[] splittedDocName = documentName.split("/");
+        this.documentId = splittedDocName[splittedDocName.length - 1];
         this.name = name;
-        this.imageUrl = new URL(imageUrl);
+        try {
+            this.imageUrl = new URL(imageUrl);
+        } catch (MalformedURLException e) {
+            System.out.println("Manually replaced imageUrl");
+            this.imageUrl = null;
+        }
         this.category = category;
         this.sizesArray = sizes;
         this.pricesArray = prices;

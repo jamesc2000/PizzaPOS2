@@ -38,7 +38,7 @@
                 <RowConstraints maxHeight="140.0" minHeight="140.0" prefHeight="140.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ImageView fitHeight="92.0" fitWidth="92.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <ImageView fx:id="profilePic" fitHeight="92.0" fitWidth="92.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <image>
                         <Image url="@../images/userProfilepic.png" />
                      </image>
@@ -46,7 +46,7 @@
                         <Insets />
                      </GridPane.margin>
                   </ImageView>
-                  <Button id="takeorder" mnemonicParsing="false" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Button id="takeorder" mnemonicParsing="false" onAction="#switchToTransactionHistory" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="110.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" styleClass="takeorder">
                            <image>
@@ -54,7 +54,7 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button mnemonicParsing="false" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#switchToTakeOrders" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="110.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 75;" styleClass="takeorder">
                            <image>
@@ -123,7 +123,7 @@
                         <String fx:value="buttoncurve" />
                      </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" stylesheets="@../styles/productSettings.css" text="Account Settings" textFill="#eebb32">
+                  <Button mnemonicParsing="false" onAction="#switchToAccountSettings" prefHeight="50.0" prefWidth="200.0" stylesheets="@../styles/productSettings.css" text="Account Settings" textFill="#eebb32">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
@@ -182,7 +182,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="156.0" style="-fx-background-radius: 8;" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="CANCEL" textFill="WHITE">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToAddProduct" prefHeight="38.0" prefWidth="156.0" style="-fx-background-radius: 8;" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="CANCEL" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -223,7 +223,7 @@
                             <RowConstraints maxHeight="262.5999816894531" minHeight="10.0" prefHeight="82.0" vgrow="NEVER" />
                           </rowConstraints>
                            <children>
-                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="46.0" prefWidth="136.0" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="Upload Image" textFill="WHITE" GridPane.rowIndex="1">
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#setImagePopup" prefHeight="46.0" prefWidth="136.0" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="Upload Image" textFill="WHITE" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="25.0" />
                                  </GridPane.margin>
@@ -239,7 +239,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
-                              <ImageView fitHeight="380.0" fitWidth="429.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2">
+                              <ImageView fx:id="productImage" fitHeight="380.0" fitWidth="429.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2">
                                  <image>
                                     <Image url="@../images/addProduct.JPG" />
                                  </image>

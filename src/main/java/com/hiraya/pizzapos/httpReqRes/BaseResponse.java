@@ -25,7 +25,7 @@ public abstract class BaseResponse {
     public Error error;
 
     public Boolean isSuccessful() {
-        if (this.error.message == null) {
+        if (this.error == null) {
             return true;
         } else {
             return false;

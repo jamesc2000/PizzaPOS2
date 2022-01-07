@@ -10,6 +10,7 @@ public class CurrentUser {
     private String idToken;
     private String refreshToken;
     private String localId;
+    public String profilePic = App.class.getResource("images/userProfilepic.png").toExternalForm();
 
     public boolean isIsLoggedIn() {
         return isLoggedIn;

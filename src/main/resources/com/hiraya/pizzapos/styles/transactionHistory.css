@@ -1,0 +1,14 @@
+* {
+    -fx-font-family: "Poppins";
+    font-family: "Poppins";
+}
+
+.tableLabel * {
+    -fx-text-fill: white;
+    -fx-font-size: 21px;
+}
+
+.headerContainer {
+    -fx-background-color: #37211a;
+    -fx-background-radius: 10px;
+}

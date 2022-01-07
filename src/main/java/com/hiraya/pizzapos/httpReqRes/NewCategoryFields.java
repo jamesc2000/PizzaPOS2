@@ -2,7 +2,6 @@ package com.hiraya.pizzapos.httpReqRes;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.hiraya.pizzapos.App;
-import com.hiraya.pizzapos.httpReqRes.GetCategoriesRequest.Field;
 
 public class NewCategoryFields {
     @JsonInclude(JsonInclude.Include.NON_NULL)

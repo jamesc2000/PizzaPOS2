@@ -1,10 +1,12 @@
 package com.hiraya.pizzapos.helpers;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hiraya.pizzapos.App;
 import com.hiraya.pizzapos.httpReqRes.*;
 import com.hiraya.pizzapos.productSettings.Category;
 import com.hiraya.pizzapos.productSettings.Product;
+import com.hiraya.pizzapos.transactionHistory.Transaction;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -110,6 +112,92 @@ public class RestAPIHelper {
         return res;
     }
 
+    // ==== Update Email ==== // FBAuthRegisterResponse only because I'm lazy, they're similar anyway
+    public static UserProfileResponse updateEmail(UpdateEmailRequest profile) throws IOException, InterruptedException {
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://identitytoolkit.googleapis.com/v1/accounts:update" + API_KEY))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .POST(BodyPublishers.ofString(profile.toJson()))
+            .build();
+
+        HttpResponse<String> res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body());
+
+        return jsonToProfileRes(res.body().toString());
+    }
+
+    // === Create User Document in Firestore ===
+    public static void createUser(UserFields fields, String idToken, String newUserLocalId) throws IOException, InterruptedException {
+        FirestoreRequest<UserFields> body = new FirestoreRequest<UserFields>(fields);
+        System.out.println("JSON Body Firestore: ");
+        System.out.println(body.toJson());
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://firestore.googleapis.com/v1/projects/pizzapos-41338/databases/(default)/documents/users/?documentId=" + newUserLocalId))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .header("Authorization", "Bearer " + idToken)
+            .POST(BodyPublishers.ofString(body.toJson()))
+            .build();
+
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body().toString());
+        // return jsonToSRTokenres(res.body().toString());
+    }
+
+    // === Update User Document in Firestore ===
+    public static void updateUser(UserFields fields, String idToken) throws IOException, InterruptedException {
+        FirestoreRequest<UserFields> body = new FirestoreRequest<UserFields>(fields);
+        body.name = App.user.getLocalId();
+        System.out.println("JSON Body Firestore: ");
+        System.out.println(body.toJson());
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://firestore.googleapis.com/v1/projects/pizzapos-41338/databases/(default)/documents/users/" + App.user.getLocalId()))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .header("Authorization", "Bearer " + idToken)
+            .method("PATCH", BodyPublishers.ofString(body.toJson()))
+            .build();
+
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body().toString());
+        // return jsonToSRTokenres(res.body().toString());
+    }
+
+    public static UserFields getUserData() throws IOException, InterruptedException {
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://firestore.googleapis.com/v1beta1/projects/pizzapos-41338/databases/(default)/documents/users/" + App.user.getLocalId()))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .header("Authorization", "Bearer " + App.user.getIdToken())
+            .GET()
+            .build();
+
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body().toString());
+        JsonNode fsReq = mapper.readTree(res.body().toString());
+        // System.out.println("HEREEEE=====");
+        // System.out.println(fsReq.get("fields").toString());
+        UserFields fields = mapper.readValue(fsReq.get("fields").toString(), UserFields.class);
+        // System.out.println("name: " + fields.name.stringValue);
+        return fields;
+    }
+
+    // ==== CHANGE PASSWORD ====
+    public static FirebaseAuthRegisterResponse changePassword(FirebaseAuthRegisterRequest body) throws IOException, InterruptedException {
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://identitytoolkit.googleapis.com/v1/accounts:update" + API_KEY))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .POST(BodyPublishers.ofString(body.toJson()))
+            .build();
+
+        HttpResponse<String> res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body());
+
+        return jsonToFbAuthRes(res.body().toString());
+    }
+
     // ==== REFRESH TOKEN ====
     public static SendRefreshTokenResponse sendRToken(SendRefreshTokenRequest token) throws IOException, InterruptedException {
         HttpRequest req = HttpRequest.newBuilder()
@@ -155,7 +243,7 @@ public class RestAPIHelper {
     }
     
     public static ArrayList<Product> getProducts(String idToken) throws IOException, InterruptedException {
-        GetProductsRequest body = new GetProductsRequest();
+        RunQueryRequest body = new RunQueryRequest("products");
         System.out.println("JSON Body Firestore: ");
         System.out.println(body.toJson());
         HttpRequest req = HttpRequest.newBuilder()
@@ -171,6 +259,22 @@ public class RestAPIHelper {
         return jsonToProducts(res.body().toString());
     }
 
+    public static void deleteProduct(String docId, String idToken) throws Exception {
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://firestore.googleapis.com/v1/projects/pizzapos-41338/databases/(default)/documents/products/" + docId))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .header("Authorization", "Bearer " + idToken)
+            .DELETE()
+            .build();
+
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        System.out.println("Delete res: " + res.body().toString());
+        if (!res.body().toString().isEmpty()) {
+            throw new Exception("Error in deleting product");
+        }
+    }
+
     private static ArrayList<Product> jsonToProducts(String json) {
         GetProductsResponse[] res = {};
         ArrayList<Product> out = new ArrayList<Product>();
@@ -184,32 +288,20 @@ public class RestAPIHelper {
         System.out.println(res[0].document);
         for (int i = 0; i < res.length; ++i) {
             Product temp = new Product();
-            // temp.name = res[i].document.fields.name.stringValue;
-            // try {
-            //     temp.imageUrl = new URL(res[i].document.fields.imageUrl.stringValue);
-            // } catch (MalformedURLException e) {
-            //     temp.imageUrl = App.class.getResource("images/addProduct.JPG");
-            // }
-            try {
-                temp.setValues(
-                    res[i].document.fields.name.stringValue, 
-                    res[i].document.fields.imageUrl.stringValue, 
-                    res[i].document.fields.category.stringValue, 
-                    // res[i].document.fields.sizes.arrayValue.values,
-                    // res[i].document.fields.sizes.arrayValue.values
-                    new ArrayList<String>(),
-                    new ArrayList<Double>()
-                );
-                res[i].document.fields.sizes.arrayValue.values.forEach(size -> {
-                    temp.pushSize(size.stringValue);
-                });
-                res[i].document.fields.prices.arrayValue.values.forEach(price -> {
-                    temp.pushPrice(price.doubleValue);
-                });
-            } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            temp.setValues(
+			    res[i].document.name,
+			    res[i].document.fields.name.stringValue, 
+			    res[i].document.fields.imageUrl.stringValue, 
+			    res[i].document.fields.category.stringValue, 
+			    new ArrayList<String>(),
+			    new ArrayList<Double>()
+			);
+			res[i].document.fields.sizes.arrayValue.values.forEach(size -> {
+			    temp.pushSize(size.stringValue);
+			});
+			res[i].document.fields.prices.arrayValue.values.forEach(price -> {
+			    temp.pushPrice(price.doubleValue);
+			});
             out.add(temp);
         }
         return out;
@@ -233,7 +325,7 @@ public class RestAPIHelper {
     }
 
     public static ArrayList<Category> getCategories(String idToken) throws IOException, InterruptedException {
-        GetCategoriesRequest body = new GetCategoriesRequest();
+        RunQueryRequest body = new RunQueryRequest("categories");
         System.out.println("JSON Body Firestore: ");
         System.out.println(body.toJson());
         HttpRequest req = HttpRequest.newBuilder()
@@ -268,6 +360,58 @@ public class RestAPIHelper {
             } catch (MalformedURLException e) {
                 temp.imageUrl = App.class.getResource("images/addProduct.JPG");
             }
+            out.add(temp);
+        }
+        return out;
+    }
+
+    public static void createTransaction(NewTransactionFields fields, String idToken) throws IOException, InterruptedException {
+        FirestoreRequest<NewTransactionFields> body = new FirestoreRequest<NewTransactionFields>(fields);
+        System.out.println("JSON Body Firestore: ");
+        System.out.println(body.toJson());
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://firestore.googleapis.com/v1/projects/pizzapos-41338/databases/(default)/documents/transactions/"))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .header("Authorization", "Bearer " + idToken)
+            .POST(BodyPublishers.ofString(body.toJson()))
+            .build();
+
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body().toString());
+        // return jsonToSRTokenres(res.body().toString());
+    }
+
+    public static ArrayList<Transaction> getTransactions(String idToken) throws IOException, InterruptedException {
+        RunQueryRequest body = new RunQueryRequest("transactions");
+        System.out.println("JSON Body Firestore: ");
+        System.out.println(body.toJson());
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://firestore.googleapis.com/v1beta1/projects/pizzapos-41338/databases/(default)/documents:runQuery"))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .header("Authorization", "Bearer " + idToken)
+            .POST(BodyPublishers.ofString(body.toJson()))
+            .build();
+
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body().toString());
+        return jsonToTransactions(res.body().toString());
+    }
+
+    private static ArrayList<Transaction> jsonToTransactions(String json) {
+        GetTransactionsResponse[] res = {};
+        ArrayList<Transaction> out = new ArrayList<>();
+
+        try {
+            res = mapper.readValue(json, GetTransactionsResponse[].class);
+            if (res[0].document.name == null) return out; // Return early if retrieved firebase responded empty
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        System.out.println(res[0].document);
+        for (int i = 0; i < res.length; ++i) {
+            Transaction temp = new Transaction(res[i].document);
             out.add(temp);
         }
         return out;
