@@ -336,8 +336,8 @@ public class RestAPIHelper {
             .POST(BodyPublishers.ofString(body.toJson()))
             .build();
 
-        // HttpResponse res = client.send(req, BodyHandlers.ofString());
-        // System.out.println(res.body().toString());
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        System.out.println(res.body().toString());
         // return jsonToSRTokenres(res.body().toString());
     }
 
