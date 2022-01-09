@@ -60,11 +60,20 @@ public class AddProductFields {
         this.prices.arrayValue = new ArrayValue();
         this.prices.arrayValue.values = new ArrayList<FieldValue>();
         System.out.println("parameter prices: " + prices);
-        prices.forEach(price -> {
-            if (price != 0) {
-                this.prices.arrayValue.values.add(new FieldValue(price));
+        for (int i = 0; i < sizes.size(); ++i) {
+            if (sizes.get(i) != null) {
+                if (prices.get(i) != null) {
+                    this.prices.arrayValue.values.add(new FieldValue(Double.valueOf(prices.get(i))));
+                } else {
+                    this.prices.arrayValue.values.add(new FieldValue(0.0));
+                }
             }
-        });
+        }
+        // prices.forEach(price -> {
+        //     if (price != null) {
+        //         this.prices.arrayValue.values.add(new FieldValue(Double.valueOf(price)));
+        //     }
+        // });
     }
 
 }

@@ -287,7 +287,9 @@ public class RestAPIHelper {
 
         HttpResponse res = client.send(req, BodyHandlers.ofString());
         System.out.println("Delete res: " + res.body().toString());
-        if (!res.body().toString().isEmpty()) {
+        if (res.body().toString().length() > 3) {
+            System.out.println("VALUE OF RES: " + res.body().toString());
+            System.out.println("Length: " + res.body().toString().length());
             throw new Exception("Error in deleting product");
         }
     }
