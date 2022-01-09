@@ -317,7 +317,11 @@ public class RestAPIHelper {
 			    temp.pushSize(size.stringValue);
 			});
 			res[i].document.fields.prices.arrayValue.values.forEach(price -> {
-			    temp.pushPrice(price.doubleValue);
+                if (price.doubleValue != null) {
+                    temp.pushPrice(price.doubleValue);
+                } else if (price.integerValue != null) {
+                    temp.pushPrice(Double.valueOf(price.integerValue));
+                }
 			});
             out.add(temp);
         }

@@ -13,9 +13,11 @@ public class AddProductFields {
     public static class FieldValue {
         public String stringValue;
         public Double doubleValue;
+        public Integer integerValue;
         public ArrayValue arrayValue;
         FieldValue(String val) { this.stringValue = val; }
         FieldValue(double val) { this.doubleValue = val; }
+        FieldValue(int val) { this.integerValue = val; }
         public FieldValue() {}
     }
 
