@@ -149,10 +149,11 @@ public class Product {
     @Override
     public String toString() {
         // For debugging only
-        String str = this.name + "\n";
-        for (int i = 0; i < this.sizesArray.size(); ++i) {
-            str += " - " + this.sizesArray.get(i) + " " + this.pricesArray.get(i) + "\n";
-        }
-        return str + "\n";
+        // String str = this.name + "\n";
+        // for (int i = 0; i < this.sizesArray.size(); ++i) {
+        //     str += " - " + this.sizesArray.get(i) + " " + this.pricesArray.get(i) + "\n";
+        // }
+        // return str + "\n";
+        return "";
     }
 }
