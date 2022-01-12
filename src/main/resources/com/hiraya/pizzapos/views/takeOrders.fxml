@@ -45,12 +45,12 @@
             </ImageView>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #916e4e; -fx-background-radius: 20px 20px 0px 0px;" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="5.0" right="5.0" top="5.0" />
+                  <Insets bottom="2.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
                <children>
-                  <Label alignment="CENTER" layoutX="100.0" layoutY="5.0" text="Order Summary" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="116.0" layoutY="5.0" text="Order Summary" textFill="WHITE">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
                </children>
@@ -169,13 +169,13 @@
                   </Label>
                   <HBox GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#toggleDiscount" text="Toggle SC Discount">
+                        <Button mnemonicParsing="false" onAction="#toggleDiscount" styleClass="payment" text="Toggle SC Discount">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
                         <Region HBox.hgrow="ALWAYS" />
-                        <Button mnemonicParsing="false" onAction="#confirmOrder" text="Confirm Order">
+                        <Button mnemonicParsing="false" onAction="#confirmOrder" styleClass="payment" text="Confirm Order">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -199,9 +199,9 @@
    <center>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <HBox fx:id="categoryContainer" maxHeight="122.0">
+            <HBox fx:id="categoryContainer" maxHeight="122.0" spacing="10.0">
                <children>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#selectAllCategory" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="All">
+                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#selectAllCategory" prefHeight="155.0" prefWidth="195.0" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="All">
                      <graphic>
                         <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -209,6 +209,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </Button>
                   <!-- Dynamic data after all categories button -->
                   <!-- <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="195.0" style="-fx-background-radius: 15px;" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" text="Category">
@@ -298,30 +301,33 @@
                         <Insets />
                      </GridPane.margin>
                   </ImageView>
-                  <Button id="takeorder" mnemonicParsing="false" onAction="#switchToTransactionHistory" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                     <graphic>
-                        <ImageView fitHeight="110.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" styleClass="takeorder">
-                           <image>
-                              <Image url="@../../../../../../../../../../Downloads/pizza.JPG" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-                  <Button mnemonicParsing="false" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                     <graphic>
-                        <ImageView fitHeight="110.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 75;" styleClass="takeorder">
-                           <image>
-                              <Image url="@../../../../../../../../../../Downloads/pizza.JPG" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-                  <Button mnemonicParsing="false" onAction="#switchToProductSettings" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                     <graphic>
-                        <ImageView fitHeight="110.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" styleClass="takeorder">
-                           <image>
-                              <Image url="@../../../../../../../../../../Downloads/pizza.JPG" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
+                  <Button mnemonicParsing="false" onAction="#switchToTransactionHistory" styleClass="sidepanel" stylesheets="@../styles/takeOrders.css" text="Transaction History" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="30.0" left="11.0" right="11.0" top="30.0" />
+                     </padding>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" styleClass="sidepanel" stylesheets="@../styles/takeOrders.css" text="Take Order" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <padding>
+                        <Insets bottom="30.0" left="35.0" right="35.0" top="30.0" />
+                     </padding>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" onAction="#switchToProductSettings" styleClass="sidepanel" stylesheets="@../styles/takeOrders.css" text="Settings" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <padding>
+                        <Insets bottom="30.0" left="42.5" right="42.5" top="30.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
                </children>
             </GridPane>
          </children>
