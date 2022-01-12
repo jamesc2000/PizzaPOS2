@@ -46,30 +46,18 @@
                         <Insets />
                      </GridPane.margin>
                   </ImageView>
-                  <Button id="takeorder" mnemonicParsing="false" onAction="#switchToTransactionHistory" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                     <graphic>
-                        <ImageView fitHeight="110.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" styleClass="takeorder">
-                           <image>
-                              <Image url="@../../../../../../../../../../Downloads/pizza.JPG" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-                  <Button mnemonicParsing="false" onAction="#switchToTakeOrders" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                     <graphic>
-                        <ImageView fitHeight="110.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 75;" styleClass="takeorder">
-                           <image>
-                              <Image url="@../../../../../../../../../../Downloads/pizza.JPG" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-                  <Button mnemonicParsing="false" styleClass="takeorder" stylesheets="@../styles/takeOrders.css" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                     <graphic>
-                        <ImageView fitHeight="110.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" styleClass="takeorder">
-                           <image>
-                              <Image url="@../../../../../../../../../../Downloads/pizza.JPG" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
+                  <Button id="takeorder" mnemonicParsing="false" onAction="#switchToTransactionHistory" styleClass="sidepanel" stylesheets="@../styles/takeOrders.css" text="Transaction History" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <padding>
+                        <Insets bottom="30.0" left="11.0" right="11.0" top="30.0" />
+                     </padding></Button>
+                  <Button mnemonicParsing="false" onAction="#switchToTakeOrders" styleClass="sidepanel" stylesheets="@../styles/takeOrders.css" text="Take Order" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <padding>
+                        <Insets bottom="30.0" left="35.0" right="35.0" top="30.0" />
+                     </padding></Button>
+                  <Button mnemonicParsing="false" styleClass="sidepanel" stylesheets="@../styles/takeOrders.css" text="Settings" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <padding>
+                        <Insets bottom="30.0" left="42.5" right="42.5" top="30.0" />
+                     </padding></Button>
                </children>
             </GridPane>
          </children>
