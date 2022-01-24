@@ -19,17 +19,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="720.0" prefWidth="1340.0" stylesheets="@../styles/takeOrders.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.takeOrders.TakeOrdersController">
+<BorderPane prefHeight="518.0" prefWidth="1340.0" stylesheets="@../styles/takeOrders.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiraya.pizzapos.takeOrders.TakeOrdersController">
    <right>
       <GridPane minWidth="392.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" />
-            <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" />
-          <RowConstraints maxHeight="340.0" minHeight="340.0" prefHeight="340.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="260.0" minHeight="260.0" prefHeight="260.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
+          <RowConstraints vgrow="ALWAYS" />
+          <RowConstraints maxHeight="260.0" minHeight="260.0" percentHeight="38.24" prefHeight="260.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" />
@@ -278,19 +278,19 @@
       </VBox>
    </center>
    <left>
-      <VBox prefHeight="200.0" prefWidth="110.0" style="-fx-background-color: #916e4e;" BorderPane.alignment="CENTER">
+      <VBox prefWidth="110.0" style="-fx-background-color: #916e4e;" BorderPane.alignment="CENTER">
          <children>
             <GridPane prefWidth="150.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="145.0" minHeight="145.0" prefHeight="145.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="115.0" minHeight="115.0" prefHeight="115.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="115.0" minHeight="115.0" prefHeight="115.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="115.0" minHeight="115.0" prefHeight="115.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="140.0" minHeight="140.0" prefHeight="140.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="145.0" minHeight="145.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="90.0" minHeight="90.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="115.0" minHeight="115.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="115.0" minHeight="115.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="115.0" minHeight="115.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="140.0" minHeight="140.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <ImageView fx:id="profilePic" fitHeight="92.0" fitWidth="92.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">

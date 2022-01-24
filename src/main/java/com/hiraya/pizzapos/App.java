@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -34,6 +35,7 @@ public class App extends Application {
 //        stage.setMaximized(true);
 //       stage.setFullScreen(true);
         
+        stage.getIcons().add(new Image(App.class.getResourceAsStream("images/logo.png")));
         
         scene = new Scene(loadFXML("login"), 1000, 600);
         App.primaryStage.setScene(scene);

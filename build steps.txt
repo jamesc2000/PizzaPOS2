@@ -1,0 +1,9 @@
+To create custom Java Runtime
+1. List dependencies used by running 
+jdeps --list-deps --recursive target/PizzaPOS-2.0-SNAPSHOT.jar
+2. Use jlink to create runtime, but also dont forget to add module jdk.crypto.ec
+jlink --add-modules ***all modules here, comma separated, no quotes*** --output java-runtime
+
+To build source
+1. Run mvn clean package
+2. Output is PizzaPOS-2.0-SNAPSHOT.jar

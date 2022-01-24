@@ -43,12 +43,14 @@ public class TakeOrdersController extends Router {
 
     @FXML
     private void initialize() {
-        this.model.useDummyData();
+        App.getPrimaryStage().setMaximized(true);
+        // this.model.useDummyData();
         System.out.println("Dashboard Initialized!" + this.toString());
         try {
             this.model.setCategories(RestAPIHelper.getCategories(App.user.getIdToken()));
             this.model.setProducts(RestAPIHelper.getProducts(App.user.getIdToken()));
         } catch (IOException | InterruptedException e) {
+            Toaster.spawnToast("Error fetching data.", "Please check your internet connection and restart the application.", "error");
             e.printStackTrace();
         }
         this.displayData("All");

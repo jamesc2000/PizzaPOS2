@@ -34,6 +34,7 @@ public class LoginController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        App.getPrimaryStage().setMaximized(false);
         System.out.println("Initialize");
     }
 
@@ -77,9 +78,10 @@ public class LoginController implements Initializable {
                         }
                         System.out.println("Log in successful");
                         // Display toast notif here saying "Log in successful"
-                        Toaster.spawnToast("Login successful", "Welcome to PizzaPOS", "success");
+                        // Toaster.spawnToast("Login successful", "Welcome to PizzaPOS", "success");
                         try {
                             App.setRoot("takeOrders");
+                            Toaster.spawnToast("Login successful", "Welcome to PizzaPOS", "success");
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
