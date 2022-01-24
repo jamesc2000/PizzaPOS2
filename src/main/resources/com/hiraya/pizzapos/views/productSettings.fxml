@@ -150,14 +150,6 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Region>
-                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="138.0" style="-fx-background-radius: 8;" styleClass="secondbutton" stylesheets="@../styles/productSettings.css" text="Edit" textFill="WHITE">
-                     <HBox.margin>
-                        <Insets bottom="5.0" right="20.0" top="5.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Button>
                </children>
             </HBox>
             <FlowPane fx:id="categoryContainer" hgap="20.0" maxHeight="50.0" prefHeight="50.0" stylesheets="@../styles/productSettings.css">
