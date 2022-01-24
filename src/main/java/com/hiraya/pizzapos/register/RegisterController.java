@@ -2,6 +2,7 @@ package com.hiraya.pizzapos.register;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ResourceBundle;
 
 import com.hiraya.pizzapos.App;
 import com.hiraya.pizzapos.ImageSelector;
@@ -10,6 +11,7 @@ import com.hiraya.pizzapos.Toaster;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -18,7 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class RegisterController extends Router {
+public class RegisterController extends Router implements Initializable {
     private final URL defaultImageUrl = App.class.getResource("images/userProfilepic.png");
     RegisterModel model = new RegisterModel();
 
@@ -113,5 +115,11 @@ public class RegisterController extends Router {
         this.model.setImageUrl("");
         this.imageUrl = null;
         this.displayImage();
+    }
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        App.getPrimaryStage().setWidth(512.0);
+        App.getPrimaryStage().setHeight(700.0);
     }
 }

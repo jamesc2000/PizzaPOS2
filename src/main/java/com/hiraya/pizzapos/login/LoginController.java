@@ -35,6 +35,8 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         App.getPrimaryStage().setMaximized(false);
+        App.getPrimaryStage().setWidth(1015.0);
+        App.getPrimaryStage().setHeight(637.0);
         System.out.println("Initialize");
     }
 

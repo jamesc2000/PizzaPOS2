@@ -343,3 +343,6 @@ PizzaPOS-release/lib/security/blocked.certs
 PizzaPOS-release/lib/security/cacerts
 PizzaPOS-release/lib/security/default.policy
 PizzaPOS-release/lib/security/public_suffix_list.dat
+PizzaPOS-release/logo.ico
+PizzaPOS-release/PizzaPOS Launcher.lnk
+PizzaPOS-release/pizzapos/run.bat
