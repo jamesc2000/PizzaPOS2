@@ -46,12 +46,12 @@
             <InnerShadow />
          </effect>
       </Button>
-      <Text layoutX="70.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" wrappingWidth="70.6761474609375">
+      <Text layoutX="69.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" wrappingWidth="144.0">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="276.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" wrappingWidth="70.6761474609375">
+      <Text layoutX="279.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" wrappingWidth="154.0">
          <font>
             <Font size="14.0" />
          </font>
