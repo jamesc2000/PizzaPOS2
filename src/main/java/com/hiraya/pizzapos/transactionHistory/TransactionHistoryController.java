@@ -87,8 +87,9 @@ public class TransactionHistoryController extends Router implements Initializabl
                     new Label(tr.getTimestampFormatted()),
                     new Label(tr.getTransactionRef()),
                     new Label(formatter.format(tr.getSubtotal())),
-                    new Label(formatter.format(tr.getTotal())),
                     new Label(formatter.format(tr.getTotal() - tr.getSubtotal() + tr.getDiscountAmt())),
+                    new Label(formatter.format(tr.getTotal())),
+                    
                 };
 
                 for (int col = 0; col < maxCol; col++) {

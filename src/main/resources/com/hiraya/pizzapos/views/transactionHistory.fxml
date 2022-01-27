@@ -163,7 +163,7 @@
                                     </AnchorPane>
                                     <AnchorPane styleClass="headerContainer" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
                                        <children>
-                                          <Label alignment="CENTER" contentDisplay="CENTER" text="Order No." textFill="#eebb32" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <Label alignment="CENTER" contentDisplay="CENTER" text="Order Code" textFill="#eebb32" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <font>
                                                 <Font name="System Bold" size="21.0" />
                                              </font>
@@ -181,7 +181,7 @@
                                     </AnchorPane>
                                     <AnchorPane styleClass="headerContainer" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS">
                                        <children>
-                                          <Label alignment="CENTER" contentDisplay="CENTER" text="Total" textFill="#eebb32" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <Label alignment="CENTER" contentDisplay="CENTER" text="VAT" textFill="#eebb32" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <font>
                                                 <Font name="System Bold" size="21.0" />
                                              </font>
@@ -190,7 +190,7 @@
                                     </AnchorPane>
                                     <AnchorPane styleClass="headerContainer" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS">
                                        <children>
-                                          <Label alignment="CENTER" contentDisplay="CENTER" text="VAT" textFill="#eebb32" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <Label alignment="CENTER" contentDisplay="CENTER" text="TOTAL" textFill="#eebb32" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <font>
                                                 <Font name="System Bold" size="21.0" />
                                              </font>
@@ -204,28 +204,43 @@
                                     <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                                  </VBox.margin>
                               </Pane>
-                              <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="947.0" style="-fx-background-radius: 10px;" styleClass="borderless-scroll-pane" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
+                              <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-radius: 10px;" styleClass="borderless-scroll-pane" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                                  <content>
-                                    <GridPane fx:id="table" hgap="20.0" style="-fx-background-color: #916e4e; -fx-background-radius: 10px;" styleClass="tableLabel">
+                                    <GridPane fx:id="table" hgap="15.0" style="-fx-background-color: #916e4e; -fx-background-radius: 10px;" styleClass="tableLabel">
                                       <columnConstraints>
-                                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" />
-                                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" />
-                                          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" />
-                                          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" />
+                                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="28.0" />
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="17.0" />
                                           <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" />
                                       </columnConstraints>
                                       <rowConstraints>
                                         <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <Label text="Label" textOverrun="CLIP" />
-                                          <Label text="Label" GridPane.columnIndex="1" />
-                                          <Label text="Label" GridPane.columnIndex="2" />
-                                          <Label text="Label" GridPane.columnIndex="3" />
-                                          <Label text="Label" GridPane.columnIndex="4" />
+                                          <Label text="Label" textAlignment="JUSTIFY" textOverrun="CLIP">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font></Label>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" text="Label" textAlignment="JUSTIFY" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font></Label>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" text="Label" textAlignment="JUSTIFY" GridPane.columnIndex="2">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font></Label>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" text="Label" textAlignment="JUSTIFY" GridPane.columnIndex="3">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font></Label>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" text="Label" textAlignment="JUSTIFY" GridPane.columnIndex="4">
+                                             <font>
+                                                <Font name="System Bold" size="11.0" />
+                                             </font></Label>
                                        </children>
                                        <padding>
-                                          <Insets left="20.0" right="20.0" top="20.0" />
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                        </padding>
                                     </GridPane>
                                  </content>
