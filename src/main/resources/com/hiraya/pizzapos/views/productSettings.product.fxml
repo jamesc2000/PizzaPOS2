@@ -13,18 +13,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<HBox maxWidth="1.7976931348623157E308" minHeight="110.0" prefHeight="110.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxWidth="1.7976931348623157E308" minHeight="110.0" prefHeight="110.0" prefWidth="2000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-    <GridPane prefHeight="110.0" prefWidth="1130.0">
+    <GridPane maxWidth="1.7976931348623157E308" prefHeight="110.0" prefWidth="1850.0">
         <HBox.margin>
             <Insets />
         </HBox.margin>
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="254.06667785644532" minWidth="10.0" prefWidth="254.06667785644532" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.066650390625" minWidth="10.0" prefWidth="267.9333221435547" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.066650390625" minWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="501.46661376953125" minWidth="10.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="486.0" minWidth="10.0" prefWidth="176.53339843749995" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.5999755859375" minWidth="0.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="486.0" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.5999755859375" minWidth="0.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
