@@ -50,7 +50,7 @@
                         <Insets bottom="30.0" left="155.0" right="100.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" textAlignment="CENTER">
                      <font>
                         <Font size="17.0" />
                      </font>
