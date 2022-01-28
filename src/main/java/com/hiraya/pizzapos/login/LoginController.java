@@ -75,6 +75,7 @@ public class LoginController implements Initializable {
                         try {
                             var userData = RestAPIHelper.getUserData();
                             App.user.profilePic = userData.imageUrl.stringValue;
+                            App.user.displayName = userData.name.stringValue;
                         } catch (IOException | InterruptedException e1) {
                             e1.printStackTrace();
                         }

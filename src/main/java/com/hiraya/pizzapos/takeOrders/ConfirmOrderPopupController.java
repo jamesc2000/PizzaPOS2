@@ -1,7 +1,9 @@
 package com.hiraya.pizzapos.takeOrders;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.hiraya.pizzapos.App;
@@ -9,11 +11,16 @@ import com.hiraya.pizzapos.Toaster;
 import com.hiraya.pizzapos.transactionHistory.Transaction;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ConfirmOrderPopupController implements Initializable {
     final private DecimalFormat formatter = new DecimalFormat("₱ #0.00");
@@ -29,6 +36,8 @@ public class ConfirmOrderPopupController implements Initializable {
     TextField accntNo, expDateCard, cvc;
     @FXML
     ComboBox<String> modePayment;
+    @FXML
+    CheckBox savePdf;
 
     public ConfirmOrderPopupController(TakeOrdersController parent) {
         this.parent = parent;
@@ -81,6 +90,10 @@ public class ConfirmOrderPopupController implements Initializable {
         try {
             this.parent.model.currTransaction.checkout(App.user.getIdToken());
             Toaster.spawnToast("Order Success", "", "success");
+            if (this.savePdf.isSelected()) {
+                this.makeReceipt(this.parent.model.currTransaction);
+            }
+            // this.makePdfAndOpen(this.parent.model.currTransaction);
             this.parent.model.currTransaction = new Transaction();
             this.parent.model.clearOrders();
             this.parent.model.currTransaction.recomputeOrders(); // Lazy fix for weird bug
@@ -90,6 +103,31 @@ public class ConfirmOrderPopupController implements Initializable {
             e.printStackTrace();
         }
     }
-    
 
+    private void makeReceipt(Transaction transaction) {
+        ReceiptController sel = new ReceiptController(this, transaction);
+        Stage popup = new Stage();
+        popup.initOwner(App.getPrimaryStage());
+        popup.setResizable(false);
+        popup.initStyle(StageStyle.TRANSPARENT);
+
+        // System.out.println(App.class.getResource("views/uploadImage.fxml").toExternalForm());
+        FXMLLoader fxml = new FXMLLoader(App.class.getResource("views/takeOrders.receipt.fxml"));
+        fxml.setController(sel);
+        Scene scene;
+        try {
+            scene = new Scene(fxml.load());
+            scene.setFill(Color.TRANSPARENT);
+            popup.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toaster.spawnToast("FXML Error", e.getMessage(), "error");
+        }
+        popup.setOnHiding((event) -> {
+            System.out.println("Closed");
+        });
+        popup.show();
+
+
+    }
 }
