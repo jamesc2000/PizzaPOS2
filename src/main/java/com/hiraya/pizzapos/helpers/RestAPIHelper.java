@@ -259,6 +259,7 @@ public class RestAPIHelper {
     }
 
     public static void updateProduct(AddProductFields fields, String idToken, String docId) throws IOException, InterruptedException {
+        System.out.println("UPDATE PRODUCT==========================="+docId);
         FirestoreRequest<AddProductFields> body = new FirestoreRequest<>(fields);
         body.name = docId;
         System.out.println("JSON Body Firestore: ");
