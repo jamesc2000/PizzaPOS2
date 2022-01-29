@@ -137,12 +137,21 @@ public class AddProductSettingsController extends Router implements Initializabl
     }
 
     public void submit() throws IOException {
-        if (this.nameField.getText() == null) {
+        if (this.nameField.getText() == "") {
             Toaster.spawnToast("Name is required", "", "error");
         }
-        if (this.typeField.getValue() == null) {
+        else if (this.typeField.getValue() == null) {
             Toaster.spawnToast("Category is required", "", "error");
         }
+        else if (this.cb1.isSelected() == false && this.cb2.isSelected()== false && this.cb3.isSelected()== false){
+            Toaster.spawnToast ("1 Variation required", "", "error");
+            return;
+        }
+        else if (this.cb1.isSelected() == true && this.var1.getText() == "" || this.price1.getText() == ""){
+            Toaster.spawnToast ("Parameters required", "", "error");
+            return;
+        }
+
         if (this.imageUrl == null) {
             this.imageUrl = "";
         }
