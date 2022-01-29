@@ -137,7 +137,7 @@ public class AddProductSettingsController extends Router implements Initializabl
     }
 
     public void submit() throws IOException {
-        if (this.nameField.getText() == null) {
+        if (this.nameField.getText() == "") {
             Toaster.spawnToast("Name is required", "", "error");
         }
         else if (this.typeField.getValue() == null) {
@@ -145,16 +145,13 @@ public class AddProductSettingsController extends Router implements Initializabl
         }
         else if (this.cb1.isSelected() == false && this.cb2.isSelected()== false && this.cb3.isSelected()== false){
             Toaster.spawnToast ("1 Variation required", "", "error");
+            return;
         }
-        else if (this.cb1.isSelected() == true && this.var1.getText() == null || this.price1.getText() == null){
+        else if (this.cb1.isSelected() == true && this.var1.getText() == "" || this.price1.getText() == ""){
             Toaster.spawnToast ("Parameters required", "", "error");
+            return;
         }
-        else if (this.cb2.isSelected() == true && this.var2.getText() == null || this.price2.getText() == null){
-            Toaster.spawnToast ("Parameters required", "", "error");
-        }
-        else if (this.cb3.isSelected() == true && this.var3.getText() == null || this.price3.getText() == null){
-            Toaster.spawnToast ("Parameters required", "", "error");
-        }
+
         if (this.imageUrl == null) {
             this.imageUrl = "";
         }
