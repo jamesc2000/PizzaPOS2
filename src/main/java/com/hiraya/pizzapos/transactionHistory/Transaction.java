@@ -40,9 +40,9 @@ public class Transaction {
         this.transactionRef = generateRef();
         this.orders = orders;
         this.orders.forEach(order -> {
-            this.subtotal += order.price * order.quantity;
+            this.total += (order.price * order.quantity);
         });
-        this.total = this.subtotal * (1 + this.VAT);
+        this.subtotal = this.total * (1 - this.VAT);
     }
 
     public Transaction(Document doc) {
@@ -64,9 +64,9 @@ public class Transaction {
         this.total = 0;
         this.discountAmt = 0;
         this.orders.forEach(order -> {
-            this.subtotal += order.price * order.quantity;
+            this.total += (order.price * order.quantity);
         });
-        this.total = this.subtotal * (1 + this.VAT);
+        this.subtotal = this.total * (1 - this.VAT); 
     }
 
     public ArrayList<Order> getOrders() {
@@ -171,8 +171,8 @@ public class Transaction {
         this.discountAmt = discountAmt;
     }
 
-    public double getVatAmt() {
-        return this.VAT * this.subtotal;
+    public double getVatAmt() { 
+        return this.VAT * this.total;
     }
 
     public void checkout(String idToken) throws Exception {

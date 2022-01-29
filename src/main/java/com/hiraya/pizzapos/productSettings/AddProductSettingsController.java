@@ -98,18 +98,19 @@ public class AddProductSettingsController extends Router implements Initializabl
         }
 
         // IMPORTANT, change the onAction of the save button from submit to edit
-        saveBtn.setOnAction((event) -> {
-            System.out.println(pr.getDocumentId());
-            System.out.println("Overridden saveBtn " + this.imageUrl);
-            this.model.setImage(this.imageUrl);
-            App.bgThreads.submit(() -> {
-                this.model.patchFirestore();
-                Platform.runLater(() -> {
-                    Toaster.spawnToast("Edited product", "Successfully edited " + this.model.getName(), "success");
-                    super.switchToProductSettings();
-                });
-            });
-        });
+        // saveBtn.setOnAction((event) -> {
+        //     System.out.println(pr.getDocumentId());
+        //     System.out.println("Overridden saveBtn " + this.imageUrl);
+        //     this.submit();
+        //     // this.model.setImage(this.imageUrl);
+        //     // App.bgThreads.submit(() -> {
+        //     //     this.model.patchFirestore();
+        //     //     Platform.runLater(() -> {
+        //     //         Toaster.spawnToast("Edited product", "Successfully edited " + this.model.getName(), "success");
+        //     //         super.switchToProductSettings();
+        //     //     });
+        //     // });
+        // });
         cancelBtn.setOnAction((event) -> {
             super.switchToProductSettings();
         });
@@ -162,25 +163,45 @@ public class AddProductSettingsController extends Router implements Initializabl
                 prices.add(Double.valueOf(priceFields[i].getText()));
             }
         }
-        this.model.setValues(
-            "temp",
-            nameField.getText(),
-            this.imageUrl,
-            typeField.getValue().toString(), 
-            sizes,
-            prices
-        );
+
+        if (!this.isEdit) {
+            this.model.setValues(
+                "temp",
+                nameField.getText(),
+                this.imageUrl,
+                typeField.getValue().toString(), 
+                sizes,
+                prices
+            );
+        } else {
+            this.model.setValues(
+                this.model.getDocumentId(), 
+                nameField.getText(), 
+                this.imageUrl, 
+                typeField.getValue().toString(), 
+                sizes, 
+                prices
+            );
+        }
 
         Future<String> send = App.bgThreads.submit(() -> {
             try {
-                this.model.sendToFirestore();
-                Platform.runLater(() -> {
-                    Toaster.spawnToast("Success", "Created " + this.model.getName(), "success");
-                    super.switchToProductSettings();
-                });
+                if (!this.isEdit) {
+                    this.model.sendToFirestore();
+                    Platform.runLater(() -> {
+                        Toaster.spawnToast("Success", "Created " + this.model.getName(), "success");
+                        super.switchToProductSettings();
+                    });
+                } else {
+                    this.model.patchFirestore();
+                    Platform.runLater(() -> {
+                        Toaster.spawnToast("Success", "Edited " + this.model.getName(), "success");
+                        super.switchToProductSettings();
+                    });
+                }
             } catch (Exception e) {
                 Platform.runLater(() -> {
-                    Toaster.spawnToast("Error in creating new product.", e.getMessage().toString(), "Error");
+                    Toaster.spawnToast("Error in saving product.", e.getMessage().toString(), "Error");
                 });
                 e.printStackTrace();
             }

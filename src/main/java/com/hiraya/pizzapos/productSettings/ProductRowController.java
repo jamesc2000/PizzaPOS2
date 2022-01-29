@@ -80,6 +80,7 @@ public class ProductRowController implements Initializable {
             System.out.println(pr);
         });
         this.parent.displayProducts();
+        Toaster.spawnToast("Deleted product", "", "success");
     }
 
     public void editProduct() {

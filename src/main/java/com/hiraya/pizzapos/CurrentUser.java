@@ -11,6 +11,7 @@ public class CurrentUser {
     private String refreshToken;
     private String localId;
     public String profilePic = App.class.getResource("images/userProfilepic.png").toExternalForm();
+    public String displayName = "";
 
     public boolean isIsLoggedIn() {
         return isLoggedIn;
