@@ -77,7 +77,7 @@
       <URL value="@../styles/App.css" />
    </stylesheets>
    <center>
-      <VBox stylesheets="@../styles/productSettings.css" BorderPane.alignment="CENTER">
+      <VBox prefHeight="730.0" prefWidth="1002.0" stylesheets="@../styles/productSettings.css" BorderPane.alignment="CENTER">
          <children>
             <Pane prefHeight="46.0" style="-fx-background-color: #37211a; -fx-background-radius: 20px;">
                <VBox.margin>
@@ -156,7 +156,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Region prefHeight="46.0" HBox.hgrow="ALWAYS">
+                  <Region prefHeight="46.0" prefWidth="522.0" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -193,12 +193,13 @@
                   </Button>
                </children>
             </HBox>
-            <AnchorPane style="-fx-background-color: #ca5736;">
+            <AnchorPane style="-fx-background-color: #916e4e; -fx-background-radius: 10;">
                <VBox.margin>
                   <Insets bottom="15.0" left="20.0" right="20.0" top="5.0" />
                </VBox.margin>
                <children>
-                  <GridPane prefHeight="534.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <VBox prefHeight="606.0" prefWidth="1146.0" />
+                  <GridPane prefHeight="531.0" prefWidth="1146.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" />
                       <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="379.0" />
@@ -246,13 +247,14 @@
                               <Insets bottom="15.0" left="15.0" right="15.0" top="20.0" />
                            </GridPane.margin>
                         </GridPane>
-                        <GridPane>
+                        <GridPane prefHeight="556.0" prefWidth="767.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
-                            <RowConstraints maxHeight="261.79999389648435" minHeight="10.0" prefHeight="163.2" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="261.79999389648435" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="261.79999389648435" minHeight="10.0" prefHeight="163.20001831054688" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="261.79999389648435" minHeight="10.0" prefHeight="41.600018310546886" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="261.79999389648435" minHeight="7.999987792968739" prefHeight="26.399981689453114" vgrow="SOMETIMES" />
                             <RowConstraints maxHeight="408.8000183105469" minHeight="10.0" vgrow="ALWAYS" />
                           </rowConstraints>
                            <children>
@@ -268,7 +270,7 @@
                                  <children>
                                     <Label prefHeight="42.0" style="-fx-font-weight: bold;" text="Product Name:" textFill="#131313" textOverrun="CLIP">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="System Bold" size="18.0" />
                                        </font>
                                        <opaqueInsets>
                                           <Insets />
@@ -322,7 +324,7 @@
                                     <Insets top="30.0" />
                                  </GridPane.margin>
                               </GridPane>
-                              <GridPane prefHeight="293.0" prefWidth="786.0" GridPane.rowIndex="2">
+                              <GridPane prefHeight="293.0" prefWidth="786.0" GridPane.rowIndex="3">
                                 <columnConstraints>
                                   <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="296.0" minWidth="10.0" prefWidth="96.79998779296875" />
                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="423.20000000000005" minWidth="10.0" prefWidth="418.4000122070313" />
@@ -390,36 +392,38 @@
                                     <Insets bottom="20.0" />
                                  </GridPane.margin>
                               </GridPane>
-                              <GridPane GridPane.rowIndex="1">
+                              <GridPane GridPane.rowIndex="2">
                                 <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label style="-fx-font-weight: bold;" text="Product Variations" textOverrun="CLIP" GridPane.halignment="CENTER">
+                                    <Label prefHeight="27.0" prefWidth="362.0" text="Product Variation">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                        <GridPane.margin>
-                                          <Insets />
+                                          <Insets left="200.0" top="30.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <Label prefHeight="27.0" style="-fx-font-weight: bold;" text="Product Pricing" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                                    <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="392.0" text="Product Pricing" GridPane.columnIndex="1" GridPane.hgrow="NEVER">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                        <GridPane.margin>
-                                          <Insets right="80.0" />
+                                          <Insets left="20.0" right="60.0" top="30.0" />
                                        </GridPane.margin>
                                     </Label>
                                  </children>
-                                 <GridPane.margin>
-                                    <Insets top="30.0" />
-                                 </GridPane.margin>
                               </GridPane>
+                              <Pane prefHeight="10.0" prefWidth="755.0" style="-fx-background-color: #000000; -fx-background-radius: 20;" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="17.0" left="30.0" right="15.0" top="20.0" />
+                                 </GridPane.margin>
+                              </Pane>
                            </children>
                         </GridPane>
                      </children>
