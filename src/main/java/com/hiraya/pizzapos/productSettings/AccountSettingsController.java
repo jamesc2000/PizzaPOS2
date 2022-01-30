@@ -51,6 +51,7 @@ public class AccountSettingsController extends Router implements Initializable {
         this.displayImage();
         if (!App.user.profilePic.isEmpty()) {
             this.profilePic.setImage(new Image(App.user.profilePic));
+            this.imageUrl = App.user.profilePic;
         }
     }
 

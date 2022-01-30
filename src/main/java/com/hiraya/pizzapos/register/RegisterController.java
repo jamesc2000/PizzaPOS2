@@ -51,6 +51,10 @@ public class RegisterController extends Router implements Initializable {
     
     @FXML
     public void submit() throws IOException {
+        if (!this.passwordField.getText().equals(this.confirmPasswordField.getText())) {
+            Toaster.spawnToast("Invalid input", "Passwords do not match", "error");
+            return;
+        }
         System.out.println("Submit clicked");
 
         // When login is clicked, store the data to the model
