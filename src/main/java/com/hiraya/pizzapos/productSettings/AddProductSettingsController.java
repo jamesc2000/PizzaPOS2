@@ -147,7 +147,17 @@ public class AddProductSettingsController extends Router implements Initializabl
             Toaster.spawnToast ("1 Variation required", "", "error");
             return;
         }
-        else if (this.cb1.isSelected() == true && this.var1.getText() == "" || this.price1.getText() == ""){
+        else if (this.cb1.isSelected() == true && (this.var1.getText() == "" || this.price1.getText() == "")){
+            Toaster.spawnToast ("Parameters required", "", "error");
+            return;
+        }
+        
+        else if (this.cb2.isSelected() == true && (this.var2.getText() == "" || this.price2.getText() == "")){
+            Toaster.spawnToast ("Parameters required", "", "error");
+            return;
+        }
+        
+        else if (this.cb3.isSelected() == true && (this.var3.getText() == "" || this.price3.getText() == "")){
             Toaster.spawnToast ("Parameters required", "", "error");
             return;
         }
