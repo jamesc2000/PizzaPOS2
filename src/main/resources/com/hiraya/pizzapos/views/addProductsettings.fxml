@@ -287,7 +287,7 @@
                                           <Insets left="45.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <TextField fx:id="nameField" prefHeight="26.0" GridPane.columnIndex="1">
+                                    <TextField fx:id="nameField" prefHeight="26.0" style="-fx-font-size: 14px;" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets right="15.0" />
                                        </GridPane.margin>

@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.OverrunStyle;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -91,6 +92,7 @@ public class TransactionHistoryController extends Router implements Initializabl
                     new Label(formatter.format(tr.getTotal())),
                     
                 };
+                row[0].setTextOverrun(OverrunStyle.CLIP);
 
                 for (int col = 0; col < maxCol; col++) {
                     GridPane.setColumnIndex(row[col], col);

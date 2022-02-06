@@ -375,10 +375,12 @@ public class RestAPIHelper {
         } catch (IOException e) {
             System.out.println(e);
         }
-        System.out.println("DOCUMENT" + res[0].document.fields.name.stringValue);
+        // System.out.println("DOCUMENT" + res[0].document.fields.name.stringValue);
         for (int i = 0; i < res.length; ++i) {
             Category temp = new Category();
             if (!res[i].document.fields.name.stringValue.isEmpty()) {
+                int idLength = res[i].document.name.split("/").length - 1;
+                temp.id = res[i].document.name.split("/")[idLength];
                 temp.name = res[i].document.fields.name.stringValue;
                 try {
                     temp.imageUrl = new URL(res[i].document.fields.imageUrl.stringValue);
@@ -389,6 +391,24 @@ public class RestAPIHelper {
             }
         }
         return out;
+    }
+
+    public static void deleteCategory(String docId, String idToken) throws Exception {
+        HttpRequest req = HttpRequest.newBuilder()
+            .uri(URI.create("https://firestore.googleapis.com/v1/projects/pizzapos-41338/databases/(default)/documents/categories/" + docId))
+            .timeout(Duration.ofMinutes(1))
+            .header("Content-Type", "application/json")
+            .header("Authorization", "Bearer " + idToken)
+            .DELETE()
+            .build();
+
+        HttpResponse res = client.send(req, BodyHandlers.ofString());
+        System.out.println("Delete res: " + res.body().toString());
+        if (res.body().toString().length() > 3) {
+            System.out.println("VALUE OF RES: " + res.body().toString());
+            System.out.println("Length: " + res.body().toString().length());
+            throw new Exception("Error in deleting category");
+        }
     }
 
     public static void createTransaction(NewTransactionFields fields, String idToken) throws IOException, InterruptedException {

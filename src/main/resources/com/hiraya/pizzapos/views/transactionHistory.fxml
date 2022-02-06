@@ -215,7 +215,7 @@
                                           <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" />
                                       </columnConstraints>
                                       <rowConstraints>
-                                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" valignment="TOP" vgrow="NEVER" />
                                       </rowConstraints>
                                        <children>
                                           <Label text="Label" textAlignment="JUSTIFY" textOverrun="CLIP">

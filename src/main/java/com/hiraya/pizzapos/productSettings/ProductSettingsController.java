@@ -16,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
@@ -78,12 +80,33 @@ public class ProductSettingsController extends Router implements Initializable {
     }
 
     public void displayCategories() {
+        // Remove all categories except "All"
+        this.categoryContainer.getChildren().subList(1, this.categoryContainer.getChildren().size()).clear();
         var categories = this.model.getCategories();
         categories.forEach(category -> {
+            System.out.println("ID: " + category.id + category.name);
             Button catBtn = new Button(category.name);
             catBtn.setPrefSize(200.0, 50.0);
             catBtn.getStyleClass().addAll("firstbutton", "buttoncurve");
+
+            final ContextMenu categoryRightClick = new ContextMenu();
+            final MenuItem deleteCategoryContext = new MenuItem("Delete Category");
+            deleteCategoryContext.setOnAction((e) -> {
+                MenuItem source = (MenuItem)e.getSource();
+                ContextMenu parent = source.getParentPopup();
+                Category data = (Category)parent.getUserData();
+                System.out.println("Delete: " + category.id + category.name);
+                data.deleteCategory();
+                this.model.getCategories().remove(data);
+                this.displayCategories();
+                // Button btn = (Button)parent.getOwnerNode();
+                // System.out.println(btn.getText());
+            });
+            categoryRightClick.getItems().addAll(deleteCategoryContext);
+
+            catBtn.setContextMenu(categoryRightClick);
             categoryContainer.getChildren().add(catBtn);
+            categoryRightClick.setUserData(category);
         });
 
         categoryContainer.getChildren().forEach(catBtn -> {

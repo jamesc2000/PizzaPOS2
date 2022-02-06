@@ -177,11 +177,11 @@
                <children>
                   <GridPane layoutX="100.0" layoutY="1.0224609375" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <columnConstraints>
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="254.06667785644532" minWidth="10.0" prefWidth="254.06667785644532" />
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="344.066650390625" minWidth="10.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="501.46661376953125" minWidth="10.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="486.0" minWidth="10.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="197.5999755859375" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="254.06667785644532" minWidth="10.0" percentWidth="20.0" prefWidth="254.06667785644532" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="344.066650390625" minWidth="10.0" percentWidth="20.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="501.46661376953125" minWidth="10.0" percentWidth="20.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="486.0" minWidth="10.0" percentWidth="20.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="197.5999755859375" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
